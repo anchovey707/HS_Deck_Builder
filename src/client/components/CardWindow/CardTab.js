@@ -1,5 +1,5 @@
 import React from 'react';
-import {clickTab, loadCardData} from '../../redux/actions/index';
+import {clickTab, loadCardDataByClass} from '../../redux/actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -10,13 +10,15 @@ class CardTab extends React.Component{
     super()
   }
 
+  // CALL TWO REDUX ACTIONS 
   handleClick = (name) => {
     this.props.clickTab(name)
-    this.props.loadData(name)
+    this.props.loadCardDataByClass(name)
   }
 
   render(){
 
+    // RENDER THIS IF NAME IS NEEDED 
     if(this.props.showName === true){
       return(
         <div className='card-tab' style={styles.CardTab} onClick={ () => this.handleClick(this.props.name)}>
@@ -25,6 +27,8 @@ class CardTab extends React.Component{
         </div>
       )
     }
+
+    // OTHERWISE RENDER THIS
     else{
       return(
         <div className='card-tab' style={styles.CardTab} onClick={ () => this.handleClick(this.props.name)}>
@@ -38,7 +42,7 @@ class CardTab extends React.Component{
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     clickTab: clickTab,
-    loadData: loadCardData
+    loadCardDataByClass: loadCardDataByClass
   }, dispatch)
 }
 
