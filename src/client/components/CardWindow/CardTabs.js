@@ -1,23 +1,39 @@
 import React from 'react';
 import CardTab from './CardTab';
+import {connect} from 'react-redux';
 
-const CardTabs = () => (
-  <div className='card-tabs' style={styles.CardTabs} >
-   
-    <CardTab name='warrior'/>
-    <CardTab name='hunter'/>
-    <CardTab name='mage'/>
 
-    <CardTab name='warlock'/>
-    <CardTab name='shaman'/>
-    <CardTab name='rogue'/>
+class CardTabs extends React.Component{
 
-    <CardTab name='paladin'/>
-    <CardTab name='druid'/>
-    <CardTab name='priest'/>
+  constructor(props){
+    super()
+  }
 
-  </div>
-)
+  renderTabs(){
+    var tabs_arr = this.props.tabs
+    return(
+      tabs_arr.map( (tab) => (
+        <CardTab name={tab} key={tab} />
+      ))
+    )
+  }
+
+  render(){
+   return(
+     <div style={styles.CardTabs}>
+       {this.renderTabs()}
+     </div>
+   )
+  }
+}
+
+function mapStateToProps(state){
+  var tabs = state.CardTabs
+  return{
+    tabs: tabs
+  }
+}
+
 
 const styles = {
   CardTabs:{
@@ -29,4 +45,5 @@ const styles = {
   }
 }
 
-export default CardTabs;
+
+export default connect(mapStateToProps,null)(CardTabs);

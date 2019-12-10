@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import sampleReducer from './sampleReducer';
+import ClickTabReducer from './ClickTabReducer';
 
 export default combineReducers({
-  sample:sampleReducer
+  CardTabs:ClickTabReducer
 });
