@@ -1,5 +1,5 @@
 import React from 'react';
-import {clickTab} from '../../redux/actions/index';
+import {clickTab, loadCardData} from '../../redux/actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -12,6 +12,7 @@ class CardTab extends React.Component{
 
   handleClick = (name) => {
     this.props.clickTab(name)
+    this.props.loadData(name)
   }
 
   render(){
@@ -35,7 +36,10 @@ class CardTab extends React.Component{
 }
 
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({clickTab: clickTab}, dispatch)
+  return bindActionCreators({
+    clickTab: clickTab,
+    loadData: loadCardData
+  }, dispatch)
 }
 
 export default connect(null,matchDispatchToProps)(CardTab)
