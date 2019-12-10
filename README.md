@@ -12,6 +12,7 @@ Hearthstone deck builder project for MThree
 
 1. Only taking past four sets
 
+2. Will accept filters for set,class, mana cost, health, attack, name, and rarity
 
 db host= 18.234.74.106
 db port= 3306
