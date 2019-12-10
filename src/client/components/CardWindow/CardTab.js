@@ -38,7 +38,7 @@ const styles = {
 }
 
 function mapStateToProps(state){
-  var tabs = state.CardTabs[0]
+  var tabs = state.CardTabs
   return {
     tabs: tabs
   }
