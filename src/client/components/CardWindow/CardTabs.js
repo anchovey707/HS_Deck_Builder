@@ -10,12 +10,24 @@ class CardTabs extends React.Component{
   }
 
   renderTabs(){
+    
     var tabs_arr = this.props.tabs
+    var num_tabs = tabs_arr.length
+
+   if(num_tabs === 1){
+    return(
+      tabs_arr.map( (tab) => (
+        <CardTab name={tab} key={tab} showName={true} />
+      ))
+    )
+   }
+   else{
     return(
       tabs_arr.map( (tab) => (
         <CardTab name={tab} key={tab} />
       ))
     )
+   }
   }
 
   render(){
@@ -34,6 +46,7 @@ function mapStateToProps(state){
   }
 }
 
+export default connect(mapStateToProps,null)(CardTabs);
 
 const styles = {
   CardTabs:{
@@ -44,6 +57,3 @@ const styles = {
     flexDirection: 'row'
   }
 }
-
-
-export default connect(mapStateToProps,null)(CardTabs);
