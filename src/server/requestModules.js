@@ -14,11 +14,11 @@ module.exports.handleRequest = function handleRequest(url) {
 
 function splitParams(url){
     let data=new Map();
-    url=url.split('?')[1].split('&');
-    for(let p=0;p<url.length;p++){
-        params[p]=params[p].split('=');
-        data.set(params[p][0].toLowerCase(),params[p][1].toLowerCase());
-        console.log("   "+params[p][0]+"="+params[p][1]);
+    let array=url.split('?')[1].split('&');
+    for(let i=0;i<array.length;i++){
+        array[i]=array[i].split('=');
+        data.set(array[i][0].toLowerCase(),array[i][1].toLowerCase());
+        console.log("   "+array[i][0]+"="+array[i][1]);
     }
     return data;
 }
