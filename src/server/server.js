@@ -1,5 +1,5 @@
 var http = require('http');
-let requestHandler= require('./requestModule.js');
+var requestHandler = require('./requestModules.js');
 
 var server = http.createServer((req, res) => {
     console.log("Method: " + req.method);
@@ -7,8 +7,7 @@ var server = http.createServer((req, res) => {
     
     if(req.method === "GET") {
         res.write("Response");
-        handleRequest(url)
-        
+        requestHandler.handleRequest(req.url);
     }
     res.end();
 
