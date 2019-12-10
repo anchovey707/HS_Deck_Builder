@@ -27,7 +27,6 @@ const styles = {
     gridTemplateColumns: '75vw 25vw',
     gridTemplateRows: '85vh 20vh',
     gridGap: '1em',
-    border: '1px solid black'
   }
 }
 
