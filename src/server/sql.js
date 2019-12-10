@@ -7,6 +7,10 @@ var con = mysql.createConnection({
   database: "hs_decks"
 });
 
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
 
 
@@ -39,12 +43,11 @@ function saveDeck(params){
     
 } 
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-    var sql = "DESC decks;";
-    con.query(sql, function (err, result) {
-      if (err) throw err;
-      console.log(result);
-    });
-  });
+
+
+
+var sql = "select * from users where username='test' LIMIT 1;";
+con.query(sql, function (err, result) {
+  if (err) throw err;
+  console.log(result[0].ID);
+});
