@@ -1,9 +1,10 @@
 import React from 'react';
+import CardTabs from './CardTabs';
 
 
 const CardWindow = () => (
   <div className='card-window' style={styles.CardWindow}>
-    Card Window
+    <CardTabs/>
   </div>
 )
 

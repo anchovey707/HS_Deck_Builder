@@ -1,9 +1,9 @@
 import React from 'react';
-import CardWindow from'./CardWindow';
-import SearchBar from './SearchBar';
-import DeckList from './DeckList';
-import FilterBar from './FilterBar';
-import DeckOptions from './DeckOptions';
+import CardWindow from'./components/CardWindow/CardWindow';
+import SearchBar from './components/SearchBar/SearchBar';
+import DeckList from './components/DeckList/DeckList';
+import FilterBar from './components/FilterBar/FilterBar';
+import DeckOptions from './components/DeckOptions/DeckOptions';
 
 function App() {
   return (
