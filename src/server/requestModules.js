@@ -14,7 +14,7 @@ module.exports.handleRequest = function handleRequest(url) {
 
 function splitParams(url){
     let data=new Map();
-    let array=url.split('?')[1].split('&');
+    let array=(url.split('?')[1]).split('&');
     for(let i=0;i<array.length;i++){
         array[i]=array[i].split('=');
         data.set(array[i][0].toLowerCase(),array[i][1].toLowerCase());
