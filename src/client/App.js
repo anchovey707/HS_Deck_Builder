@@ -19,6 +19,8 @@ function App() {
   );
 }
 
+export default App;
+
 const styles = {
   App:{
     height: '100vh',
@@ -29,5 +31,3 @@ const styles = {
     gridGap: '1em',
   }
 }
-
-export default App;

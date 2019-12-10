@@ -8,6 +8,8 @@ const CardWindow = () => (
   </div>
 )
 
+export default CardWindow
+
 const styles = {
   CardWindow:{
     height: '85vh',
@@ -15,6 +17,3 @@ const styles = {
     border: '1px solid black'
   }
 }
-
-
-export default CardWindow
