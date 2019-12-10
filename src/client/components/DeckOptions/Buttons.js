@@ -4,30 +4,42 @@ class Buttons extends React.Component {
 
 
 
-
 render () {
 
     return (
 
-        <div className = "deckbuttons" >
+        <div className = "deckbuttons"  style ={styles.Buttons} >
 
-        <button >Load</button>
- 
-        <button>Save</button>
-        <button>Filter</button>
-        <button>Delete</button>
+        <button id ="" >Load</button>
+        <button id = "" style={styles.SaveButton}>Save</button>
+        <button id = "" style={styles.DeleteButton}>Delete</button>
         </div>
     );
 }
 }
 
 const styles = {
-
+  
     Buttons : {
-        margin : '10px'
+            display: 'block',
+            
+            
+           
+            
+        },
+    LoadButton : {
+        marginLeft: '2em'
+    },
+    SaveButton : {
+        marginLeft: '1em'
+    },
+     DeleteButton : {
+         marginLeft : '1em'
+     }
+
         
     }
-}
+
 
 
 
