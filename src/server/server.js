@@ -32,3 +32,23 @@ function getDeck(params){
     //data = sql.getDeck(param[0],param[1]) or however it's going to be
     return data
 }
+
+function getUserDecks(params){
+
+}
+
+function registerUser(params){
+
+}
+
+function verifyUser(params){
+    //returns boolean
+}
+
+function deleteDeck(params){
+    //returns null?
+}
+
+function saveDeck(params){
+
+}
