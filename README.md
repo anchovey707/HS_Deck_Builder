@@ -8,6 +8,9 @@ Hearthstone deck builder project for MThree
 
 2. Run ```npm start``` while in the project directory
 
+### FRONT END API CALLS ###
+
+1. Only taking past four sets
 
 
 db host= 18.234.74.106
