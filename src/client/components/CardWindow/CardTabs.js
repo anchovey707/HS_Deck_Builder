@@ -9,13 +9,38 @@ class CardTabs extends React.Component{
     super()
   }
 
+  componentDidMount(){
+    fetch('https://us.api.blizzard.com/hearthstone/cards?locale=en_US&set=rise-of-shadows&class=mage&access_token=USTdYzhi6GloLuBWELb5Z0k1dj6CFWMWyy')
+    .then( res => res.json())
+    .then( data => console.log(data))
+  }
+
+
   renderTabs(){
+    
+
+    // GET TABS FROM GLOBAL STORE 
     var tabs_arr = this.props.tabs
+    var num_tabs = tabs_arr.length
+
+
+    // SHOW CLASS NAME IF RENDERED ALONE 
+   if(num_tabs === 1){
+    return(
+      tabs_arr.map( (tab) => (
+        <CardTab name={tab} key={tab} showName={true} />
+      ))
+    )
+   }
+
+   // ELSE RENDER WITHOUT NAME 
+   else{
     return(
       tabs_arr.map( (tab) => (
         <CardTab name={tab} key={tab} />
       ))
     )
+   }
   }
 
   render(){
@@ -34,6 +59,7 @@ function mapStateToProps(state){
   }
 }
 
+export default connect(mapStateToProps,null)(CardTabs);
 
 const styles = {
   CardTabs:{
@@ -44,6 +70,3 @@ const styles = {
     flexDirection: 'row'
   }
 }
-
-
-export default connect(mapStateToProps,null)(CardTabs);

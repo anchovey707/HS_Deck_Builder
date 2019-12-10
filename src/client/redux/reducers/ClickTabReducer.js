@@ -1,4 +1,4 @@
-var all_classes = ['mage','warlock','warrior','paladin','rogue','shaman','priest','hunter','druid']
+var all_classes = ['Mage','Warlock','Warrior','Paladin','Rogue','Shaman','Priest','Hunter','Druid']
 
 var initial_state = all_classes
 

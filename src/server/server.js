@@ -6,12 +6,10 @@ var server = http.createServer((req, res) => {
     
     if(req.method === "GET") {
         res.write("Response");
-
+        let params=splitParams(req.url.substring(9).split('&'));
         //if trying to retrieve deck
-        if(/^\/getDeck\?/g.test(req.url)){
-            let params=req.url.substring(9).split('&');
+        if(/^\/getDeck\?/g.test(req.url))
             res.write(getDeck(params));
-        }
     }
     res.end();
 
@@ -22,13 +20,21 @@ var server = http.createServer((req, res) => {
 server.listen(8080);
 
 
-function getDeck(params){
-    let data;
+function splitParams(params){
+    let data=new Map();
     for(let p=0;p<params.length;p++){
-        params[p]=params[p].split('=')[1];
-        console.log("  param "+p+"="+params[p]);
+        params[p]=params[p].split('=');
+        data.set(params[p][0].toLowerCase(),params[p][1].toLowerCase());
+        console.log("   "+params[p][0]+"="+params[p][1]);
     }
-    //param[0]=userID,param[1]=deckName
-    //data = sql.getDeck(param[0],param[1]) or however it's going to be
-    return data
+    //data[0]=userid,data[1]=deckname
+    //data = sql.getDeck(data[0],data[1]) or however it's going to be
+    return data;
+}
+
+function getDeck(params){
+    //sql.getDeck(params)
+    //or
+    //sql.getDeck(param.get(userid'),param.get('deckname'))
+    return "{data}";
 }
