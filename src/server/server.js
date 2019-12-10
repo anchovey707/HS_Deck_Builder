@@ -9,17 +9,8 @@ var server = http.createServer((req, res) => {
 
         //if trying to retrieve deck
         if(/^\/getDeck\?/g.test(req.url)){
-
             let params=req.url.substring(9).split('&');
-
-            for(let p=0;p<params.length;p++){
-                params[p]=params[p].split('=')[1];
-                console.log("  param "+p+"="+params[p]);
-            }
-            
-            //sql.getDeck(param[0],param[1])
-            res.write("Here's that deck");
-            
+            res.write(getDeck(params));
         }
     }
     res.end();
@@ -29,3 +20,15 @@ var server = http.createServer((req, res) => {
 });
 
 server.listen(8080);
+
+
+function getDeck(params){
+    let data;
+    for(let p=0;p<params.length;p++){
+        params[p]=params[p].split('=')[1];
+        console.log("  param "+p+"="+params[p]);
+    }
+    //param[0]=userID,param[1]=deckName
+    //data = sql.getDeck(param[0],param[1]) or however it's going to be
+    return data
+}
