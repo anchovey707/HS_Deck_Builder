@@ -22,7 +22,6 @@ module.exports.handleRequest = function handleRequest(url, callback) {
         sql.deleteDeck(params, callback);
     }
     else if(url.includes('registeruser')) {
-        console.log('REgister User');
         sql.registerUser(params, callback);
     }
     else if(url.includes('verifyuser')) {

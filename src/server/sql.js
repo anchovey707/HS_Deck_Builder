@@ -17,24 +17,25 @@ function runQuery(sqlString, callback,method){
 
     con.connect((err) => {
       if (err) {
-        console.log('Connection Error');
-        throw err;
+        let error = new Error();
+        error.message = "SQL: Connection Error";
+        return callback(error, null);
       }
 
       console.log('Connected!');
       
-        con.query(sqlString, (err, result) => {
-          if (err) {
-            console.log('Query Error');
-            throw err;
-          }
-          if(method==="GET"){
-            callback(JSON.stringify(result));
-          }else if(method==="POST"){
-            callback(result.affectedRows);
-          }
-        });
-      
+      con.query(sqlString, (err, result) => {
+        if (err) {
+          let error = new Error();
+          error.message = "SQL: Query Error";
+          return callback(error, null);
+        }
+        if(method === "GET") {
+          callback(null, JSON.stringify(result));
+        } else if (method === "POST"){
+          callback(null, result.affectedRows);
+        }
+      });
     });
 }
 
@@ -59,7 +60,12 @@ function getUserDecks(params, callback){
 function registerUser(params, callback){
     var sqlQuery = 'INSERT INTO users (username, password) \
                     VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
-    runQuery(sqlQuery, callback,"POST");
+
+    try {
+      runQuery(sqlQuery, callback, "POST");
+    } catch(error) {
+      console.error(error);
+    }
 }
 
 function verifyUser(params, callback){ 
