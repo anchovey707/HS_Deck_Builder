@@ -1,30 +1,37 @@
 module.exports.handleRequest = function handleRequest(url) {
     let params = splitParams(url);
 
-    if(url.includes('getDeck')) {
+    if(url.includes('getdeck')) {
         getDeck(params);
     }
-    else if(url.includes('saveDeck')) {
+    else if(url.includes('savedeck')) {
         saveDeck(params);
     }
-    else if(url.includes('deleteDeck')) {
+    else if(url.includes('deletedeck')) {
         deleteDeck(params);
     }
 }
 
 function splitParams(url){
-    let data=new Map();
-    let array=(url.split('?')[1]).split('&');
-    for(let i=0;i<array.length;i++){
-        array[i]=array[i].split('=');
-        data.set(array[i][0].toLowerCase(),array[i][1].toLowerCase());
-        console.log("   "+array[i][0]+"="+array[i][1]);
+    let params=[];
+    let paramString=url.split('?')[1];
+    if(paramString!=undefined){
+        let array=paramString.split('&');
+        for(let i=0;i<array.length;i++){
+            pair=array[i].split('=');
+            if(pair[0]!==undefined){
+                if(pair[1]===undefined)
+                    pair[1]='';
+                    params[pair[0].toLowerCase()]=pair[1].toLowerCase();
+            }
+            console.log("   "+pair[0]+"="+pair[1]);
+        }
     }
-    return data;
+    return params;
 }
 
 function getDeck(params) {
-
+    console.log("GETDECK(){ deckname="+params['deckname']);
 }
 
 function saveDeck(params) {
