@@ -19,7 +19,7 @@ function runQuery(sqlString, callback,method){
       if (err) {
         let error = new Error();
         error.message = "SQL: Connection Error";
-        return callback(error, null);
+        return callback(null,error);
       }
 
       console.log('Connected!');
@@ -28,12 +28,12 @@ function runQuery(sqlString, callback,method){
         if (err) {
           let error = new Error();
           error.message = "SQL: Query Error";
-          return callback(error, null);
+          return callback(null,error);
         }
         if(method === "GET") {
-          callback(null, JSON.stringify(result));
+          callback(JSON.stringify(result),null);
         } else if (method === "POST"){
-          callback(null, result.affectedRows);
+          callback(result.affectedRows,null);
         }
       });
     });
