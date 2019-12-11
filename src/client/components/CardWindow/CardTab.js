@@ -44,10 +44,11 @@ class CardTab extends React.Component{
   }
 }
 
+
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     clickTab: clickTab,
-    addCardData: addCardData
+    addCardData: addCardData,
   }, dispatch)
 }
 
