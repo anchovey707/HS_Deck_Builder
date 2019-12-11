@@ -9,6 +9,7 @@ class CardTile extends React.Component{
     super()
   }
 
+  // CALL REDUX ACTION
   removeFromDeck(name){
     this.props.removeFromDeck(name)
   }

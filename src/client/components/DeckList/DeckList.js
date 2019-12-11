@@ -4,6 +4,7 @@ import CardTile from './CardTile';
 
 class DeckList extends React.Component{
 
+  // BOOL TO CHECK IF DECKLIST SHOULD BE CREATED
   cardsInDeckList(){
     var deck = this.props.deck
     if(deck.length > 0){
@@ -14,6 +15,7 @@ class DeckList extends React.Component{
     }
   }
 
+  // CREATE DECK TILES 
   renderList(){
     var deck = this.props.deck
     var list = []
@@ -27,13 +29,12 @@ class DeckList extends React.Component{
 
 
     if(this.cardsInDeckList()){
-
       var list = this.renderList()
-
       return(
         <div style={styles.DeckList}> {list} </div>
       )
     }
+    
     else{
       return(
         <div style={styles.DeckList}>

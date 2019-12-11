@@ -35,6 +35,7 @@ export default (state = initial_state, action) => {
   }
 }
 
+// MAXIMUM OF TWO COPIES OF A CARD PER DECK
 function hasDoubles(array, val) {
   var count = 0;
   for (var i = 0; i < array.length; i++) {
@@ -50,6 +51,7 @@ function hasDoubles(array, val) {
   }
 }
 
+// MAXIMUM OF 30 CARDS IN A DECK
 function deckFull(array){
   if(array.length === 30){
     return true
