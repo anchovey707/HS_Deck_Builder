@@ -1,22 +1,22 @@
 var sql = require('./sql.js');
 
-module.exports.handleRequest = function handleRequest(url) {
+module.exports.handleRequest = function handleRequest(url, callback) {
     let params = splitParams(url);
 
     if(url.includes('getdeck')) {
-        return getDeck(params);
+        sql.getDeck(params, callback);
     }
     else if(url.includes('savedeck')) {
-        return saveDeck(params);
+        sql.saveDeck(params, callback);
     }
     else if(url.includes('deletedeck')) {
-        return deleteDeck(params);
+        sql.deleteDeck(params, callback);
     }
     else if(url.includes('registerUser')) {
-        return registerUser(params);
+        sql.registerUser(params, callback);
     }
     else if(url.includes('verifyUser')) {
-        return verifyUser(params);
+        sql.verifyUser(params, callback);
     }
 }
 
@@ -36,25 +36,4 @@ function splitParams(url){
         }
     }
     return params;
-}
-
-function getDeck(params) {
-    console.log("GETDECK(){ deckname="+params['deckname']);
-    return sql.getDeck(params);
-}
-
-function saveDeck(params) {
-    return sql.saveDeck(params);
-}
-
-function deleteDeck(params) {
-    return sql.deleteDeck(params);
-}
-
-function registerUser(params) {
-    return sql.registerUser(params);
-}
-
-function verifyUser(params) {
-    return sql.verifyUser(params);
 }
