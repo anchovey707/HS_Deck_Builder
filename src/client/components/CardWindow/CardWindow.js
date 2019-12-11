@@ -8,8 +8,7 @@ import ArrowNavigation from './ArrowNavigation';
 
 class CardWindow extends React.Component{
 
-
-  getPageData(){
+  getFilteredArr(){
 
     // GET CARDS, IF ANY, IN STORE
     var card_data = this.props.cards
@@ -17,35 +16,45 @@ class CardWindow extends React.Component{
 
     card_data.map ( (card) => {
       if(card.health === 30 && card.manaCost === 0)  {
-        // REMOVE IF CHARACTER CARDS
+        // REMOVE CHARACTER CARDS
       }
       else{
         filtered_data.push(card)
       }
     })
+    return filtered_data
+  }
+
+  getMaxNumPages(){
+     var arr = this.getFilteredArr()
+     return arr.length / 8
+  }
+
+  getPageData(){
+
+    var arr = this.getFilteredArr()
 
     // DS TO HOLD ALL PAGES
     var subarrays = []
 
-    if(filtered_data.length > 0){
+    if(arr.length > 0){
 
       // 8 CARDS TO A PAGE
-      for(var i = 0 ; i < filtered_data.length; i += 8){
+      for(var i = 0 ; i < arr.length; i += 8){
 
         // IF LESS THAN 6 CARDS LEFT, PUSH WHATS LEFT
-        if(filtered_data.length - i < 8){
-          let sub_arr = filtered_data.slice(i,card_data.length)
+        if(arr.length - i < 8){
+          let sub_arr = arr.slice(i,arr.length)
           subarrays.push(sub_arr)
           break
         }
         // ELSE PUSH 8 CARDS AND ITERATE 
         else{
-          let sub_arr = filtered_data.slice(i,i+8)
+          let sub_arr = arr.slice(i,i+8)
           subarrays.push(sub_arr)
         }
       }
     }
-    console.log(subarrays)
     this.props.addCardPages(subarrays)
   }
 
@@ -67,7 +76,7 @@ class CardWindow extends React.Component{
       }
 
       // LAST PAGE
-      if(this.props.num_pages === 5){
+      if(this.props.num_pages === this.getMaxNumPages() - 1){
         return(
           <div style={styles.CardWindow}>
             <CardTabs/>
