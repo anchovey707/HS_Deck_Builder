@@ -20,3 +20,10 @@ export const showCardData = (card_images) => {
 
   }
 }
+
+export const addCardPages = (card_pages) => {
+  return{
+    type: 'ADD_CARD_PAGES',
+    payload: card_pages
+  }
+}

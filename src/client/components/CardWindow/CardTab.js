@@ -10,7 +10,7 @@ class CardTab extends React.Component{
     super()
   }
 
-  // ASYNC FETCH AND SHOW
+  // ASYNC FETCH AND CALL ACTION
   handleClick = (name) => {
 
     var lowercase_name = name.toLowerCase()
