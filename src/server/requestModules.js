@@ -4,7 +4,7 @@ var fs = require('fs');
 module.exports.handleRequest = function handleRequest(url, callback) {
     let params = splitParams(url);
     console.log(url);
-    if(params.length==0){
+    if(!url.includes('?')){
         if(url==="/")
             url+="build/index.html";
         callback(fs.readFileSync("."+url));
