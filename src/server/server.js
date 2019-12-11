@@ -6,9 +6,8 @@ var server = http.createServer((req, res) => {
     console.log("URL: '" + req.url+"'");
     
     if(req.method === "GET") {
-        res.write("Response");
-        requestHandler.handleRequest(req.url.toLowerCase());
-        
+        let result = requestHandler.handleRequest(req.url.toLowerCase());
+        res.write(result);
     }
     res.end();
 

@@ -4,19 +4,19 @@ module.exports.handleRequest = function handleRequest(url) {
     let params = splitParams(url);
 
     if(url.includes('getdeck')) {
-        getDeck(params);
+        return getDeck(params);
     }
     else if(url.includes('savedeck')) {
-        saveDeck(params);
+        return saveDeck(params);
     }
     else if(url.includes('deletedeck')) {
-        deleteDeck(params);
+        return deleteDeck(params);
     }
     else if(url.includes('registerUser')) {
-        registerUser(params);
+        return registerUser(params);
     }
     else if(url.includes('verifyUser')) {
-        verifyUser(params);
+        return verifyUser(params);
     }
 }
 
@@ -40,21 +40,21 @@ function splitParams(url){
 
 function getDeck(params) {
     console.log("GETDECK(){ deckname="+params['deckname']);
-    sql.getDeck(params);
+    return sql.getDeck(params);
 }
 
 function saveDeck(params) {
-    sql.saveDeck(params);
+    return sql.saveDeck(params);
 }
 
 function deleteDeck(params) {
-    sql.deleteDeck(params);
+    return sql.deleteDeck(params);
 }
 
 function registerUser(params) {
-    sql.registerUser(params);
+    return sql.registerUser(params);
 }
 
 function verifyUser(params) {
-    sql.verifyUser(params);
+    return sql.verifyUser(params);
 }

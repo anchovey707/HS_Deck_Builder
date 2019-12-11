@@ -15,10 +15,10 @@ function runQuery(sqlString){
         if (err) throw err;
         console.log("Connected!");
       });
-
+      
     con.query(sqlString, function (err, result) {
       if (err) throw err;
-      console.log(result);
+      return result;
     });
 }
 
