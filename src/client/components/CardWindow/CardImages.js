@@ -1,6 +1,6 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
-import {} from '../../redux/actions/index';
+import {addToDeck} from '../../redux/actions/index';
 import {connect} from 'react-redux';
 
 
@@ -8,6 +8,10 @@ class CardImages extends React.Component{
 
   constructor(props){
     super()
+  }
+
+  addToDeck(name){
+    this.props.addToDeck(name)
   }
 
   render(){
@@ -20,7 +24,7 @@ class CardImages extends React.Component{
       var img_arr = []
 
       curr_page.map( (card) => {
-        img_arr.push( <img src={`${card.image}`} style={styles.CardImg} alt='img'/> )
+        img_arr.push( <img src={`${card.image}`} style={styles.CardImg} alt='img' onClick={ () => this.addToDeck(card.name)} />)
       })
 
       return( <div style={styles.CardImgContainer}> {img_arr} </div>)
@@ -48,7 +52,7 @@ function mapStateToProps(state){
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-   
+   addToDeck:addToDeck
   }, dispatch)
 }
 
