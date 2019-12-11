@@ -63,7 +63,7 @@ const styles = {
     gridTemplateRows: '50% 50%',
   },
   CardImg:{
-    marginLeft:'10%',
+    marginLeft:'5%',
     marginTop:'8%',
     height:'280px',
     width: '200px',

@@ -1,4 +1,5 @@
 var initial_state = 1
+// ANY STATE ABOVE 4 IS ERROR
 
 export default (state = initial_state, action) => {
   switch(action.type){
