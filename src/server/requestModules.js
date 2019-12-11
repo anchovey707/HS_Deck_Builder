@@ -10,6 +10,12 @@ module.exports.handleRequest = function handleRequest(url) {
     else if(url.includes('deletedeck')) {
         deleteDeck(params);
     }
+    else if(url.includes('registerUser')) {
+        registerUser(params);
+    }
+    else if(url.includes('verifyUser')) {
+        verifyUser(params);
+    }
 }
 
 function splitParams(url){
@@ -39,5 +45,13 @@ function saveDeck(params) {
 }
 
 function deleteDeck(params) {
+
+}
+
+function registerUser(params) {
+
+}
+
+function verifyUser(params) {
 
 }
