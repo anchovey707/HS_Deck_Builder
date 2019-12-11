@@ -7,7 +7,7 @@ module.exports.handleRequest = function handleRequest(url, callback) {
     if(!url.includes('?')){
         if(url==="/")
             url+="index.html";
-        callback(fs.readFileSync("./build"+url));
+        //callback(fs.readFileSync("./build"+url));
     }
     if(url.includes('getdeck')) {
         sql.getDeck(params, callback);
@@ -26,6 +26,11 @@ module.exports.handleRequest = function handleRequest(url, callback) {
     }
     else if(url.includes('verifyuser')) {
         sql.verifyUser(params, callback);
+    } else {
+        let error = new Error();
+        error.code = 'ER_FUNCTION_NOT_FOUND';
+        error.message = 'specified function was not found';
+        return callback(error, null);
     }
 }
 

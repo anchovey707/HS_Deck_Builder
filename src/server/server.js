@@ -14,8 +14,8 @@ var server = http.createServer((req, res) => {
     }
 
     function callback(error, result) {
-        if(error) throw error;
-        res.end(result.toString());
+        if(error) res.end(error.code);
+        else res.end(result.toString());
     }
     
 
