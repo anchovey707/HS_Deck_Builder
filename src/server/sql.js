@@ -67,7 +67,7 @@ function registerUser(params, callback){
 function verifyUser(params, callback){ 
   var sqlQuery = 'SELECT * FROM users \
                   WHERE username=\'' + params['username'] + '\' and password=\'' + params['password'] + '\';';
-  runQuery(sqlQuery, callback);
+  runQuery(sqlQuery, callback, "GET");
 }
 
 function deleteDeck(params, callback){
