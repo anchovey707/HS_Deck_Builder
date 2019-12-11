@@ -29,5 +29,7 @@ const styles = {
     gridTemplateColumns: '75vw 25vw',
     gridTemplateRows: '85vh 20vh',
     gridGap: '1em',
+    // backgroundImage: 'radial-gradient( circle 1136px at 5.2% 14%,  rgba(255,255,255,1) 0%, rgba(234,168,17,1) 100.2% )',
+    backgroundImage: 'linear-gradient(360deg, #dee1e1 10%, #f4f4f4 360%)'
   }
 }

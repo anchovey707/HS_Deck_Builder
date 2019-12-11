@@ -22,20 +22,20 @@ const styles = {
   
     Buttons : {
             display: 'block',
-            
-            
-           
+            position : 'relative',
+            flexDirection : 'row'
             
         },
-    LoadButton : {
-        marginLeft: '2em'
-    },
-    SaveButton : {
-        marginLeft: '1em'
-    },
-     DeleteButton : {
-         marginLeft : '1em'
-     }
+    // LoadButton : {
+    //     marginLeft: '2vw'
+
+    // },
+    // SaveButton : {
+    //     marginLeft: '1vw'
+    // },
+    //  DeleteButton : {
+    //      marginLeft : '1vw'
+    //  }
 
         
     }
