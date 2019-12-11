@@ -1,9 +1,9 @@
 import React from 'react';
-import CardTab from './CardTab';
+import CharacterClass from './CharacterClass';
 import {connect} from 'react-redux';
 
 
-class CardTabs extends React.Component{
+class CharacterTabs extends React.Component{
 
   constructor(props){
     super()
@@ -21,7 +21,7 @@ class CardTabs extends React.Component{
    if(num_tabs === 1){
     return(
       tabs_arr.map( (tab) => (
-        <CardTab name={tab} key={tab} showName={true} />
+        <CharacterClass name={tab} key={tab} showName={true} />
       ))
     )
    }
@@ -30,7 +30,7 @@ class CardTabs extends React.Component{
    else{
     return(
       tabs_arr.map( (tab) => (
-        <CardTab name={tab} key={tab} />
+        <CharacterClass name={tab} key={tab} />
       ))
     )
    }
@@ -52,7 +52,7 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps,null)(CardTabs);
+export default connect(mapStateToProps,null)(CharacterTabs);
 
 const styles = {
   CardTabs:{

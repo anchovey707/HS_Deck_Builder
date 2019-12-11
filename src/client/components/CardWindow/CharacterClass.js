@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 
-class CardTab extends React.Component{
+class CharacterClass extends React.Component{
 
   constructor(props){
     super()
@@ -52,7 +52,7 @@ function matchDispatchToProps(dispatch){
   }, dispatch)
 }
 
-export default connect(null,matchDispatchToProps)(CardTab)
+export default connect(null,matchDispatchToProps)(CharacterClass)
 
 
 const styles = {
