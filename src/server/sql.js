@@ -4,7 +4,7 @@ module.exports.getDeck = getDeck;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
 
-function runQuery(sqlString, callback){
+function runQuery(sqlString, callback,method){
     var con = mysql.createConnection({
         host: "34.227.68.162", 
         user: "hs_user",
@@ -19,56 +19,53 @@ function runQuery(sqlString, callback){
       }
 
       console.log('Connected!');
+      
+        con.query(sqlString, (err, result) => {
+          if (err) {
+            console.log('Query Error');
+            throw err;
+          }
+          if(method==="GET"){
+            callback(result);
+          }else if(method==="POST"){
+            let response='posted';
 
-      con.query(sqlString, (err, result) => {
-        if (err) {
-          console.log('Query Error');
-          throw err;
-        }
-        console.log('No Error');
-        callback(result);
-      });
-<<<<<<< HEAD
-    resultPromise = new Promise(function (resolve, reject) {
-        con.query(sqlString, function (err, result) {
-        if (err) reject(err);
-        else resolve(result);
-        })
-=======
->>>>>>> 5968b39b7832d83ce57aa7a68f28ad872102c349
+            callback(response);
+          }
+        });
+      
     });
-    return resultPromise.then(resultPromise((result) => {return result}))
 }
 
 
-function getDeck(deckID){
+
+
+
+function getDeck(deckID,callback){
     var sqlQuery = 'SELECT cardData FROM decks \
                     WHERE ID=\'' + deckID + '\';'; //consider adding LIMIT 1 to return inner JSON
-    var result = runQuery(sqlQuery);
-    return result;
+    var result = runQuery(sqlQuery,callback,"GET");
+    //return result;
 }
 
-function getUserDecks(userID){
+function getUserDecks(params, callback){
     var sqlQuery = 'SELECT ID FROM decks \
-                    WHERE userID=\'' + userID + '\';';
-    var result = runQuery(sqlQuery);
-    return result;
+                    WHERE userID=\'' + params['userid'] + '\';';
+    var result = runQuery(sqlQuery,callback,"GET");
+    //return result;
 }
 
-<<<<<<< HEAD
-function registerUser(params){
-    var sqlQuery = 'INSERT INTO users (username, password) \
-                    VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
-    var result = runQuery(sqlQuery);
-=======
 function registerUser(params, callback){
     var sqlQuery = 'INSERT INTO users (username, password) \
                     VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
-    runQuery(sqlQuery, callback);
->>>>>>> 5968b39b7832d83ce57aa7a68f28ad872102c349
+    runQuery(sqlQuery, callback,"POST");
 }
 
 function verifyUser(params){
+  var sqlQuery = 'SELECT * FROM users \
+                  WHERE username=\'' + params['username'] + '\' and password=' + params['password'] + '\';';
+  var result = runQuery(sqlQuery);
+  return result;
 }
 
 function deleteDeck(params){
@@ -79,4 +76,4 @@ function saveDeck(params){
 
 
 
-registerUser('maple', 'syrup');
+//registerUser('maple', 'syrup');

@@ -2,9 +2,13 @@ var sql = require('./sql.js');
 
 module.exports.handleRequest = function handleRequest(url, callback) {
     let params = splitParams(url);
+    console.log(url);
 
     if(url.includes('getdeck')) {
         sql.getDeck(params, callback);
+    }
+    else if(url.includes('getusersdeck')) {
+        sql.getUserDecks(params, callback);
     }
     else if(url.includes('savedeck')) {
         sql.saveDeck(params, callback);
@@ -12,10 +16,11 @@ module.exports.handleRequest = function handleRequest(url, callback) {
     else if(url.includes('deletedeck')) {
         sql.deleteDeck(params, callback);
     }
-    else if(url.includes('registerUser')) {
+    else if(url.includes('registeruser')) {
+        console.log('REgister User');
         sql.registerUser(params, callback);
     }
-    else if(url.includes('verifyUser')) {
+    else if(url.includes('verifyuser')) {
         sql.verifyUser(params, callback);
     }
 }
