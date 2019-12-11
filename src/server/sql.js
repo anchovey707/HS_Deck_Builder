@@ -4,33 +4,31 @@ module.exports.getDeck = getDeck;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
 
-function runQuery(sqlString){
+function runQuery(sqlString, callback){
     var con = mysql.createConnection({
-        host: "18.234.74.106", 
+        host: "34.227.68.162", 
         user: "hs_user",
         password: "hearthstone",
         database: "hs_decks"
       });
 
-    let queryPromise = new Promise((resolve, reject) => {
-      con.connect((err) => {
-        if (err) throw err;
-        console.log('Connected!');
+    con.connect((err) => {
+      if (err) {
+        console.log('Connection Error');
+        throw err;
+      }
 
-        con.query(sqlString, (err, result) => {
-          if(err) throw err;
-          resolve(result);
-        });
+      console.log('Connected!');
+
+      con.query(sqlString, (err, result) => {
+        if (err) {
+          console.log('Query Error');
+          throw err;
+        }
+        console.log('No Error');
+        callback(result);
       });
     });
-
-    let result = null;
-
-    queryPromise.then((res) => {
-      console.log(res);
-    });
-
-    return result;
 }
 
 
@@ -48,11 +46,10 @@ function getUserDecks(userID){
     return result;
 }
 
-function registerUser(username, password){
+function registerUser(params, callback){
     var sqlQuery = 'INSERT INTO users (username, password) \
-                    VALUES (\'' + username + '\', \'' + password + '\');'
-    var result = runQuery(sqlQuery);
-    console.log(result);
+                    VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
+    runQuery(sqlQuery, callback);
 }
 
 function verifyUser(params){
