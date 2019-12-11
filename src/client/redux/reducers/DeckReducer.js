@@ -7,6 +7,7 @@ export default (state = initial_state, action) => {
 
       if(deckFull(state)){
         alert('You already have 30 cards in your deck')
+        return state
       }
 
       if(hasDoubles(state, action.payload)){
