@@ -1,4 +1,7 @@
 import React from 'react'
+import {removeFromDeck} from '../../redux/actions/index';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 class CardTile extends React.Component{
 
@@ -6,14 +9,25 @@ class CardTile extends React.Component{
     super()
   }
 
+  removeFromDeck(name){
+    this.props.removeFromDeck(name)
+  }
+
   render(){
     return(
-      <div style={styles.TileStyle}> {this.props.name}Card </div>
+      <div style={styles.TileStyle} onClick={ () => this.removeFromDeck(this.props.name)} > {this.props.name} </div>
     )
   }
 }
 
-export default CardTile
+
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    removeFromDeck: removeFromDeck
+  }, dispatch)
+}
+
+export default connect(null,matchDispatchToProps)(CardTile)
 
 const styles = {
   TileStyle:{

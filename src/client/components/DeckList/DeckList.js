@@ -1,6 +1,4 @@
 import React from 'react';
-import {removeFromDeck} from '../../redux/actions/index';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import CardTile from './CardTile';
 
@@ -53,14 +51,7 @@ function mapStateToProps(state){
   })
 }
 
-function matchDispatchToProps(dispatch){
-  return bindActionCreators({
-    removeFromDeck: removeFromDeck
-  }, dispatch)
-}
-
-
-export default connect(mapStateToProps,matchDispatchToProps)(DeckList);
+export default connect(mapStateToProps,null)(DeckList);
 
 
 const styles = {

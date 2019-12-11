@@ -18,8 +18,14 @@ export default (state = initial_state, action) => {
       }
 
     case 'REMOVE_FROM_DECK':
-      var index = state.indexOf(action.payload)
-      let arr_after_remove = state.splice(index,1)
+      var arr_after_remove = []
+
+      for(var i = 0; i < state.length; i++){
+        if(state[i] !== action.payload){
+          arr_after_remove.push(state[i])
+        }
+      }
+
       return arr_after_remove
 
     default:
