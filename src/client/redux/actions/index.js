@@ -37,7 +37,7 @@ export const nextPage = (page_num) => {
 
 export const prevPage = (page_num) => {
   return({
-    action: 'DECREASE_PAGE_LOAD',
+    type: 'DECREASE_PAGE_COUNT',
     payload: page_num
   })
 }

@@ -1,5 +1,5 @@
 // MAX INITIAL STATE IS 4
-var initial_state = 10
+var initial_state = 1
 
 
 export default (state = initial_state, action) => {
@@ -11,6 +11,7 @@ export default (state = initial_state, action) => {
     
     case 'DECREASE_PAGE_COUNT':
       let prev_page = state - 1
+      console.log(prev_page)
       return prev_page
 
     default:
