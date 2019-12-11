@@ -17,26 +17,14 @@ function runQuery(sqlString, callback,method){
 
     con.connect((err) => {
       if (err) {
-<<<<<<< HEAD
         return callback(err, null);
-=======
-        let error = new Error();
-        error.message = "SQL: Connection Error";
-        return callback(null,error);
->>>>>>> 02f39c3bccf1881d43f9bbc4d0a11ea60d6e031b
       }
 
       console.log('Connected!');
       
       con.query(sqlString, (err, result) => {
         if (err) {
-<<<<<<< HEAD
           return callback(err, null);
-=======
-          let error = new Error();
-          error.message = "SQL: Query Error";
-          return callback(null,error);
->>>>>>> 02f39c3bccf1881d43f9bbc4d0a11ea60d6e031b
         }
         if(method === "GET") {
           callback(JSON.stringify(result),null);
