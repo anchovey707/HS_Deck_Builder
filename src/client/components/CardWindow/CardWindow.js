@@ -37,6 +37,7 @@ class CardWindow extends React.Component{
     this.props.addCardPages(subarrays)
   }
 
+  
   render(){
 
     // ONLY CREATE PAGES IF CARD DATA EXISTS

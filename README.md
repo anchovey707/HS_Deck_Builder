@@ -14,7 +14,7 @@ Hearthstone deck builder project for MThree
 
 2. Will accept filters for set,class, mana cost, health, attack, name, and rarity
 
-db host= 18.234.74.106
+db host= 34.227.68.162
 db port= 3306
 db user= 'hs_user'
 db pass= 'hearthstone'

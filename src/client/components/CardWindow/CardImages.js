@@ -11,12 +11,19 @@ class CardImages extends React.Component{
   }
 
   render(){
-   
-    return(
-      <div>
-      
-      </div>
-    )
+
+    // IF THERE ARE PAGES TO BE LOADED
+    if(this.props.pages.length > 0){
+
+    }
+
+    else{
+      return(
+        <div>
+          Images
+        </div>
+      )
+    }
   }
 }
 
@@ -24,7 +31,6 @@ function mapStateToProps(state){
   var cardData  = state.CardData
   var cardPages = state.CardPages
   return({
-    cards:cardData,
     pages:cardPages
   })
 }
