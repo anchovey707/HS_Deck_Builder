@@ -1,6 +1,9 @@
 import React from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
- 
+import {nextPage, prevPage} from '../../redux/actions/index';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
 
 class ArrowNavigation extends React.Component{
 
@@ -52,7 +55,20 @@ class ArrowNavigation extends React.Component{
   }
 }
 
-export default ArrowNavigation
+function mapStateToProps(state){
+
+}
+
+
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    nextPage:nextPage,
+    prevPage:prevPage
+  }, dispatch)
+}
+
+
+export default connect(mapStateToProps,matchDispatchToProps)(ArrowNavigation)
 
 
 const styles = {

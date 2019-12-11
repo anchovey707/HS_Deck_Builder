@@ -8,16 +8,21 @@ var server = http.createServer((req, res) => {
     if(req.method === "GET") {
         let url = req.url.toLocaleLowerCase();
         requestHandler.handleRequest(url, callback);
+    }else if(req.method === "POST") {
+        let url = req.url.toLocaleLowerCase();
+        requestHandler.handleRequest(url, callback);
     }
-    res.end();
+    //res.end();
+
+    function callback(result) {
+        console.log("CALLBACK: "+result);
+        res.end(result);
+    }
+    
 
 }).on('error', (err) => {
     console.log(err.message);
 });
-
-function callback(result) {
-    console.log(result);
-}
 
 server.listen(8080);
 
