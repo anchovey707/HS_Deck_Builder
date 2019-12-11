@@ -15,8 +15,8 @@ var server = http.createServer((req, res) => {
     //res.end();
 
     function callback(result) {
-        console.log("CALLBACK: " + resultJSON);
-        res.end(resultJSON);
+        console.log("CALLBACK: " + result);
+        res.end(result.toString());
     }
     
 
