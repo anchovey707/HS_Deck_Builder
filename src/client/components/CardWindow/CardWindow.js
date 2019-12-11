@@ -3,11 +3,47 @@ import CardTabs from './CardTabs';
 import CardImages from './CardImages';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {showCardData} from '../../redux/actions/index';
+import {showCardData, addCardPages} from '../../redux/actions/index';
 
 class CardWindow extends React.Component{
 
+
+  getPageData(){
+
+    // GET CARDS, IF ANY, IN STORE
+    var card_data = this.props.cards
+
+    // DS TO HOLD ALL PAGES
+    var subarrays = []
+
+    if(card_data.length > 0){
+
+      // 6 CARDS TO A PAGE
+      for(var i = 0 ; i < card_data.length; i += 6){
+
+        // IF LESS THAN 6 CARDS LEFT, PUSH WHATS LEFT
+        if(card_data.length - i < 6){
+          let sub_arr = card_data.slice(i,card_data.length)
+          subarrays.push(sub_arr)
+          break
+        }
+        // ELSE PUSH 6 CARDS AND ITERATE 
+        else{
+          let sub_arr = card_data.slice(i,i+6)
+          subarrays.push(sub_arr)
+        }
+      }
+    }
+    this.props.addCardPages(subarrays)
+  }
+
   render(){
+
+    // ONLY CREATE PAGES IF CARD DATA EXISTS
+    if(this.props.cards.length > 0){
+      this.getPageData()
+    }
+
     return(
       <div style={styles.CardWindow}>
         <CardTabs/>
@@ -27,7 +63,8 @@ function mapStateToProps(state){
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    showCardData:showCardData
+    showCardData:showCardData,
+    addCardPages: addCardPages
   }, dispatch)
 }
 

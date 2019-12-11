@@ -7,7 +7,7 @@ var server = http.createServer((req, res) => {
     
     if(req.method === "GET") {
         res.write("Response");
-        requestHandler.handleRequest(req.url);
+        requestHandler.handleRequest(req.url.toLowerCase());
         
     }
     res.end();

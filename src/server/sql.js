@@ -1,4 +1,7 @@
 var mysql = require('mysql');
+module.exports.getDeck = getDeck;
+module.exports.getUserDecks = getUserDecks;
+module.exports.registerUser = registerUser;
 
 var con = mysql.createConnection({
   host: "18.234.74.106", 
@@ -14,10 +17,9 @@ con.connect(function(err) {
 
 
 
-function getDeck(userID, deckName){
+function getDeck(deckID){
     sqlQuery = 'SELECT cardData FROM decks \
-                WHERE userID=\'' + userID + 
-                '\' AND name=\'' + deckName + '\';';
+                WHERE ID=\'' + deckID + '\';'; //consider adding LIMIT 1 to return inner JSON
     return sqlQuery;
 }
 
@@ -27,8 +29,9 @@ function getUserDecks(userID){
     return sqlQuery;
 }
 
-function registerUser(params){
-
+function registerUser(username, password){
+    sqlQuery = 'INSERT INTO users (username, password) VALUES (\'' + username + '\', \'' + password + '\');'
+    return sqlQuery;
 }
 
 function verifyUser(params){
@@ -46,8 +49,8 @@ function saveDeck(params){
 
 
 
-var sql = "select * from users where username='test' LIMIT 1;";
+var sql = registerUser('avocado', 'toast');
 con.query(sql, function (err, result) {
   if (err) throw err;
-  console.log(result[0].ID);
+  console.log(result);
 });

@@ -10,7 +10,7 @@ render () {
 
         <div className = "deckbuttons"  style ={styles.Buttons} >
 
-        <button id ="" >Load</button>
+        <button id = "" style={styles.LoadButton}>Load</button>
         <button id = "" style={styles.SaveButton}>Save</button>
         <button id = "" style={styles.DeleteButton}>Delete</button>
         </div>
