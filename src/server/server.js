@@ -13,7 +13,7 @@ var server = http.createServer((req, res) => {
         requestHandler.handleRequest(url, callback);
     }
 
-    function callback(error, result) {
+    function callback(result,error ) {
         if(error) throw error;
         res.end(result.toString());
     }
