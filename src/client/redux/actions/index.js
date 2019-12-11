@@ -6,9 +6,24 @@ export const clickTab = (char_class) => {
   }
 }
 
-export const loadCardDataByClass = (char_class) => {
+export const addCardData = (cards) => {
   return{
-    type: 'LOAD_CARD_BY_CLASS',
-    payload:char_class
+    type: 'ADD_CARD_DATA',
+    payload:cards
+  }
+}
+
+export const showCardData = (card_images) => {
+  return{
+    type: 'SHOW_CARD_DATA',
+    payload: card_images
+
+  }
+}
+
+export const addCardPages = (card_pages) => {
+  return{
+    type: 'ADD_CARD_PAGES',
+    payload: card_pages
   }
 }

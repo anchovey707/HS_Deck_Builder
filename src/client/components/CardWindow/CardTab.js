@@ -1,5 +1,5 @@
 import React from 'react';
-import {clickTab, loadCardDataByClass} from '../../redux/actions/index';
+import {clickTab, addCardData} from '../../redux/actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -10,10 +10,15 @@ class CardTab extends React.Component{
     super()
   }
 
-  // CALL TWO REDUX ACTIONS 
+  // ASYNC FETCH AND CALL ACTION
   handleClick = (name) => {
-    this.props.clickTab(name)
-    this.props.loadCardDataByClass(name)
+
+    var lowercase_name = name.toLowerCase()
+    var url = `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&class=${lowercase_name}&access_token=USTdYzhi6GloLuBWELb5Z0k1dj6CFWMWyy`
+    fetch(url)
+    .then( res => res.json())
+    .then( data => this.props.addCardData(data))
+    .then(this.props.clickTab(name))
   }
 
   render(){
@@ -21,8 +26,8 @@ class CardTab extends React.Component{
     // RENDER THIS IF NAME IS NEEDED 
     if(this.props.showName === true){
       return(
-        <div className='card-tab' style={styles.CardTab} onClick={ () => this.handleClick(this.props.name)}>
-          {this.props.name}
+        <div style={styles.CardTab} onClick={ () => this.handleClick(this.props.name)}>
+          {this.props.name.toUpperCase()}
           <img src={require(`../../../images/${this.props.name}_icon.png`)} style={styles.SingleCardTabImg} alt="icon" />
         </div>
       )
@@ -31,7 +36,7 @@ class CardTab extends React.Component{
     // OTHERWISE RENDER THIS
     else{
       return(
-        <div className='card-tab' style={styles.CardTab} onClick={ () => this.handleClick(this.props.name)}>
+        <div style={styles.CardTab} onClick={ () => this.handleClick(this.props.name)}>
           <img src={require(`../../../images/${this.props.name}_icon.png`)} style={styles.CardTabImg} alt="icon" />
         </div>
       )
@@ -42,7 +47,7 @@ class CardTab extends React.Component{
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     clickTab: clickTab,
-    loadCardDataByClass: loadCardDataByClass
+    addCardData: addCardData
   }, dispatch)
 }
 
