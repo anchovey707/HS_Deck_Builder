@@ -25,19 +25,9 @@ function runQuery(sqlString, callback){
           console.log('Query Error');
           throw err;
         }
-        console.log('No Error');
         callback(result);
       });
-<<<<<<< HEAD
-    resultPromise = new Promise(function (resolve, reject) {
-        con.query(sqlString, function (err, result) {
-        if (err) reject(err);
-        else resolve(result);
-        })
-=======
->>>>>>> 5968b39b7832d83ce57aa7a68f28ad872102c349
     });
-    return resultPromise.then(resultPromise((result) => {return result}))
 }
 
 
@@ -55,18 +45,11 @@ function getUserDecks(params, callback){
     return result;
 }
 
-<<<<<<< HEAD
-function registerUser(params){
-    var sqlQuery = 'INSERT INTO users (username, password) \
-                    VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
-    var result = runQuery(sqlQuery);
-=======
 function registerUser(params, callback){
     console.log('Here');
     var sqlQuery = 'INSERT INTO users (username, password) \
                     VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
     runQuery(sqlQuery, callback);
->>>>>>> 5968b39b7832d83ce57aa7a68f28ad872102c349
 }
 
 function verifyUser(params){
