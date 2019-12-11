@@ -1,9 +1,14 @@
-var sql = require('./sql.js');
+var sql = require('./sql.js')
+var fs = require('fs');
 
 module.exports.handleRequest = function handleRequest(url, callback) {
     let params = splitParams(url);
     console.log(url);
-
+    if(params.length==0){
+        if(url==="/")
+            url+="build/index.html";
+        callback(fs.readFileSync("."+url));
+    }
     if(url.includes('getdeck')) {
         sql.getDeck(params, callback);
     }

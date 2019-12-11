@@ -4,7 +4,7 @@ let requestHandler= require('./requestModules.js');
 var server = http.createServer((req, res) => {
     console.log("Method: " + req.method);
     console.log("URL: '" + req.url+"'");
-    
+
     if(req.method === "GET") {
         let url = req.url.toLocaleLowerCase();
         requestHandler.handleRequest(url, callback);
@@ -12,10 +12,9 @@ var server = http.createServer((req, res) => {
         let url = req.url.toLocaleLowerCase();
         requestHandler.handleRequest(url, callback);
     }
-    //res.end();
 
     function callback(result) {
-        console.log("CALLBACK: " + result);
+        //console.log("CALLBACK: " + result);
         res.end(result.toString());
     }
     
