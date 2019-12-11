@@ -17,23 +17,31 @@ function runQuery(sqlString, callback,method){
 
     con.connect((err) => {
       if (err) {
+<<<<<<< HEAD
+        return callback(err, null);
+=======
         let error = new Error();
         error.message = "SQL: Connection Error";
-        return callback(error, null);
+        return callback(null,error);
+>>>>>>> 02f39c3bccf1881d43f9bbc4d0a11ea60d6e031b
       }
 
       console.log('Connected!');
       
       con.query(sqlString, (err, result) => {
         if (err) {
+<<<<<<< HEAD
+          return callback(err, null);
+=======
           let error = new Error();
           error.message = "SQL: Query Error";
-          return callback(error, null);
+          return callback(null,error);
+>>>>>>> 02f39c3bccf1881d43f9bbc4d0a11ea60d6e031b
         }
         if(method === "GET") {
-          callback(null, JSON.stringify(result));
+          callback(JSON.stringify(result),null);
         } else if (method === "POST"){
-          callback(null, result.affectedRows);
+          callback(result.affectedRows,null);
         }
       });
     });
@@ -59,13 +67,10 @@ function getUserDecks(params, callback){
 
 function registerUser(params, callback){
     var sqlQuery = 'INSERT INTO users (username, password) \
-                    VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
+                    VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');';
+    runQuery(sqlQuery, callback, "POST");
 
-    try {
-      runQuery(sqlQuery, callback, "POST");
-    } catch(error) {
-      console.error(error);
-    }
+      
 }
 
 function verifyUser(params, callback){ 
