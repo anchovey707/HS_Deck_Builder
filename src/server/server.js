@@ -7,9 +7,7 @@ var server = http.createServer((req, res) => {
     
     if(req.method === "GET") {
         let url = req.url.toLocaleLowerCase();
-        requestHandler.handleRequest(url, (result) => {
-            console.log(result);
-        });
+        requestHandler.handleRequest(url, callback);
     }
     res.end();
 

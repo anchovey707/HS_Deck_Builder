@@ -39,14 +39,15 @@ function getDeck(deckID){
     return result;
 }
 
-function getUserDecks(userID){
+function getUserDecks(params, callback){
     var sqlQuery = 'SELECT ID FROM decks \
-                    WHERE userID=\'' + userID + '\';';
+                    WHERE userID=\'' + params['userid'] + '\';';
     var result = runQuery(sqlQuery);
     return result;
 }
 
 function registerUser(params, callback){
+    console.log('Here');
     var sqlQuery = 'INSERT INTO users (username, password) \
                     VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
     runQuery(sqlQuery, callback);
@@ -63,4 +64,4 @@ function saveDeck(params){
 
 
 
-registerUser('maple', 'syrup');
+//registerUser('maple', 'syrup');
