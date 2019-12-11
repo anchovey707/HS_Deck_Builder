@@ -41,3 +41,20 @@ export const prevPage = (page_num) => {
     payload: page_num
   })
 }
+
+export const addToDeck = (card_name) => {
+  return({
+    type:'ADD_TO_DECK',
+    payload: card_name
+  })
+}
+
+export const removeFromDeck = (card_name) => {
+  return({
+    type:'REMOVE_FROM_DECK',
+    payload: card_name
+  })
+}
+
+
+
