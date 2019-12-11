@@ -4,6 +4,7 @@ import CardImages from './CardImages';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {showCardData, addCardPages} from '../../redux/actions/index';
+import ArrowNavigation from './ArrowNavigation';
 
 class CardWindow extends React.Component{
 
@@ -37,7 +38,6 @@ class CardWindow extends React.Component{
     this.props.addCardPages(subarrays)
   }
 
-  
   render(){
 
     // ONLY CREATE PAGES IF CARD DATA EXISTS
@@ -49,6 +49,7 @@ class CardWindow extends React.Component{
       <div style={styles.CardWindow}>
         <CardTabs/>
         <CardImages/>
+        <ArrowNavigation/>
       </div>
     )
   }
@@ -75,6 +76,7 @@ const styles = {
   CardWindow:{
     height: '85vh',
     width: '75vw',
-    border: '1px solid black'
+    border: '1px solid black',
+    position:'relative',
   }
 }
