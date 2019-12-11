@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-
+var passwordHash = require('password-hash');
 module.exports.getDeck = getDeck;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
@@ -56,21 +56,23 @@ function getUserDecks(params, callback){
     var result = runQuery(sqlQuery,callback,"GET");
     //return result;
 }
-
+//http://localhost:8080/registerUser?username=DarkSamus&password=smashchamp
 function registerUser(params, callback){
-    var sqlQuery = 'INSERT INTO users (username, password) \
-                    VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
+  var hashedPassword = passwordHash.generate(params['password']);
+  var sqlQuery = 'INSERT INTO users (username, password) \
+                  VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
 
-    try {
-      runQuery(sqlQuery, callback, "POST");
-    } catch(error) {
-      console.error(error);
-    }
+  try {
+    runQuery(sqlQuery, callback, "POST");
+  } catch(error) {
+    console.error(error);
+  }
 }
 
 function verifyUser(params, callback){ 
+  var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'SELECT ID,username FROM users \
-                  WHERE username=\'' + params['username'] + '\' and password=\'' + params['password'] + '\';';
+                  WHERE username=\'' + params['username'] + '\' and password=\'' + hashedPassword + '\';';
   runQuery(sqlQuery, callback, "GET");
 }
 
@@ -78,7 +80,7 @@ function deleteDeck(params, callback){
   var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['deckid'] + '\';';
   runQuery(sqlQuery, callback,"POST");
 }
-
+//
 function saveDeck(params, callback){
   var sqlQuery = 'INSERT INTO decks (userID, name, cardData) \
                   VALUES (\'' + params['userid'] + '\', \'' + params['name'] + '\', \'' + params['carddata'] + '\');'
@@ -86,7 +88,7 @@ function saveDeck(params, callback){
 } 
 
 function saveDeck(params, callback){ //tester code. use above saveDeck() instead of this one.
-  var customSqlQuery = 'SELECT * FROM decks'
+  var customSqlQuery = 'SELECT * FROM users'
   runQuery(customSqlQuery, callback,"GET");
 }
 
