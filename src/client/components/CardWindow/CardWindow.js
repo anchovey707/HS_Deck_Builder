@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {showCardData, addCardPages} from '../../redux/actions/index';
 import ArrowNavigation from './ArrowNavigation';
+import CardButton from './CardButton';
 
 class CardWindow extends React.Component{
 
@@ -75,6 +76,7 @@ class CardWindow extends React.Component{
       if(this.props.num_pages === 0){
         return(
             <div style={styles.CardWindow}>
+              <CardButton />
               <CharacterTabs/>
               <CardImages/>
               <ArrowNavigation type="right"/>
@@ -86,6 +88,7 @@ class CardWindow extends React.Component{
       if(this.props.num_pages === this.getMaxNumPages() ){
         return(
           <div style={styles.CardWindow}>
+            <CardButton />
             <CharacterTabs/>
             <CardImages/>
             <ArrowNavigation type="left" />
@@ -97,6 +100,7 @@ class CardWindow extends React.Component{
       else{
         return(
           <div style={styles.CardWindow}>
+            <CardButton />
             <CharacterTabs/>
             <CardImages/>
             <ArrowNavigation type="full"/>
