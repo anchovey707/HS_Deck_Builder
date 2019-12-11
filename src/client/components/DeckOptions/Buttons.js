@@ -10,7 +10,7 @@ render () {
 
         <div className = "deckbuttons"  style ={styles.Buttons} >
 
-        <button id = "" style={styles.LoadButton}>Load</button>
+        <button id ="" style={styles.LoadButton}>Load</button>
         <button id = "" style={styles.SaveButton}>Save</button>
         <button id = "" style={styles.DeleteButton}>Delete</button>
         </div>
@@ -22,20 +22,22 @@ const styles = {
   
     Buttons : {
             display: 'block',
-            position : 'relative',
-            flexDirection : 'row'
+           
             
         },
-    // LoadButton : {
-    //     marginLeft: '2vw'
+    LoadButton : {
+        marginLeft: '2vw',
+        border : '1px solid black'
 
-    // },
-    // SaveButton : {
-    //     marginLeft: '1vw'
-    // },
-    //  DeleteButton : {
-    //      marginLeft : '1vw'
-    //  }
+    },
+    SaveButton : {
+        marginLeft: '1vw',
+        border : '1px solid black'
+    },
+     DeleteButton : {
+         marginLeft : '1vw',
+         border : '1px solid black'
+     }
 
         
     }
