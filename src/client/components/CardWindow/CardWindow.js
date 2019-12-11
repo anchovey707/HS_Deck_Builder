@@ -50,7 +50,7 @@ class CardWindow extends React.Component{
             <div style={styles.CardWindow}>
               <CardTabs/>
               <CardImages/>
-              <ArrowNavigation type="left"/>
+              <ArrowNavigation type="right"/>
             </div>
         )
       }
@@ -61,7 +61,7 @@ class CardWindow extends React.Component{
           <div style={styles.CardWindow}>
             <CardTabs/>
             <CardImages/>
-            <ArrowNavigation type="right" />
+            <ArrowNavigation type="left" />
           </div>
         )
       } 
