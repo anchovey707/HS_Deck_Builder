@@ -6,8 +6,8 @@ module.exports.handleRequest = function handleRequest(url, callback) {
     console.log(url);
     if(!url.includes('?')){
         if(url==="/")
-            url+="build/index.html";
-        callback(fs.readFileSync("."+url));
+            url+="index.html";
+        callback(fs.readFileSync("./build"+url));
     }
     if(url.includes('getdeck')) {
         sql.getDeck(params, callback);
@@ -22,7 +22,6 @@ module.exports.handleRequest = function handleRequest(url, callback) {
         sql.deleteDeck(params, callback);
     }
     else if(url.includes('registeruser')) {
-        console.log('REgister User');
         sql.registerUser(params, callback);
     }
     else if(url.includes('verifyuser')) {

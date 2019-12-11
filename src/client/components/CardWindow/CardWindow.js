@@ -1,5 +1,5 @@
 import React from 'react';
-import CardTabs from './CardTabs';
+import CharacterTabs from './CharacterTabs';
 import CardImages from './CardImages';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -76,8 +76,12 @@ class CardWindow extends React.Component{
       if(this.props.num_pages === 0){
         return(
             <div style={styles.CardWindow}>
+<<<<<<< HEAD
               <CardButton />
               <CardTabs/>
+=======
+              <CharacterTabs/>
+>>>>>>> cc7090e33cad167e22e5240d440660bdd6e268eb
               <CardImages/>
               <ArrowNavigation type="right"/>
             </div>
@@ -88,8 +92,12 @@ class CardWindow extends React.Component{
       if(this.props.num_pages === this.getMaxNumPages() ){
         return(
           <div style={styles.CardWindow}>
+<<<<<<< HEAD
             <CardButton />
             <CardTabs/>
+=======
+            <CharacterTabs/>
+>>>>>>> cc7090e33cad167e22e5240d440660bdd6e268eb
             <CardImages/>
             <ArrowNavigation type="left" />
           </div>
@@ -100,8 +108,12 @@ class CardWindow extends React.Component{
       else{
         return(
           <div style={styles.CardWindow}>
+<<<<<<< HEAD
             <CardButton />
             <CardTabs/>
+=======
+            <CharacterTabs/>
+>>>>>>> cc7090e33cad167e22e5240d440660bdd6e268eb
             <CardImages/>
             <ArrowNavigation type="full"/>
           </div>
@@ -113,8 +125,12 @@ class CardWindow extends React.Component{
     else{
       return(
         <div style={styles.CardWindow}>
+<<<<<<< HEAD
          
           <CardTabs/>
+=======
+          <CharacterTabs/>
+>>>>>>> cc7090e33cad167e22e5240d440660bdd6e268eb
           <CardImages/>
         </div>
       )

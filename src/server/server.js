@@ -13,8 +13,8 @@ var server = http.createServer((req, res) => {
         requestHandler.handleRequest(url, callback);
     }
 
-    function callback(result) {
-        //console.log("CALLBACK: " + result);
+    function callback(error, result) {
+        if(error) throw error;
         res.end(result.toString());
     }
     

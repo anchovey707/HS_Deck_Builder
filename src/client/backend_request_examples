@@ -1,0 +1,46 @@
+Examples for request made to the back end:
+
+
+------------------registerUser - to create a db listing for a user: - POST request
+AJAX way:
+	url = registerUser
+	params/data = {username:####,password:####}
+
+
+-------------------verifyUser - to verify credientals and login the user: - GET request
+straight url: 
+	"/verifyUser?username=####&pasasword=####"
+
+AJAX way:
+	url = verifyUser
+	params/data = {username:####,password:####}
+
+
+------------------getDecks - get the user's saved decks: - GET request
+straight url: 
+	"/getDecks?userid=####"
+
+AJAX way:
+	url = getDeck
+	params/data = {userID:####}
+
+
+-------------------getDeck - to retireve a single deck for a user: - GET request
+straight url: 
+	"/getDeck?deckid=####"
+
+AJAX way:
+	url = getDeck
+	params/data = {deckid:####}
+
+
+-------------------saveDeck - save a deck for a user: - POST request
+AJAX way:
+	url = saveDeck
+	params/data = {deckid:####}
+
+
+-------------------DeleteDeck - delete a deck for a user: - POST request
+AJAX way:
+	url = deleteDeck
+	params/data = {deckid:####}
