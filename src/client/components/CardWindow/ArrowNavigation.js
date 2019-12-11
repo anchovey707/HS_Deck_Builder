@@ -4,14 +4,51 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 class ArrowNavigation extends React.Component{
 
+  constructor(props){
+    super()
+  }
 
   render(){
-    return(
-      <div style={styles.ArrowContainer}>
-        <FaArrowLeft style={styles.Arrow} />
-        <FaArrowRight style={styles.Arrow} />
-      </div>
-    )
+
+    switch(this.props.type){
+
+      case 'left':
+          return(
+            <div style={styles.ArrowContainer}>
+              <div>
+                <FaArrowLeft style={styles.Arrow} />
+              </div>
+              <div>
+               
+              </div>
+            </div>
+          )
+
+      case 'full':
+          return(
+            <div style={styles.ArrowContainer}>
+              <div>
+                <FaArrowLeft style={styles.Arrow} />
+              </div>
+              <div>
+                <FaArrowRight style={styles.Arrow} />
+              </div>
+            </div>
+          )
+
+      case 'right':
+          return(
+            <div style={styles.ArrowContainer}>
+              <div>
+             
+              </div>
+              <div>
+                <FaArrowRight style={styles.Arrow} />
+              </div>
+            </div>
+          )
+      default:
+    }
   }
 }
 
@@ -24,7 +61,6 @@ const styles = {
     display:'flex',
     alignItems:'center',
     justifyContent:'space-between',
-    border:'1px solid black',
     position:'absolute',
     top:'calc(50% + 2vh)'
   },

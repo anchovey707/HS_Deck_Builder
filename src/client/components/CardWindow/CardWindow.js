@@ -43,23 +43,60 @@ class CardWindow extends React.Component{
     // ONLY CREATE PAGES IF CARD DATA EXISTS
     if(this.props.cards.length > 0){
       this.getPageData()
+
+      // FIRST PAGE 
+      if(this.props.num_pages === 1){
+        return(
+            <div style={styles.CardWindow}>
+              <CardTabs/>
+              <CardImages/>
+              <ArrowNavigation type="left"/>
+            </div>
+        )
+      }
+
+      // LAST PAGE
+      if(this.props.num_pages === 7){
+        return(
+          <div style={styles.CardWindow}>
+            <CardTabs/>
+            <CardImages/>
+            <ArrowNavigation type="right" />
+          </div>
+        )
+      } 
+
+      // ELSE
+      else{
+        return(
+          <div style={styles.CardWindow}>
+            <CardTabs/>
+            <CardImages/>
+            <ArrowNavigation type="full"/>
+          </div>
+        )
+      }
     }
 
-    return(
-      <div style={styles.CardWindow}>
-        <CardTabs/>
-        <CardImages/>
-        <ArrowNavigation/>
-      </div>
-    )
+    // IF NO CARD DATA 
+    else{
+      return(
+        <div style={styles.CardWindow}>
+          <CardTabs/>
+          <CardImages/>
+        </div>
+      )
+    }
   }
 }
 
 
 function mapStateToProps(state){
   var cards = state.CardData
+  var num_pages = state.PageCount
   return({
-    cards:cards
+    cards:cards,
+    num_pages: num_pages
   })
 }
 
