@@ -15,11 +15,13 @@ function runQuery(sqlString){
         if (err) throw err;
         console.log("Connected!");
       });
-      
-    con.query(sqlString, function (err, result) {
-      if (err) throw err;
-      return result;
+    resultPromise = new Promise(function (resolve, reject) {
+        con.query(sqlString, function (err, result) {
+        if (err) reject(err);
+        else resolve(result);
+        })
     });
+    return resultPromise.then(resultPromise((result) => {return result}))
 }
 
 
@@ -37,9 +39,9 @@ function getUserDecks(userID){
     return result;
 }
 
-function registerUser(username, password){
+function registerUser(params){
     var sqlQuery = 'INSERT INTO users (username, password) \
-                    VALUES (\'' + username + '\', \'' + password + '\');'
+                    VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
     var result = runQuery(sqlQuery);
 }
 
