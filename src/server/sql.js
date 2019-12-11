@@ -73,13 +73,13 @@ function verifyUser(params, callback){
 
 function deleteDeck(params, callback){
   var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['deckid'] + '\';';
-  runQuery(sqlQuery, callback);
+  runQuery(sqlQuery, callback,"POST");
 }
 
 function saveDeck(params, callback){
   var sqlQuery = 'INSERT INTO decks (name, cardData) \
                   VALUES (\'' + params['name'] + '\', \'' + params['carddata'] + '\');'
-  runQuery(sqlQuery, callback);
+  runQuery(sqlQuery, callback,"POST");
 } 
 
 
