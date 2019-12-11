@@ -3,6 +3,9 @@ var mysql = require('mysql');
 module.exports.getDeck = getDeck;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
+module.exports.verifyUser = verifyUser;
+module.exports.deleteDeck = deleteDeck;
+module.exports.saveDeck = saveDeck;
 
 function runQuery(sqlString, callback,method){
     var con = mysql.createConnection({
@@ -61,17 +64,21 @@ function registerUser(params, callback){
     runQuery(sqlQuery, callback,"POST");
 }
 
-function verifyUser(params){
+function verifyUser(params, callback){ 
   var sqlQuery = 'SELECT * FROM users \
-                  WHERE username=\'' + params['username'] + '\' and password=' + params['password'] + '\';';
-  var result = runQuery(sqlQuery);
-  return result;
+                  WHERE username=\'' + params['username'] + '\' and password=\'' + params['password'] + '\';';
+  runQuery(sqlQuery, callback, "GET");
 }
 
-function deleteDeck(params){
+function deleteDeck(params, callback){
+  var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['deckid'] + '\';';
+  runQuery(sqlQuery, callback);
 }
 
-function saveDeck(params){
+function saveDeck(params, callback){
+  var sqlQuery = 'INSERT INTO decks (name, cardData) \
+                  VALUES (\'' + params['name'] + '\', \'' + params['carddata'] + '\');'
+  runQuery(sqlQuery, callback);
 } 
 
 
