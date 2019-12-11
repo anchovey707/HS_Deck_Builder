@@ -27,3 +27,17 @@ export const addCardPages = (card_pages) => {
     payload: card_pages
   }
 }
+
+export const nextPage = (page_num) => {
+  return({
+    type: 'INCREASE_PAGE_COUNT',
+    payload: page_num
+  })
+}
+
+export const prevPage = (page_num) => {
+  return({
+    action: 'DECREASE_PAGE_LOAD',
+    payload: page_num
+  })
+}

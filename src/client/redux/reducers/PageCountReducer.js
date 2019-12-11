@@ -1,5 +1,5 @@
 // MAX INITIAL STATE IS 4
-var initial_state = 0
+var initial_state = 10
 
 
 export default (state = initial_state, action) => {
