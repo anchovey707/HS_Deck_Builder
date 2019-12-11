@@ -29,7 +29,8 @@ function runQuery(sqlString, callback,method){
             throw err;
           }
           if(method==="GET"){
-            callback(result);
+            let resultJSON = JSON.stringify(result);
+            callback(resultJSON);
           }else if(method==="POST"){
             let response='posted';
 
