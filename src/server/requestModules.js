@@ -7,7 +7,11 @@ module.exports.handleRequest = function handleRequest(url, callback) {
     if(!url.includes('?')){
         if(url==="/")
             url+="index.html";
-        //callback(fs.readFileSync("./build"+url));
+        try{
+            acallback(fs.readFileSync("./build"+url));
+        }catch(e){
+            callback('404');
+        }
     }
     if(url.includes('getdeck')) {
         sql.getDeck(params, callback);
