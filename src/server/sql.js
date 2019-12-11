@@ -54,7 +54,7 @@ function registerUser(params, callback){
 
 function verifyUser(params){
   var sqlQuery = 'SELECT * FROM users \
-                  WHERE username=\'' + params['username'] + '\' and password=' + params['password'] + '\'';';
+                  WHERE username=\'' + params['username'] + '\' and password=' + params['password'] + '\';';
   var result = runQuery(sqlQuery);
   return result;
 }
