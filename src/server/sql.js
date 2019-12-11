@@ -69,27 +69,19 @@ function verifyUser(params, callback){
 }
 
 function deleteDeck(params, callback){
-<<<<<<< HEAD
   var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['deckid'] + '\';';
   runQuery(sqlQuery, callback,"POST");
 }
 
 function saveDeck(params, callback){
-  var sqlQuery = 'INSERT INTO decks (name, cardData) \
-                  VALUES (\'' + params['name'] + '\', \'' + params['carddata'] + '\');'
+  var sqlQuery = 'INSERT INTO decks (userID, name, cardData) \
+                  VALUES (\'' + params['userid'] + '\', \'' + params['name'] + '\', \'' + params['carddata'] + '\');'
   runQuery(sqlQuery, callback,"POST");
-=======
-  var sqlQuery = 'DELETE FROM decks WHERE ID=\'' + params['deckid'] + '\';';
-  runQuery(sqlQuery, callback);
-}
-
-function saveDeck(params, callback){
-  var sqlQuery = "INSERT INTO decks (userID, name, cardData)"
-                  +"VALUES ("+params['userid']+",'"+ params['name'] + "','" + params['carddata'] + "');"
-  runQuery(sqlQuery, callback);
->>>>>>> cb001bb89e3329a0f50560d61e129e87e48cc479
 } 
 
-
+function saveDeck(params, callback){ //tester code. use above saveDeck() instead of this one.
+  var customSqlQuery = 'SELECT * FROM decks'
+  runQuery(customSqlQuery, callback,"GET");
+}
 
 //registerUser('maple', 'syrup');
