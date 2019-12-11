@@ -10,9 +10,15 @@ module.exports.handleRequest = function handleRequest(url) {
     else if(url.includes('deleteDeck')) {
         deleteDeck(params);
     }
+    else if(url.includes('registerUser')) {
+        registerUser(params);
+    }
+    else if(url.includes('verifyUser')) {
+        verifyUser(params);
+    }
 }
-
-function splitParams(url){
+/*
+function splitParams(url) {
     let data=new Map();
     let array=(url.split('?')[1]).split('&');
     for(let i=0;i<array.length;i++){
@@ -21,6 +27,27 @@ function splitParams(url){
         console.log("   "+array[i][0]+"="+array[i][1]);
     }
     return data;
+}
+*/
+function splitParams(url) {
+    let params = [];
+    let paramIndex = url.indexOf('?') + 1;
+    let paramString = url.substring(paramIndex, url.length);
+    let individualParams = paramString.split('&');
+
+    for( let i = 0; i < individualParams.length; i++ ) {
+        let keyValueSplit = individualParams[i].split('=');
+        let key = keyValueSplit[0];
+        let value = keyValueSplit[1];
+
+        params[key] = value;
+    }
+
+    for (key in params) {
+        console.log(key + ': ' + params[key]);
+    }
+
+    return params;
 }
 
 function getDeck(params) {
@@ -32,5 +59,13 @@ function saveDeck(params) {
 }
 
 function deleteDeck(params) {
+
+}
+
+function registerUser(params) {
+
+}
+
+function verifyUser(params) {
 
 }
