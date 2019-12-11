@@ -29,11 +29,9 @@ function runQuery(sqlString, callback,method){
             throw err;
           }
           if(method==="GET"){
-            callback(result);
+            callback(JSON.stringify(result));
           }else if(method==="POST"){
-            let response='posted';
-
-            callback(response);
+            callback(result.affectedRows);
           }
         });
       
@@ -52,7 +50,7 @@ function getDeck(deckID,callback){
 }
 
 function getUserDecks(params, callback){
-    var sqlQuery = 'SELECT ID FROM decks \
+    var sqlQuery = 'SELECT ID,name FROM decks \
                     WHERE userID=\'' + params['userid'] + '\';';
     var result = runQuery(sqlQuery,callback,"GET");
     //return result;
@@ -65,19 +63,19 @@ function registerUser(params, callback){
 }
 
 function verifyUser(params, callback){ 
-  var sqlQuery = 'SELECT * FROM users \
+  var sqlQuery = 'SELECT ID,username FROM users \
                   WHERE username=\'' + params['username'] + '\' and password=\'' + params['password'] + '\';';
   runQuery(sqlQuery, callback, "GET");
 }
 
 function deleteDeck(params, callback){
-  var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['deckid'] + '\';';
+  var sqlQuery = 'DELETE FROM decks WHERE ID=\'' + params['deckid'] + '\';';
   runQuery(sqlQuery, callback);
 }
 
 function saveDeck(params, callback){
-  var sqlQuery = 'INSERT INTO decks (name, cardData) \
-                  VALUES (\'' + params['name'] + '\', \'' + params['carddata'] + '\');'
+  var sqlQuery = "INSERT INTO decks (userID, name, cardData)"
+                  +"VALUES ("+params['userid']+",'"+ params['name'] + "','" + params['carddata'] + "');"
   runQuery(sqlQuery, callback);
 } 
 
