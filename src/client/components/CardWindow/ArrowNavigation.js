@@ -11,52 +11,65 @@ class ArrowNavigation extends React.Component{
     super()
   }
 
+  getPrev(curr_page_num){
+    this.props.prevPage(curr_page_num)
+  }
+
+  getNext(curr_page_num){
+    this.props.nextPage(curr_page_num)
+  }
+
   render(){
+
+    var curr_page_num = this.props.page_num
 
     switch(this.props.type){
 
       case 'left':
-          return(
-            <div style={styles.ArrowContainer}>
-              <div>
-                <FaArrowLeft style={styles.Arrow} />
-              </div>
-              <div>
-               
-              </div>
+        return(
+          <div style={styles.ArrowContainer}>
+            <div>
+              <FaArrowLeft style={styles.Arrow} onClick={ () => this.getPrev(curr_page_num)} />
             </div>
-          )
+            <div>
+              
+            </div>
+          </div> 
+        )
 
       case 'full':
-          return(
-            <div style={styles.ArrowContainer}>
-              <div>
-                <FaArrowLeft style={styles.Arrow} />
-              </div>
-              <div>
-                <FaArrowRight style={styles.Arrow} />
-              </div>
+        return(
+          <div style={styles.ArrowContainer}>
+            <div>
+            <FaArrowLeft style={styles.Arrow} onClick={ () => this.getPrev(curr_page_num)} />
             </div>
-          )
+            <div>
+              <FaArrowRight style={styles.Arrow} onClick={ () => this.getNext(curr_page_num)} />
+            </div>
+          </div>
+        )
 
       case 'right':
-          return(
-            <div style={styles.ArrowContainer}>
-              <div>
-             
-              </div>
-              <div>
-                <FaArrowRight style={styles.Arrow} />
-              </div>
+        return(
+          <div style={styles.ArrowContainer}>
+            <div>
+            
             </div>
-          )
+            <div>
+              <FaArrowRight style={styles.Arrow} onClick={ () => this.getNext(curr_page_num)} />
+            </div>
+          </div>
+        )
       default:
     }
   }
 }
 
 function mapStateToProps(state){
-
+  var page_num = state.PageCount
+  return({
+    page_num: page_num
+  })
 }
 
 
