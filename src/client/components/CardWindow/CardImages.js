@@ -1,6 +1,6 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
-import {addCardPages} from '../../redux/actions/index';
+import {} from '../../redux/actions/index';
 import {connect} from 'react-redux';
 
 
@@ -20,7 +20,7 @@ class CardImages extends React.Component{
       var img_arr = []
 
       curr_page.map( (card) => {
-        img_arr.push( <img src={`${card.image}`} style={styles.CardImg} alt='img' /> )
+        img_arr.push( <img src={`${card.image}`} style={styles.CardImg} alt='img'/> )
       })
 
       return( <div style={styles.CardImgContainer}> {img_arr} </div>)
