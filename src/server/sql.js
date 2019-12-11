@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+
 module.exports.getDeck = getDeck;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
@@ -10,16 +11,26 @@ function runQuery(sqlString){
         password: "hearthstone",
         database: "hs_decks"
       });
-      
-      con.connect(function(err) {
+
+    let queryPromise = new Promise((resolve, reject) => {
+      con.connect((err) => {
         if (err) throw err;
-        console.log("Connected!");
+        console.log('Connected!');
+
+        con.query(sqlString, (err, result) => {
+          if(err) throw err;
+          resolve(result);
+        });
       });
-      
-    con.query(sqlString, function (err, result) {
-      if (err) throw err;
-      return result;
     });
+
+    let result = null;
+
+    queryPromise.then((res) => {
+      console.log(res);
+    });
+
+    return result;
 }
 
 
@@ -41,6 +52,7 @@ function registerUser(username, password){
     var sqlQuery = 'INSERT INTO users (username, password) \
                     VALUES (\'' + username + '\', \'' + password + '\');'
     var result = runQuery(sqlQuery);
+    console.log(result);
 }
 
 function verifyUser(params){
