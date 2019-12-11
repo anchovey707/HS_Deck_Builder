@@ -1,3 +1,5 @@
+var sql = require('./sql.js');
+
 module.exports.handleRequest = function handleRequest(url) {
     let params = splitParams(url);
 
@@ -38,20 +40,21 @@ function splitParams(url){
 
 function getDeck(params) {
     console.log("GETDECK(){ deckname="+params['deckname']);
+    sql.getDeck(params);
 }
 
 function saveDeck(params) {
-
+    sql.saveDeck(params);
 }
 
 function deleteDeck(params) {
-
+    sql.deleteDeck(params);
 }
 
 function registerUser(params) {
-
+    sql.registerUser(params);
 }
 
 function verifyUser(params) {
-
+    sql.verifyUser(params);
 }
