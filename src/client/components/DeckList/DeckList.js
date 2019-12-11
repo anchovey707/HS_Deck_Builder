@@ -31,12 +31,12 @@ class DeckList extends React.Component{
       var list = this.renderList()
 
       return(
-        <div> {list} </div>
+        <div style={styles.DeckList}> {list} </div>
       )
     }
     else{
       return(
-        <div className='deck-list' style={styles.DeckList}>
+        <div style={styles.DeckList}>
 
         </div>
       )
