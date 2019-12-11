@@ -19,17 +19,17 @@ class CardWindow extends React.Component{
     if(card_data.length > 0){
 
       // 6 CARDS TO A PAGE
-      for(var i = 0 ; i < card_data.length; i += 6){
+      for(var i = 0 ; i < card_data.length; i += 8){
 
         // IF LESS THAN 6 CARDS LEFT, PUSH WHATS LEFT
-        if(card_data.length - i < 6){
+        if(card_data.length - i < 8){
           let sub_arr = card_data.slice(i,card_data.length)
           subarrays.push(sub_arr)
           break
         }
         // ELSE PUSH 6 CARDS AND ITERATE 
         else{
-          let sub_arr = card_data.slice(i,i+6)
+          let sub_arr = card_data.slice(i,i+8)
           subarrays.push(sub_arr)
         }
       }
@@ -76,17 +76,5 @@ const styles = {
     height: '85vh',
     width: '75vw',
     border: '1px solid black'
-  },
-  CardImgContainer:{
-    height:'77vh',
-    width: '100%',
-    display:'grid',
-    gridTemplateColumn: '33% 33% 33%',
-    gridTemplateRows: '50% 50%',
-    border:'2px solid black'
-  },
-  CardImg:{
-    height:'320px',
-    width: '230px'
   }
 }
