@@ -26,8 +26,15 @@ class CardWindow extends React.Component{
   }
 
   getMaxNumPages(){
+
      var arr = this.getFilteredArr()
-     return arr.length / 8
+
+     if (arr.length % 8 === 0){
+      return Math.floor(arr.length / 8) - 1
+     }
+     else{
+       return Math.floor(arr.length/8)
+     }
   }
 
   getPageData(){
@@ -65,7 +72,7 @@ class CardWindow extends React.Component{
       this.getPageData()
 
       // FIRST PAGE 
-      if(this.props.num_pages === 1){
+      if(this.props.num_pages === 0){
         return(
             <div style={styles.CardWindow}>
               <CardTabs/>
@@ -76,7 +83,7 @@ class CardWindow extends React.Component{
       }
 
       // LAST PAGE
-      if(this.props.num_pages === this.getMaxNumPages() - 1){
+      if(this.props.num_pages === this.getMaxNumPages() ){
         return(
           <div style={styles.CardWindow}>
             <CardTabs/>
