@@ -13,28 +13,39 @@ class CardWindow extends React.Component{
 
     // GET CARDS, IF ANY, IN STORE
     var card_data = this.props.cards
+    var filtered_data = []
+
+    card_data.map ( (card) => {
+      if(card.health === 30 && card.manaCost === 0)  {
+        // REMOVE IF CHARACTER CARDS
+      }
+      else{
+        filtered_data.push(card)
+      }
+    })
 
     // DS TO HOLD ALL PAGES
     var subarrays = []
 
-    if(card_data.length > 0){
+    if(filtered_data.length > 0){
 
-      // 6 CARDS TO A PAGE
-      for(var i = 0 ; i < card_data.length; i += 8){
+      // 8 CARDS TO A PAGE
+      for(var i = 0 ; i < filtered_data.length; i += 8){
 
         // IF LESS THAN 6 CARDS LEFT, PUSH WHATS LEFT
-        if(card_data.length - i < 8){
-          let sub_arr = card_data.slice(i,card_data.length)
+        if(filtered_data.length - i < 8){
+          let sub_arr = filtered_data.slice(i,card_data.length)
           subarrays.push(sub_arr)
           break
         }
-        // ELSE PUSH 6 CARDS AND ITERATE 
+        // ELSE PUSH 8 CARDS AND ITERATE 
         else{
-          let sub_arr = card_data.slice(i,i+8)
+          let sub_arr = filtered_data.slice(i,i+8)
           subarrays.push(sub_arr)
         }
       }
     }
+    console.log(subarrays)
     this.props.addCardPages(subarrays)
   }
 
@@ -56,7 +67,7 @@ class CardWindow extends React.Component{
       }
 
       // LAST PAGE
-      if(this.props.num_pages === 7){
+      if(this.props.num_pages === 5){
         return(
           <div style={styles.CardWindow}>
             <CardTabs/>
