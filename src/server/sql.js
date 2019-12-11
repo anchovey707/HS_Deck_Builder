@@ -11,10 +11,10 @@ function runQuery(sqlString){
         database: "hs_decks"
       });
       
-      con.connect(function(err) {
-        if (err) throw err;
-        console.log("Connected!");
-      });
+    con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    });
 
     con.query(sqlString, function (err, result) {
       if (err) throw err;
