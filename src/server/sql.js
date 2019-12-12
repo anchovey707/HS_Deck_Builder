@@ -91,6 +91,6 @@ function deleteDeck(params, callback){
 
 function saveDeck(params, callback){
   var sqlQuery = 'INSERT INTO decks (userID, name, cardData) \
-                  VALUES (\'' + params['userid'] + '\', \'' + params['name'] + '\', \'' + params['carddata'] + '\');'
+                  VALUES (\'' + params['userid'] + '\', \'' + params['name'] + '\', \'' + params['carddata'] + '\');';
   runQuery(sqlQuery, callback,"POST");
 }
