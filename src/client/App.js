@@ -6,8 +6,13 @@ import DeckOptions from './components/DeckOptions/DeckOptions';
 import '../stylesheets/App.css';
 
 function App() {
+  
+  let styles={
+    "background-image":"../images/background.jpg"
+  }
+  
   return (
-    <div className="App">
+    <div styles className="App">
       <CardWindow/>
       <DeckList/>
       <FilterBar/>
@@ -15,10 +20,6 @@ function App() {
     </div>
   );
   
-  let styles={
-    "background-image":"../images/background.jpg"
-  }
-
 }
 
 

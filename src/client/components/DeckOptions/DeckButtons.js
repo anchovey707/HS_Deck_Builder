@@ -13,7 +13,7 @@ saveToDeck () {
   
   $.ajax ({
     url:  '/savedeck',
-    data : {deckid:''},
+    data : {userid:'',deckName:''},
     type : 'POST',
 
     success: function(response) {
