@@ -1,10 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
-import '../../../stylesheets/DeckButtons.css'
-import $ from 'jquery';
-=======
 import '../../../stylesheets/DeckOptions/DeckButtons.css'
->>>>>>> c35e759ff4490507f3effee08f67554b7fcce9fa
+import  $ from 'jquery';
 
 class DeckButtons extends React.Component {
 
@@ -13,8 +9,8 @@ class DeckButtons extends React.Component {
 
 saveToDeck () {
   $.ajax ({
-    url: '/savedeck',
-    data : {deckid: '',username: '', password: ''},
+    url:  '/savedeck',
+    data : {deckid:''},
     type : 'POST',
 
     success: function(response) {
@@ -29,7 +25,7 @@ saveToDeck () {
 
 loadInDeck() {
   $.ajax ({
-    url: 'getDeck',
+    url: '/getDeck',
     data : {deckid : ''},
     type: 'GET',
 
@@ -42,12 +38,21 @@ loadInDeck() {
   })
 }
 
-// deleteFromDeck () {
-//   $.ajax ({
-//     url : 'deletedeck',
-//     data : 
-//   })
-// }
+deleteFromDeck () {
+  $.ajax ({
+    url : 'deletedeck',
+    data : {deckid: ''},
+    type : "DELETE",
+
+    success : function(response) {
+        console.log(response)
+    },
+    error : function(response) {
+      console.log(response)
+    }
+
+  })
+}
 // onHandle() {
 //   fetch(`/getdeck`)
 //       .then(res => res.json())
@@ -61,7 +66,7 @@ loadInDeck() {
       <div className='button-container'>
         <button  onClick={this.loadInDeck} className='button'>Load</button>
         <button onClick={this.saveToDeck} className='button'>Save</button>
-        <button className='button'>Delete</button>
+        <button onClick={this.deleteFromDeck} className='button'>Delete</button>
       </div>
     );
   }
