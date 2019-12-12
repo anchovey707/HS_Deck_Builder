@@ -80,13 +80,12 @@ function verifyUser(params, callback){
 }
 
 function getUsers(params, callback) {
-  console.log('Get Users');
   var sqlQuery = 'SELECT * FROM users \;';
   runQuery(sqlQuery, callback, "GET");
 }
 
 function deleteDeck(params, callback){
-  var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['deckid'] + '\';';
+  var sqlQuery = 'DELETE FROM decks WHERE ID=\'' + params['deckid'] + '\';';
   runQuery(sqlQuery, callback,"POST");
 }
 
