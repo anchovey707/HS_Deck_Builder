@@ -16,6 +16,9 @@ const styles = {
     height: '10vh',
     width: '22vw',
     border:'1px solid black',
+    fontSize: '15px',
+    fontWeight: 'bold',
+    textAlign: 'center'
     
     
   },

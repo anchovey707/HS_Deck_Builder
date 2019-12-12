@@ -11,7 +11,13 @@ const styles = {
     height: '79vh',
     width: '22vw',
     marginTop: '1vh',
-    border: '1px solid black'
+    border: '1px solid black',
+    fontWeight: 'bold',
+    textAlign : 'center',
+    fontSize: '12px'
+
+    
+    
   }
 }
 
