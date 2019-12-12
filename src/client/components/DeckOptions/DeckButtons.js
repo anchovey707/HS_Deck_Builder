@@ -8,7 +8,7 @@ var $ = require('jquery');
 
 
 class DeckButtons extends React.Component {
-
+  
 saveToDeck (deck) {
   
   $.ajax ({
@@ -23,6 +23,7 @@ saveToDeck (deck) {
         console.log(response)
     }
 });
+    console.log(deck);
 
 }
 
@@ -81,7 +82,7 @@ handleClick = (name) => {
     // |
     // |
     // v
-    var deck = this.props.deck
+    var deck = this.props.deck;
     // ^
     // |
     // |
@@ -92,7 +93,7 @@ handleClick = (name) => {
 
       <div className='button-container'>
         <button  onClick={this.loadInDeck} className='button'>Load</button>
-        <button onClick={this.saveToDeck(deck)} className='button'>Save</button>
+        <button onClick={ () => this.saveToDeck(deck)} className='button'>Save</button>
         <button onClick={this.deleteFromDeck} className='button'>Delete</button>
       </div>
     );
@@ -101,11 +102,9 @@ handleClick = (name) => {
 
 function mapStateToProps(state){
   return({
-    card_data: state.deck
+    deck: state.deck
   })
 }
-
-
 
 
 export default connect(mapStateToProps,null)(DeckButtons);

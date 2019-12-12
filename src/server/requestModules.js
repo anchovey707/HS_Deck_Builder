@@ -3,7 +3,7 @@ var fs = require('fs');
 
 module.exports.handleRequest = function handleRequest(url, callback) {
     let params = splitParams(url);
-    //console.log("Handling request: "+url);
+    console.log("Handling request: "+url);
     if(url.includes('getdecks')) {
         sql.getDecks(params, callback);
     }
