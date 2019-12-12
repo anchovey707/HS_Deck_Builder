@@ -11,7 +11,7 @@ class CharacterBackButton extends React.Component {
     return (
 
     <div className='back-button'>
-      <button onClick="clickForceRefresh()">Go Back</button>
+      <button onClick={this.clickForceRefresh}>Go Back</button>
     </div>
     )
   }
