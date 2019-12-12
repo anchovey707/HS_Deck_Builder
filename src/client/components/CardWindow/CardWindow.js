@@ -68,48 +68,32 @@ class CardWindow extends React.Component{
 
   render(){
 
-    // ONLY CREATE PAGES IF CARD DATA EXISTS
+    // IF CARDS IN STORE
     if(this.props.cards.length > 0){
       this.getPageData()
 
-      // FIRST PAGE 
+      // GET NAV BAR TYPE
+      var nav_type = ''
       if(this.props.num_pages === 0){
-        return(
-            <div>
-              <CharacterBackButton />
-              <CharacterTabs/>
-              <CardImages/>
-              <ArrowNavigation type="right"/>
-            </div>
-        )
+        nav_type = 'right'
       }
-
-      // LAST PAGE
-      if(this.props.num_pages === this.getMaxNumPages() ){
-        return(
-          <div>
-              <CharacterBackButton />
-            <CharacterTabs/>
-            <CardImages/>
-            <ArrowNavigation type="left" />
-          </div>
-        )
-      } 
-
-      // ELSE
+      if(this.props.num_pages === this.getMaxNumPages()){
+        nav_type = 'left'
+      }
       else{
-        return(
-          <div>
-            <CharacterBackButton />
-            <CharacterTabs/>
-            <CardImages/>
-            <ArrowNavigation type="full"/>
-          </div>
-        )
+        nav_type = 'full'
       }
-    }
 
-    // IF NO CARD DATA 
+      return(
+        <div>
+          <CharacterBackButton />
+          <CharacterTabs/>
+          <CardImages/>
+          <ArrowNavigation type={nav_type}/>
+        </div>
+      )
+    }
+    
     else{
       return(
         <div>
@@ -120,6 +104,7 @@ class CardWindow extends React.Component{
     }
   }
 }
+
 
 
 function mapStateToProps(state){

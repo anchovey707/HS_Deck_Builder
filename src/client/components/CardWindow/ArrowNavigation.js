@@ -29,36 +29,24 @@ class ArrowNavigation extends React.Component{
       case 'left':
         return(
           <div className='arrow-container'>
-            <div>
-              <FaArrowLeft className='arrow' onClick={ () => this.getPrev(curr_page_num)} />
-            </div>
-            <div>
-              
-            </div>
+            <div><FaArrowLeft className='arrow' onClick={ () => this.getPrev(curr_page_num)} /> </div>
+            <div></div>
           </div> 
         )
 
       case 'full':
         return(
           <div className='arrow-container'>
-            <div>
-            <FaArrowLeft className='arrow' onClick={ () => this.getPrev(curr_page_num)} />
-            </div>
-            <div>
-              <FaArrowRight className='arrow' onClick={ () => this.getNext(curr_page_num)} />
-            </div>
+            <div> <FaArrowLeft className='arrow' onClick={ () => this.getPrev(curr_page_num)} /> </div>
+            <div> <FaArrowRight className='arrow' onClick={ () => this.getNext(curr_page_num)} /> </div>
           </div>
         )
 
       case 'right':
         return(
           <div className='arrow-container'>
-            <div>
-            
-            </div>
-            <div>
-              <FaArrowRight className='arrow' onClick={ () => this.getNext(curr_page_num)} />
-            </div>
+            <div></div>
+            <div> <FaArrowRight className='arrow' onClick={ () => this.getNext(curr_page_num)} /> </div>
           </div>
         )
       default:
