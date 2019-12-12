@@ -92,7 +92,7 @@ function deleteDeck(params, callback){
 
 function saveDeck(params, callback){
 
-  while(params['carddata'].indexOf('%22')>=0)
+  while(params['carddata'].indexOf('%20')>=0)
     params['carddata']=params['carddata'].replace('%20',' ');
   console.log('Saving='+params['carddata']);
 
