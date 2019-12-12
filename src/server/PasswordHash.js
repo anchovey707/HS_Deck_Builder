@@ -1,6 +1,4 @@
-//Run ```npm install password-hash``` before using this script if MODULE_NOT_FOUND error.
 var passwordHash = require('password-hash');
-const salt = 
 var hashedPassword = passwordHash.generate('password123');
 
 console.log(hashedPassword);
