@@ -81,7 +81,7 @@ deleteFromDeck () {
 
       <div className='button-container'>
         <button  onClick={this.loadInDeck} className='button'>Load</button>
-        <button onClick={this.saveToDeck} className='button'>Save</button>
+        <button onClick={this.saveToDeck(card_data)} className='button'>Save</button>
         <button onClick={this.deleteFromDeck} className='button'>Delete</button>
       </div>
     );
