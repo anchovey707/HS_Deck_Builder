@@ -60,7 +60,7 @@ function getUserDecks(params, callback){
                     WHERE userID=\'' + params['userid'] + '\';';
     runQuery(sqlQuery,callback,"GET");
 }
-//http://localhost:8080/registerUser?username=DarkSamus&password=smashchamp
+
 function registerUser(params, callback){
   //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'INSERT INTO users (username, password) \
@@ -91,6 +91,11 @@ function deleteDeck(params, callback){
 }
 
 function saveDeck(params, callback){
+
+  console.log('Saving='+params['carddata']);
+  params['carddata'].replace('%20',' ');
+
+
   var sqlQuery = 'INSERT INTO decks (userID, deckname, cardData) \
                   VALUES (\'' + params['userid'] + '\', \'' + params['deckname'] + '\', \'' + params['carddata'] + '\');';
   console.log();
