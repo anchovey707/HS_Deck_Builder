@@ -1,5 +1,5 @@
 import React from 'react';
-import {clickTab, addCardData} from '../../redux/actions/index';
+import {clickTab, addCardData, addClassFilter} from '../../redux/actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import '../../../stylesheets/CardWindow/CharacterClass.css';
@@ -19,6 +19,7 @@ class CharacterClass extends React.Component{
     fetch(url)
     .then( res => res.json())
     .then( data => this.props.addCardData(data))
+    .then(this.props.addClassFilter('class', lowercase_name))
     .then(this.props.clickTab(name))
   }
 
@@ -50,6 +51,7 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({
     clickTab: clickTab,
     addCardData: addCardData,
+    addClassFilter: addClassFilter
   }, dispatch)
 }
 
