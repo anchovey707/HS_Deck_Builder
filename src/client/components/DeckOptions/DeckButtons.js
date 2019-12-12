@@ -8,35 +8,7 @@ var $ = require('jquery');
 
 
 class DeckButtons extends React.Component {
-/*
-loadInDeck() {
-  $.ajax ({
-    url: '/getDeck',
-    data : {deckid : ''},
 
-    success : function(response) {
-      console.log(response)
-    },
-    error : function(response) {
-      console.log(response)
-    }
-  })
-}
-deleteFromDeck () {
-  $.ajax ({
-    url : 'deletedeck',
-    data : {deckid: ''},
-
-    success : function(response) {
-        console.log(response)
-    },
-    error : function(response) {
-      console.log(response)
-    }
-
-  })
-}
-*/
 
 deleteFromDeck(){}
 

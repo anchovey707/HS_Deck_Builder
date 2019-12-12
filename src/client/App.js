@@ -7,12 +7,8 @@ import '../stylesheets/App.css';
 
 function App() {
   
-  let styles={
-    "background-image":"url(../images/background.jpg)"
-  }
-  
   return (
-    <div style={styles} className="App">
+    <div className="App">
       <CardWindow/>
       <DeckList/>
       <FilterBar/>
