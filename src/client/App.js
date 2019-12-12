@@ -8,11 +8,11 @@ import '../stylesheets/App.css';
 function App() {
   
   let styles={
-    "background-image":"../images/background.jpg"
+    "background-image":"url(../images/background.jpg)"
   }
   
   return (
-    <div styles className="App">
+    <div style={styles} className="App">
       <CardWindow/>
       <DeckList/>
       <FilterBar/>
