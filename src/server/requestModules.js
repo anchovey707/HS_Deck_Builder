@@ -4,7 +4,10 @@ var fs = require('fs');
 module.exports.handleRequest = function handleRequest(url, callback) {
     let params = splitParams(url);
     //console.log("Handling request: "+url);
-    if(url.includes('getdeck')) {
+    if(url.includes('getdecks')) {
+        sql.getDecks(params, callback);
+    }
+    else if(url.includes('getdeck')) {
         sql.getDeck(params, callback);
     }
     else if(url.includes('getuserdecks')) {
@@ -18,6 +21,12 @@ module.exports.handleRequest = function handleRequest(url, callback) {
     }
     else if(url.includes('registeruser')) {
         sql.registerUser(params, callback);
+    }
+    else if(url.includes('deleteuser')) {
+        sql.deleteUser(params, callback);
+    }
+    else if(url.includes('getusers')) {
+        sql.getUsers(params, callback);
     }
     else if(url.includes('verifyuser')) {
         sql.verifyUser(params, callback);

@@ -2,7 +2,7 @@ import React from 'react';
 import {clickTab, addCardData} from '../../redux/actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import '../../../stylesheets/CharacterClass.css';
+import '../../../stylesheets/CardWindow/CharacterClass.css';
 
 
 class CharacterClass extends React.Component{

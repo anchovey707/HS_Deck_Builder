@@ -57,4 +57,18 @@ export const removeFromDeck = (card_name) => {
 }
 
 
+export const addMinFilter = (filter_type,val) => {
+  return({
+    type: 'ADD_MIN_FILTER',
+    filter_type: filter_type,
+    payload: val
+  })
+}
 
+export const addMaxFilter = (filter_type,val) => {
+  return({
+    type: 'ADD_MAX_FILTER',
+    filter_type: filter_type,
+    payload: val
+  })
+}

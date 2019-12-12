@@ -1,8 +1,12 @@
 var mysql = require('mysql');
-var passwordHash = require('password-hash');
+var passwordHash = require('./PasswordHash.js');
+
 module.exports.getDeck = getDeck;
+module.exports.getDecks = getDecks;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
+module.exports.deleteUser = deleteUser;
+module.exports.getUsers = getUsers;
 module.exports.verifyUser = verifyUser;
 module.exports.deleteDeck = deleteDeck;
 module.exports.saveDeck = saveDeck;
@@ -17,14 +21,14 @@ function runQuery(sqlString, callback,method){
 
     con.connect((err) => {
       if (err) {
-        return callback(null,err);
+        return callback(err, null);
       }
 
       console.log('Connected!');
       
       con.query(sqlString, (err, result) => {
         if (err) {
-          return callback(null,err);
+          return callback(err, null);
         }
         if(method === "GET") {
           callback(null,JSON.stringify(result));
@@ -39,47 +43,55 @@ function runQuery(sqlString, callback,method){
 
 
 
-function getDeck(deckID,callback){
-    var sqlQuery = 'SELECT cardData FROM decks \
-                    WHERE ID=\'' + deckID + '\';'; //consider adding LIMIT 1 to return inner JSON
-    var result = runQuery(sqlQuery,callback,"GET");
-    //return result;
+function getDeck(params,callback){
+    var sqlQuery = 'SELECT carddata FROM decks \
+                    WHERE ID=\'' + params['deckid'] + '\';'; //consider adding LIMIT 1 to return inner JSON
+    runQuery(sqlQuery,callback,"GET");
+}
+
+function getDecks(params, callback) {
+  console.log('getDecks');
+  var sqlQuery = 'SELECT * FROM decks \;';
+  runQuery(sqlQuery, callback, "GET");
 }
 
 function getUserDecks(params, callback){
     var sqlQuery = 'SELECT ID,name FROM decks \
                     WHERE userID=\'' + params['userid'] + '\';';
-    var result = runQuery(sqlQuery,callback,"GET");
-    //return result;
+    runQuery(sqlQuery,callback,"GET");
 }
 //http://localhost:8080/registerUser?username=DarkSamus&password=smashchamp
 function registerUser(params, callback){
-  var hashedPassword = passwordHash.generate(params['password']);
+  //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'INSERT INTO users (username, password) \
-                  VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
+                  VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');';
+  runQuery(sqlQuery, callback, "POST");
+}
+
+function deleteUser(params, callback) {
+  var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['userid'] + '\';';
+  runQuery(sqlQuery, callback, "POST");
 }
 
 function verifyUser(params, callback){ 
-  var hashedPassword = passwordHash.generate(params['password']);
+  //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'SELECT ID,username FROM users \
-                  WHERE username=\'' + params['username'] + '\' and password=\'' + hashedPassword + '\';';
+                  WHERE username=\'' + params['username'] + '\' and password=\'' + params['password'] + '\';';
+  runQuery(sqlQuery, callback, "GET");
+}
+
+function getUsers(params, callback) {
+  var sqlQuery = 'SELECT * FROM users \;';
   runQuery(sqlQuery, callback, "GET");
 }
 
 function deleteDeck(params, callback){
-  var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['deckid'] + '\';';
+  var sqlQuery = 'DELETE FROM decks WHERE ID=\'' + params['deckid'] + '\';';
   runQuery(sqlQuery, callback,"POST");
 }
-//
+
 function saveDeck(params, callback){
   var sqlQuery = 'INSERT INTO decks (userID, name, cardData) \
-                  VALUES (\'' + params['userid'] + '\', \'' + params['name'] + '\', \'' + params['carddata'] + '\');'
+                  VALUES (\'' + params['userid'] + '\', \'' + params['name'] + '\', \'' + params['carddata'] + '\');';
   runQuery(sqlQuery, callback,"POST");
-} 
-
-function saveDeck(params, callback){ //tester code. use above saveDeck() instead of this one.
-  var customSqlQuery = 'SELECT * FROM users'
-  runQuery(customSqlQuery, callback,"GET");
 }
-
-//registerUser('maple', 'syrup');

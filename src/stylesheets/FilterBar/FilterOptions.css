@@ -1,0 +1,36 @@
+.filter-container{
+  flex:1;
+  border:1px solid black;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.filter-container div{ 
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid black;
+  width: 100%;
+}
+
+.filter-heading{
+  height: 20%;
+}
+
+.filter-option{
+  height: 80%;
+}
+
+input[type=number]{
+  height: 50%;
+  width: 30%;
+  font-size:13px;
+}
+
+input[type=text]{
+  height: 50%;
+  width: 80%;
+  font-size:13px;
+}
