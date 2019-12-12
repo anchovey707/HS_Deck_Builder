@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../../stylesheets/DeckOptions/DeckButtons.css'
+var $ = require('jquery');
 
 class DeckButtons extends React.Component {
 
