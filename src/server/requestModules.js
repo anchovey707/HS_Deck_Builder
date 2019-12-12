@@ -19,6 +19,9 @@ module.exports.handleRequest = function handleRequest(url, callback) {
     else if(url.includes('registeruser')) {
         sql.registerUser(params, callback);
     }
+    else if(url.includes('deleteuser')) {
+        sql.deleteUser(params, callback);
+    }
     else if(url.includes('getusers')) {
         sql.getUsers(params, callback);
     }

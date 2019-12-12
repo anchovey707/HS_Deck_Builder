@@ -1,8 +1,10 @@
 var mysql = require('mysql');
 var passwordHash = require('./PasswordHash.js');
+
 module.exports.getDeck = getDeck;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
+module.exports.deleteUser = deleteUser;
 module.exports.getUsers = getUsers;
 module.exports.verifyUser = verifyUser;
 module.exports.deleteDeck = deleteDeck;
@@ -56,6 +58,11 @@ function registerUser(params, callback){
   //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'INSERT INTO users (username, password) \
                   VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');';
+  runQuery(sqlQuery, callback, "POST");
+}
+
+function deleteUser(params, callback) {
+  var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['userid'] + '\';';
   runQuery(sqlQuery, callback, "POST");
 }
 
