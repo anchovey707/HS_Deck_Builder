@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {showCardData, addCardPages} from '../../redux/actions/index';
 import ArrowNavigation from './ArrowNavigation';
-import CardButton from './CardButton';
+import CharacterBackButton from './CharacterBackButton';
 
 class CardWindow extends React.Component{
 
@@ -75,8 +75,8 @@ class CardWindow extends React.Component{
       // FIRST PAGE 
       if(this.props.num_pages === 0){
         return(
-            <div style={styles.CardWindow}>
-              <CardButton />
+            <div>
+              <CharacterBackButton />
               <CharacterTabs/>
               <CardImages/>
               <ArrowNavigation type="right"/>
@@ -87,8 +87,8 @@ class CardWindow extends React.Component{
       // LAST PAGE
       if(this.props.num_pages === this.getMaxNumPages() ){
         return(
-          <div style={styles.CardWindow}>
-            <CardButton />
+          <div>
+              <CharacterBackButton />
             <CharacterTabs/>
             <CardImages/>
             <ArrowNavigation type="left" />
@@ -99,8 +99,8 @@ class CardWindow extends React.Component{
       // ELSE
       else{
         return(
-          <div style={styles.CardWindow}>
-            <CardButton />
+          <div>
+            <CharacterBackButton />
             <CharacterTabs/>
             <CardImages/>
             <ArrowNavigation type="full"/>
@@ -112,7 +112,7 @@ class CardWindow extends React.Component{
     // IF NO CARD DATA 
     else{
       return(
-        <div style={styles.CardWindow}>
+        <div>
           <CharacterTabs/>
           <CardImages/>
         </div>
@@ -139,10 +139,3 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps,matchDispatchToProps)(CardWindow);
-
-const styles = {
-  CardWindow:{
-    border: '1px solid black',
-    position:'relative',
-  }
-}

@@ -1,0 +1,9 @@
+.tile{
+  height: calc(85vh / 32.5);
+  width: 100%;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  cursor:pointer;
+  border:1px solid black;
+}

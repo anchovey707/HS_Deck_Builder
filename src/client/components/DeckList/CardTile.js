@@ -2,6 +2,7 @@ import React from 'react'
 import {removeFromDeck} from '../../redux/actions/index';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import '../../../stylesheets/CardTile.css';
 
 class CardTile extends React.Component{
 
@@ -16,11 +17,10 @@ class CardTile extends React.Component{
 
   render(){
     return(
-      <div style={styles.TileStyle} onClick={ () => this.removeFromDeck(this.props.name)} > {this.props.name} </div>
+      <div className='tile' onClick={ () => this.removeFromDeck(this.props.name)} > {this.props.name} </div>
     )
   }
 }
-
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
@@ -29,14 +29,3 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(null,matchDispatchToProps)(CardTile)
-
-const styles = {
-  TileStyle:{
-    height: 'calc(100%/30)',
-    width: '100%',
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'center',
-    cursor: 'pointer'
-  }
-}

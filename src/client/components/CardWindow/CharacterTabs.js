@@ -1,6 +1,7 @@
 import React from 'react';
 import CharacterClass from './CharacterClass';
 import {connect} from 'react-redux';
+import '../../../stylesheets/CharacterTabs.css';
 
 
 class CharacterTabs extends React.Component{
@@ -38,7 +39,7 @@ class CharacterTabs extends React.Component{
 
   render(){
    return(
-     <div style={styles.CardTabs}>
+     <div className='card-tabs'>
        {this.renderTabs()}
      </div>
    )
@@ -53,13 +54,3 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps,null)(CharacterTabs);
-
-const styles = {
-  CardTabs:{
-    height: '7vh',
-    width: '75vw',
-    border: '1px solid red',
-    display: 'flex',
-    flexDirection: 'row'
-  }
-}

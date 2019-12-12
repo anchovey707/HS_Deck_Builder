@@ -1,0 +1,13 @@
+.arrow-container{
+  width: 75vw;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: calc(48%);
+}
+
+.arrow{
+  height: 30px;
+  width: 100px;
+}

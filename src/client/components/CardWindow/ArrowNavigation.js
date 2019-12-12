@@ -3,6 +3,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import {nextPage, prevPage} from '../../redux/actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import '../../../stylesheets/ArrowNavigation.css';
 
 
 class ArrowNavigation extends React.Component{
@@ -27,9 +28,9 @@ class ArrowNavigation extends React.Component{
 
       case 'left':
         return(
-          <div style={styles.ArrowContainer}>
+          <div className='arrow-container'>
             <div>
-              <FaArrowLeft style={styles.Arrow} onClick={ () => this.getPrev(curr_page_num)} />
+              <FaArrowLeft className='arrow' onClick={ () => this.getPrev(curr_page_num)} />
             </div>
             <div>
               
@@ -39,24 +40,24 @@ class ArrowNavigation extends React.Component{
 
       case 'full':
         return(
-          <div style={styles.ArrowContainer}>
+          <div className='arrow-container'>
             <div>
-            <FaArrowLeft style={styles.Arrow} onClick={ () => this.getPrev(curr_page_num)} />
+            <FaArrowLeft className='arrow' onClick={ () => this.getPrev(curr_page_num)} />
             </div>
             <div>
-              <FaArrowRight style={styles.Arrow} onClick={ () => this.getNext(curr_page_num)} />
+              <FaArrowRight className='arrow' onClick={ () => this.getNext(curr_page_num)} />
             </div>
           </div>
         )
 
       case 'right':
         return(
-          <div style={styles.ArrowContainer}>
+          <div className='arrow-container'>
             <div>
             
             </div>
             <div>
-              <FaArrowRight style={styles.Arrow} onClick={ () => this.getNext(curr_page_num)} />
+              <FaArrowRight className='arrow' onClick={ () => this.getNext(curr_page_num)} />
             </div>
           </div>
         )
@@ -82,19 +83,3 @@ function matchDispatchToProps(dispatch){
 
 
 export default connect(mapStateToProps,matchDispatchToProps)(ArrowNavigation)
-
-
-const styles = {
-  ArrowContainer:{
-    width:'100%',
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'space-between',
-    position:'absolute',
-    top:'calc(50% + 2vh)'
-  },
-  Arrow:{
-    height:'30px',
-    width:'100px'
-  }
-}

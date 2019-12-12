@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CardTile from './CardTile';
+import '../../../stylesheets/DeckList.css';
 
 class DeckList extends React.Component{
 
@@ -31,13 +32,13 @@ class DeckList extends React.Component{
     if(this.cardsInDeckList()){
       var list = this.renderList()
       return(
-        <div style={styles.DeckList}> {list} </div>
+        <div className='decklist'> {list} </div>
       )
     }
     
     else{
       return(
-        <div style={styles.DeckList}>
+        <div className='decklist'>
 
         </div>
       )
@@ -53,10 +54,3 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps,null)(DeckList);
-
-
-const styles = {
-  DeckList:{
-    border: '1px solid black',
-  }
-}
