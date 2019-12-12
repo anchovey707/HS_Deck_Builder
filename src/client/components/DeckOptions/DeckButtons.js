@@ -63,10 +63,17 @@ handleClick = (name) => {
     return (
 
       <div className='button-container'>
+        <div>
         <button  onClick={this.loadInDeck} className='button'>Load</button>
         <button onClick={ () => this.saveToDeck(deck)} className='button'>Save</button>
         <button onClick={this.deleteFromDeck} className='button'>Delete</button>
+        </div>
+        <div>
+      <input type = "text" id ="decktext" placeholder = "enter deck name"></input>  
       </div>
+
+      </div>
+      
     );
   }
 }
