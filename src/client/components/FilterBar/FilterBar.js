@@ -9,7 +9,7 @@ const FilterBar = () => (
 const styles = {
   FilterBar:{
     height: '10vh',
-    border:'1px solid black'
+    border:'1px solid black',
   }
 }
 

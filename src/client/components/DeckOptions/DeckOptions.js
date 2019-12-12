@@ -13,8 +13,6 @@ const DeckOptions = () => (
 
 const styles = {
   DeckOptions:{
-    height: '10vh',
-    width: '22vw',
     border:'1px solid black',
     
     

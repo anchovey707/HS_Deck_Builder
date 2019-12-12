@@ -142,8 +142,6 @@ export default connect(mapStateToProps,matchDispatchToProps)(CardWindow);
 
 const styles = {
   CardWindow:{
-    height: '85vh',
-    width: '75vw',
     border: '1px solid black',
     position:'relative',
   }

@@ -57,9 +57,6 @@ export default connect(mapStateToProps,null)(DeckList);
 
 const styles = {
   DeckList:{
-    height: '79vh',
-    width: '22vw',
-    marginTop: '1vh',
-    border: '1px solid black'
+    border: '1px solid black',
   }
 }
