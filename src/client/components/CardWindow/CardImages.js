@@ -2,6 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {addToDeck} from '../../redux/actions/index';
 import {connect} from 'react-redux';
+import '../../../stylesheets/CardImages.css';
 
 
 class CardImages extends React.Component{
@@ -19,15 +20,15 @@ class CardImages extends React.Component{
     // IF THERE ARE PAGES TO BE LOADED
     if(this.props.pages.length > 0){
       var pages = this.props.pages
-      var page_num = this.props.pageCount
+      var page_num = this.props.page_num
       var curr_page = pages[page_num]
       var img_arr = []
 
       curr_page.map( (card) => {
-        img_arr.push( <img src={`${card.image}`} style={styles.CardImg} alt='img' onClick={ () => this.addToDeck(card.name)} />)
+        img_arr.push( <img src={`${card.image}`} className='card-img' alt='img' onClick={ () => this.addToDeck(card.name)} />)
       })
 
-      return( <div style={styles.CardImgContainer}> {img_arr} </div>)
+      return( <div className='card-img-container'> {img_arr} </div>)
     }
 
     else{
@@ -41,12 +42,9 @@ class CardImages extends React.Component{
 }
 
 function mapStateToProps(state){
-  var cardPages = state.CardPages
-  var pageCount = state.PageCount
-
   return({
-    pages: cardPages,
-    pageCount: pageCount
+    pages: state.card_pages,
+    page_num: state.page_num
   })
 }
 
@@ -57,19 +55,3 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps,matchDispatchToProps)(CardImages);
-
-const styles = {
-  CardImgContainer:{
-    height:'77vh',
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: '25% 25% 25% 25%',
-    gridTemplateRows: '50% 50%',
-  },
-  CardImg:{
-    marginLeft:'5%',
-    marginTop:'8%',
-    height:'280px',
-    width: '200px',
-  }
-}

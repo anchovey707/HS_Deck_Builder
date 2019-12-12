@@ -3,7 +3,8 @@ let requestHandler= require('./requestModules.js');
 
 var server = http.createServer((req, res) => {
     console.log("Method: " + req.method);
-    console.log("URL: '" + req.url+"'");
+    console.log("  URL: '" + req.url+"'");
+
 
     if(req.method === "GET") {
         let url = req.url.toLocaleLowerCase();
@@ -13,9 +14,9 @@ var server = http.createServer((req, res) => {
         requestHandler.handleRequest(url, callback);
     }
 
-    function callback(result,error ) {
-        if(error) throw error;
-        res.end(result.toString());
+    function callback(error, result) {
+        if(error) res.end(error.code);
+        else res.end(result.toString());
     }
     
 
@@ -23,5 +24,5 @@ var server = http.createServer((req, res) => {
     console.log(err.message);
 });
 
-server.listen(8080);
+server.listen(8000);
 

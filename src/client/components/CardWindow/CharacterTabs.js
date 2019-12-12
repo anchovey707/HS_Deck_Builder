@@ -1,6 +1,7 @@
 import React from 'react';
 import CharacterClass from './CharacterClass';
 import {connect} from 'react-redux';
+import '../../../stylesheets/CharacterTabs.css';
 
 
 class CharacterTabs extends React.Component{
@@ -13,7 +14,7 @@ class CharacterTabs extends React.Component{
     
 
     // GET TABS FROM GLOBAL STORE 
-    var tabs_arr = this.props.tabs
+    var tabs_arr = this.props.card_tabs
     var num_tabs = tabs_arr.length
 
 
@@ -38,7 +39,7 @@ class CharacterTabs extends React.Component{
 
   render(){
    return(
-     <div style={styles.CardTabs}>
+     <div className='card-tabs'>
        {this.renderTabs()}
      </div>
    )
@@ -46,20 +47,9 @@ class CharacterTabs extends React.Component{
 }
 
 function mapStateToProps(state){
-  var tabs = state.CardTabs
   return{
-    tabs: tabs
+    card_tabs: state.card_tabs
   }
 }
 
 export default connect(mapStateToProps,null)(CharacterTabs);
-
-const styles = {
-  CardTabs:{
-    height: '7vh',
-    width: '75vw',
-    border: '1px solid red',
-    display: 'flex',
-    flexDirection: 'row'
-  }
-}
