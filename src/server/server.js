@@ -16,7 +16,13 @@ var server = http.createServer((req, res) => {
 
     function callback(error, result) {
         if(error) res.end(error.code);
-        else res.end(result.toString());
+        else {
+            if(req.url.includes('png')){
+                res.writeHead(200, {"Content-Type": "image/png"});
+                res.end(result);
+            }
+            res.end(result.toString());
+        }
     }
     
 
