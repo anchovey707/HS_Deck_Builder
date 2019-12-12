@@ -17,14 +17,14 @@ function runQuery(sqlString, callback,method){
 
     con.connect((err) => {
       if (err) {
-        return callback(null,err);
+        return callback(err, null);
       }
 
       console.log('Connected!');
       
       con.query(sqlString, (err, result) => {
         if (err) {
-          return callback(null,err);
+          return callback(err, null);
         }
         if(method === "GET") {
           callback(null,JSON.stringify(result));
