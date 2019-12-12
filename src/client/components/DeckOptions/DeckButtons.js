@@ -38,7 +38,7 @@ deleteFromDeck () {
 }
 */
 
-deleteFromDeck()
+deleteFromDeck(){}
 
 loadInDeck() {
   let url = 'http://34.227.68.162:8000/getDeck?deckid=1';
