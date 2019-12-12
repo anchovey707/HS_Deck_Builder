@@ -2,7 +2,7 @@ var mysql = require('mysql');
 var passwordHash = require('./PasswordHash.js');
 
 module.exports.getDeck = getDeck;
-module.exports.getAllDecks = getAllDecks;
+module.exports.getDecks = getDecks;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
 module.exports.deleteUser = deleteUser;
@@ -49,7 +49,7 @@ function getDeck(params,callback){
     runQuery(sqlQuery,callback,"GET");
 }
 
-function getAllDecks(params, callback) {
+function getDecks(params, callback) {
   var sqlQuery = 'SELECT * FROM decks \;';
   runQuery(sqlQuery, callback, "GET");
 }
