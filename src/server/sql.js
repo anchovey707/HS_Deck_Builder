@@ -42,23 +42,19 @@ function runQuery(sqlString, callback,method){
 function getDeck(deckID,callback){
     var sqlQuery = 'SELECT cardData FROM decks \
                     WHERE ID=\'' + deckID + '\';'; //consider adding LIMIT 1 to return inner JSON
-    var result = runQuery(sqlQuery,callback,"GET");
-    //return result;
+    runQuery(sqlQuery,callback,"GET");
 }
 
 function getUserDecks(params, callback){
     var sqlQuery = 'SELECT ID,name FROM decks \
                     WHERE userID=\'' + params['userid'] + '\';';
-    var result = runQuery(sqlQuery,callback,"GET");
-    //return result;
+    runQuery(sqlQuery,callback,"GET");
 }
 
 function registerUser(params, callback){
     var sqlQuery = 'INSERT INTO users (username, password) \
                     VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');';
     runQuery(sqlQuery, callback, "POST");
-
-      
 }
 
 function verifyUser(params, callback){ 
