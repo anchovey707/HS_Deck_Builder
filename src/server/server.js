@@ -13,9 +13,9 @@ var server = http.createServer((req, res) => {
         requestHandler.handleRequest(url, callback);
     }
 
-    function callback(result,error ) {
-        if(error) throw error;
-        res.end(result.toString());
+    function callback(error, result) {
+        if(error) res.end(error.code);
+        else res.end(result.toString());
     }
     
 

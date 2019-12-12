@@ -17,18 +17,14 @@ function runQuery(sqlString, callback,method){
 
     con.connect((err) => {
       if (err) {
-        let error = new Error();
-        error.message = "SQL: Connection Error";
-        return callback(null,error);
+        return callback(err, null);
       }
 
       console.log('Connected!');
       
       con.query(sqlString, (err, result) => {
         if (err) {
-          let error = new Error();
-          error.message = "SQL: Query Error";
-          return callback(null,error);
+          return callback(err, null);
         }
         if(method === "GET") {
           callback(JSON.stringify(result),null);
@@ -61,12 +57,6 @@ function registerUser(params, callback){
   var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'INSERT INTO users (username, password) \
                   VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');'
-
-  try {
-    runQuery(sqlQuery, callback, "POST");
-  } catch(error) {
-    console.error(error);
-  }
 }
 
 function verifyUser(params, callback){ 
