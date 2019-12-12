@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-
+var passwordHash = require('password-hash');
 module.exports.getDeck = getDeck;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
@@ -17,19 +17,19 @@ function runQuery(sqlString, callback,method){
 
     con.connect((err) => {
       if (err) {
-        return callback(err, null);
+        return callback(null,err);
       }
 
       console.log('Connected!');
       
       con.query(sqlString, (err, result) => {
         if (err) {
-          return callback(err, null);
+          return callback(null,err);
         }
         if(method === "GET") {
-          callback(JSON.stringify(result),null);
+          callback(null,JSON.stringify(result));
         } else if (method === "POST"){
-          callback(result.affectedRows,null);
+          callback(null,result.affectedRows);
         }
       });
     });
@@ -50,16 +50,18 @@ function getUserDecks(params, callback){
                     WHERE userID=\'' + params['userid'] + '\';';
     runQuery(sqlQuery,callback,"GET");
 }
-
+//http://localhost:8080/registerUser?username=DarkSamus&password=smashchamp
 function registerUser(params, callback){
-    var sqlQuery = 'INSERT INTO users (username, password) \
-                    VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');';
-    runQuery(sqlQuery, callback, "POST");
+  var hashedPassword = passwordHash.generate(params['password']);
+  var sqlQuery = 'INSERT INTO users (username, password) \
+                  VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');';
+  runQuery(sqlQuery, callback, "POST");
 }
 
 function verifyUser(params, callback){ 
+  var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'SELECT ID,username FROM users \
-                  WHERE username=\'' + params['username'] + '\' and password=\'' + params['password'] + '\';';
+                  WHERE username=\'' + params['username'] + '\' and password=\'' + hashedPassword + '\';';
   runQuery(sqlQuery, callback, "GET");
 }
 
@@ -67,7 +69,7 @@ function deleteDeck(params, callback){
   var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['deckid'] + '\';';
   runQuery(sqlQuery, callback,"POST");
 }
-
+//
 function saveDeck(params, callback){
   var sqlQuery = 'INSERT INTO decks (userID, name, cardData) \
                   VALUES (\'' + params['userid'] + '\', \'' + params['name'] + '\', \'' + params['carddata'] + '\');'
@@ -75,7 +77,7 @@ function saveDeck(params, callback){
 } 
 
 function saveDeck(params, callback){ //tester code. use above saveDeck() instead of this one.
-  var customSqlQuery = 'SELECT * FROM decks'
+  var customSqlQuery = 'SELECT * FROM users'
   runQuery(customSqlQuery, callback,"GET");
 }
 
