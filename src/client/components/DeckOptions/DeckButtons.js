@@ -8,30 +8,11 @@ var $ = require('jquery');
 
 
 class DeckButtons extends React.Component {
-  /*
-saveToDeck (deck) {
-  
-  $.ajax ({
-    url:  '/savedeck',
-    data : {userid:'James',deckName:'myDeck',carddata:deck},
-    type : 'POST',
-
-    success: function(response) {
-        console.log(response)
-    },
-    error: function(response) {
-        console.log(response)
-    }
-});
-    console.log(deck);
-
-}*/
 /*
 loadInDeck() {
   $.ajax ({
     url: '/getDeck',
     data : {deckid : ''},
-    type: 'GET',
 
     success : function(response) {
       console.log(response)
@@ -41,12 +22,10 @@ loadInDeck() {
     }
   })
 }
-*/
 deleteFromDeck () {
   $.ajax ({
     url : 'deletedeck',
     data : {deckid: ''},
-    type : "DELETE",
 
     success : function(response) {
         console.log(response)
@@ -57,6 +36,7 @@ deleteFromDeck () {
 
   })
 }
+*/
 
 deleteFromDeck()
 
@@ -69,16 +49,8 @@ loadInDeck() {
 
 saveToDeck(deck) {
 
-
-  let JSONString='{';
-  var decks=[];
-  decks.forEach(function(item,index){
-    JSONString+=item[0];
-  });
-  console.log(deck);
-
-  let deckJSON=JSON.stringify(deck);
-  var url = 'http://34.227.68.162:8000/saveDeck?userid=1&deckName=myDeck&carddata='+deckJSON;
+  let deckString=deck.toString();
+  var url = 'http://34.227.68.162:8000/saveDeck?userid=1&deckName=myDeck&carddata='+deckString;
   fetch(url)
   .then( res => res.json())
   .then(data => console.log(data))
