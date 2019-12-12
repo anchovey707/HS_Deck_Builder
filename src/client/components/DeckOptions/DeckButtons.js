@@ -8,7 +8,7 @@ var $ = require('jquery');
 
 
 class DeckButtons extends React.Component {
-  
+  /*
 saveToDeck (deck) {
   
   $.ajax ({
@@ -25,7 +25,7 @@ saveToDeck (deck) {
 });
     console.log(deck);
 
-}
+}*/
 
 loadInDeck() {
   $.ajax ({
@@ -58,8 +58,11 @@ deleteFromDeck () {
   })
 }
 
-saveToDeck() {
-  
+saveToDeck(deck) {
+  var url = `http://34.227.68.162:8000/saveDeck?userid=James&deckName=myDeck&carddata=${deck}`;
+  fetch(url)
+  .then( res => res.json())
+  .then(data => console.log(data))
 }
 
 // ASYNC FETCH AND CALL ACTION
