@@ -96,10 +96,9 @@ function saveDeck(params, callback){
     params['carddata']=params['carddata'].replace('%20',' ');
   while(params['carddata'].indexOf('%22,%22')>=0)
     params['carddata']=params['carddata'].replace('%22,%22','/');
-  while(params['carddata'].indexOf('%22')>=0)
-    params['carddata']=params['carddata'].replace('%22','');
+    params['carddata']=params['carddata'].substring(2,params['carddata'].length-3);
   console.log('Saving='+params['carddata']);
-
+   
   var sqlQuery = 'INSERT INTO decks (userID, deckname, cardData) \
                   VALUES (\'' + params['userid'] + '\', \'' + params['deckname'] + '\', \'' + params['carddata'] + '\');';
   console.log();
