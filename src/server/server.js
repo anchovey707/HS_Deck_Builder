@@ -26,7 +26,7 @@ var server = http.createServer((req, res) => {
         });
     }else{
         let url = req.url.toLowerCase();
-        requestHandler.handleRequest(url,callback,data);
+        requestHandler.handleRequest(url,callback);
     }
 
     function callback(error, result) {
