@@ -5,23 +5,29 @@ let querystring = require('querystring');
 var server = http.createServer((req, res) => {
     console.log("Method: " + req.method);
     console.log("  URL: '" + req.url+"'");
-    let data='';
-    req.on('data', chunk => {
-        data += chunk.toString();
-    });
+    
+    if(req.method==='POST'){
+        let data='';
+        req.on('data', chunk => {
+            data += chunk.toString();
+        });
 
-    // when complete POST data is received
-    req.on('end', () => {
-        // use parse() method
-        data = querystring.parse(data);
-        
-        // { name: 'John', gender: 'MALE', email: 'john@gmail.com' }
-        console.log("DATA==="+data.toString());
-        
+        // when complete POST data is received
+        req.on('end', () => {
+            // use parse() method
+            data = querystring.parse(data);
+            
+            // { name: 'John', gender: 'MALE', email: 'john@gmail.com' }
+            console.log("DATA==="+data);
+            
+            let url = req.url.toLowerCase();
+            requestHandler.handleRequest(url,callback,data);
+            // rest of the code
+        });
+    }else{
         let url = req.url.toLowerCase();
-        requestHandler.handleRequest(url,callback,data);
-        // rest of the code
-    });
+        requestHandler.handleRequest(url,callback);
+    }
 
     function callback(error, result) {
         if(error) res.end(error.code);
