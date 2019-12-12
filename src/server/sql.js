@@ -17,19 +17,19 @@ function runQuery(sqlString, callback,method){
 
     con.connect((err) => {
       if (err) {
-        return callback(err, null);
+        return callback(null,err);
       }
 
       console.log('Connected!');
       
       con.query(sqlString, (err, result) => {
         if (err) {
-          return callback(err, null);
+          return callback(null,err);
         }
         if(method === "GET") {
-          callback(JSON.stringify(result),null);
+          callback(null,JSON.stringify(result));
         } else if (method === "POST"){
-          callback(result.affectedRows,null);
+          callback(null,result.affectedRows);
         }
       });
     });
