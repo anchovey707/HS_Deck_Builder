@@ -42,9 +42,9 @@ function runQuery(sqlString, callback,method){
 
 
 
-function getDeck(deckID,callback){
+function getDeck(params,callback){
     var sqlQuery = 'SELECT cardData FROM decks \
-                    WHERE ID=\'' + deckID + '\';'; //consider adding LIMIT 1 to return inner JSON
+                    WHERE ID=\'' + params['deckid'] + '\';'; //consider adding LIMIT 1 to return inner JSON
     runQuery(sqlQuery,callback,"GET");
 }
 
