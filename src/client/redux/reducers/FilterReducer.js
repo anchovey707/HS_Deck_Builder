@@ -13,6 +13,9 @@ var initial_state = {
   },
   'search':{
     'query':null
+  },
+  'class':{
+
   }
 }
 
@@ -25,10 +28,15 @@ export default (state = initial_state, action) => {
       return new_min_state
     
     case 'ADD_MAX_FILTER':
-        let new_max_state = state
-        new_max_state[action.filter_type].max = action.payload
-        return new_max_state
+      let new_max_state = state
+      new_max_state[action.filter_type].max = action.payload
+      return new_max_state
 
+    case 'ADD_CLASS_FILTER':
+      let new_class_state = state
+      new_class_state[action.filter_type] = action.payload
+      return new_class_state
+      
     default:
       return state
   }
