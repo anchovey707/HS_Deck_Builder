@@ -29,7 +29,7 @@ class ManaFilter extends React.Component{
           <input 
             type="number" 
             name="mana-1" 
-            min="1" 
+            min="0" 
             max="20"
             onKeyPress={ (e) => {
               if (e.key === 'Enter')
@@ -41,7 +41,7 @@ class ManaFilter extends React.Component{
           <input 
             type="number" 
             name="mana-2" 
-            min="1" 
+            min="0" 
             max="20"
             onKeyPress={ (e) => {
               if (e.key === 'Enter')

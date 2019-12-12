@@ -31,8 +31,8 @@ class AttackFilter extends React.Component{
           <input 
             type="number" 
             name="attack-1" 
-            min="1" 
-            max="60" 
+            min="0" 
+            max="60"
             onKeyPress={ (e) => {
               if (e.key === 'Enter')
                 this.addMinAttack(e.target.value)
@@ -43,7 +43,7 @@ class AttackFilter extends React.Component{
           <input 
             type="number" 
             name="attack-2" 
-            min="1" 
+            min="0" 
             max="60"
             onKeyPress={ (e) => {
               if (e.key === 'Enter')

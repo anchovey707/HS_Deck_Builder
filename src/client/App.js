@@ -14,7 +14,13 @@ function App() {
       <DeckOptions/>
     </div>
   );
+  
+  let styles={
+    "background-image":"../images/background.jpg"
+  }
+
 }
 
-export default App;
 
+
+export default App;
