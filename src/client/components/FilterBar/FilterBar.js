@@ -7,7 +7,6 @@ const FilterBar = () => (
   </div>
 )
 
-<<<<<<< HEAD
 const styles = {
   FilterBar:{
     height: '10vh',
@@ -17,6 +16,4 @@ const styles = {
   }
 }
 
-=======
->>>>>>> 4c0fe43e751a004868e26df5ad30f5b5322a266f
 export default FilterBar
