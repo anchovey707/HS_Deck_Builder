@@ -16,7 +16,7 @@ var server = http.createServer((req, res) => {
         data = querystring.parse(data);
         
         // { name: 'John', gender: 'MALE', email: 'john@gmail.com' }
-        console.log("DATA==="+data);
+        console.log("DATA==="+data.toString());
         
         let url = req.url.toLowerCase();
         requestHandler.handleRequest(url,callback,data);
