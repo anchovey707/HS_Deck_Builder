@@ -55,9 +55,8 @@ class ArrowNavigation extends React.Component{
 }
 
 function mapStateToProps(state){
-  var page_num = state.PageCount
   return({
-    page_num: page_num
+    page_num: state.page_num
   })
 }
 

@@ -20,7 +20,7 @@ class CardImages extends React.Component{
     // IF THERE ARE PAGES TO BE LOADED
     if(this.props.pages.length > 0){
       var pages = this.props.pages
-      var page_num = this.props.pageCount
+      var page_num = this.props.page_num
       var curr_page = pages[page_num]
       var img_arr = []
 
@@ -42,12 +42,9 @@ class CardImages extends React.Component{
 }
 
 function mapStateToProps(state){
-  var cardPages = state.CardPages
-  var pageCount = state.PageCount
-
   return({
-    pages: cardPages,
-    pageCount: pageCount
+    pages: state.card_pages,
+    page_num: state.page_num
   })
 }
 

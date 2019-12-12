@@ -14,7 +14,7 @@ class CharacterTabs extends React.Component{
     
 
     // GET TABS FROM GLOBAL STORE 
-    var tabs_arr = this.props.tabs
+    var tabs_arr = this.props.card_tabs
     var num_tabs = tabs_arr.length
 
 
@@ -47,9 +47,8 @@ class CharacterTabs extends React.Component{
 }
 
 function mapStateToProps(state){
-  var tabs = state.CardTabs
   return{
-    tabs: tabs
+    card_tabs: state.card_tabs
   }
 }
 

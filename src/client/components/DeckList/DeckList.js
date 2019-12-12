@@ -47,9 +47,8 @@ class DeckList extends React.Component{
 }
 
 function mapStateToProps(state){
-  var deck = state.Deck
   return({
-    deck:deck
+    deck:state.deck
   })
 }
 

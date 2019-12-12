@@ -12,7 +12,7 @@ class CardWindow extends React.Component{
   getFilteredArr(){
 
     // GET CARDS, IF ANY, IN STORE
-    var card_data = this.props.cards
+    var card_data = this.props.card_data
     var filtered_data = []
 
     card_data.map ( (card) => {
@@ -69,16 +69,16 @@ class CardWindow extends React.Component{
   render(){
 
     // IF CARDS IN STORE
-    if(this.props.cards.length > 0){
+    if(this.props.card_data.length > 0){
       this.getPageData()
 
       // GET NAV BAR TYPE
       var nav_type = ''
-      if(this.props.num_pages === 0){
+      if(this.props.page_num === 0){
         nav_type = 'right'
       }
       else{
-        if(this.props.num_pages === this.getMaxNumPages()){
+        if(this.props.page_num === this.getMaxNumPages()){
           nav_type = 'left'
         }
         else{
@@ -110,11 +110,9 @@ class CardWindow extends React.Component{
 
 
 function mapStateToProps(state){
-  var cards = state.CardData
-  var num_pages = state.PageCount
   return({
-    cards:cards,
-    num_pages: num_pages
+    card_data:state.card_data,
+    page_num:state.page_num
   })
 }
 
