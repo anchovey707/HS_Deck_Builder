@@ -4,7 +4,6 @@ import SearchFilter from './SearchFilter';
 import AttackFilter from './AttackFilter';
 import HealthFilter from './HealthFilter';
 import ManaFilter from './ManaFilter';
-import Submit from './Submit';
 
 class FilterBar extends React.Component{
  
@@ -15,7 +14,6 @@ render(){
       <AttackFilter/>
       <HealthFilter/>
       <SearchFilter/>
-      <Submit/>
     </div>
   )
 }
