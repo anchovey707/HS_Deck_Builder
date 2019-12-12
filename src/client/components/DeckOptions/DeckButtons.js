@@ -56,11 +56,22 @@ deleteFromDeck () {
 
   })
 }
-// onHandle() {
-//   fetch(`/getdeck`)
-//       .then(res => res.json())
-//        console.log(res.json());
-// }
+
+saveToDeck() {
+  
+}
+
+// ASYNC FETCH AND CALL ACTION
+handleClick = (name) => {
+
+  var lowercase_name = name.toLowerCase()
+  var url = `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&class=${lowercase_name}&pageSize=100&access_token=USTdYzhi6GloLuBWELb5Z0k1dj6CFWMWyy`
+  fetch(url)
+  .then( res => res.json())
+  .then( data => this.props.addCardData(data))
+  .then(this.props.addClassFilter('class', lowercase_name))
+  .then(this.props.clickTab(name))
+}
 
 
   render () {
