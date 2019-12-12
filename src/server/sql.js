@@ -69,16 +69,9 @@ function deleteDeck(params, callback){
   var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['deckid'] + '\';';
   runQuery(sqlQuery, callback,"POST");
 }
-//
+
 function saveDeck(params, callback){
   var sqlQuery = 'INSERT INTO decks (userID, name, cardData) \
                   VALUES (\'' + params['userid'] + '\', \'' + params['name'] + '\', \'' + params['carddata'] + '\');'
   runQuery(sqlQuery, callback,"POST");
-} 
-
-function saveDeck(params, callback){ //tester code. use above saveDeck() instead of this one.
-  var customSqlQuery = 'SELECT * FROM users'
-  runQuery(customSqlQuery, callback,"GET");
 }
-
-//registerUser('maple', 'syrup');
