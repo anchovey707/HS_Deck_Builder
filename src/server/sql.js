@@ -2,6 +2,7 @@ var mysql = require('mysql');
 var passwordHash = require('./PasswordHash.js');
 
 module.exports.getDeck = getDeck;
+module.exports.getAllDecks = getAllDecks;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
 module.exports.deleteUser = deleteUser;
@@ -43,9 +44,14 @@ function runQuery(sqlString, callback,method){
 
 
 function getDeck(params,callback){
-    var sqlQuery = 'SELECT cardData FROM decks \
+    var sqlQuery = 'SELECT carddata FROM decks \
                     WHERE ID=\'' + params['deckid'] + '\';'; //consider adding LIMIT 1 to return inner JSON
     runQuery(sqlQuery,callback,"GET");
+}
+
+function getAllDecks(params, callback) {
+  var sqlQuery = 'SELECT * FROM decks \;';
+  runQuery(sqlQuery, callback, "GET");
 }
 
 function getUserDecks(params, callback){

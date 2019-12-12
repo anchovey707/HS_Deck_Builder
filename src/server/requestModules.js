@@ -7,6 +7,9 @@ module.exports.handleRequest = function handleRequest(url, callback) {
     if(url.includes('getdeck')) {
         sql.getDeck(params, callback);
     }
+    else if(url.includes('getalldecks')) {
+        sql.getAllDecks(params, callback);
+    }
     else if(url.includes('getuserdecks')) {
         sql.getUserDecks(params, callback);
     }
