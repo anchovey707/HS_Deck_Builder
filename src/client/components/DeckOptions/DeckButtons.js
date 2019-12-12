@@ -10,14 +10,14 @@ class DeckButtons extends React.Component {
 
 
 deleteFromDeck(){
-  let url = 'http://34.227.68.162:8000/deleteDeck?deckid=1';
+  let url = 'http://34.227.68.162:8000/deleteDeck?deckid=' + input_data;
   fetch(url)
   .then( res => res.json())
   .then(data => console.log(data))
 }
 
 loadInDeck() {
-  let url = 'http://34.227.68.162:8000/getDeck?deckid=1';
+  let url = 'http://34.227.68.162:8000/getDeck?deckid=' + input_data;
   fetch(url)
   .then( res => res.json())
   .then(data => console.log(data))
