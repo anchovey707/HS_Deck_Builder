@@ -23,3 +23,8 @@ db host= 34.227.68.162
 db port= 3306
 db user= 'hs_user'
 db pass= 'hearthstone'
+
+
+### FRONT END TO-DO: ###
+
+1. RESET PAGE NUMBERS ON CLASS CHANGE TO NEUTRAL AND BACK
