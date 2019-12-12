@@ -6,8 +6,7 @@ export default (state=initial_state, action) => {
   switch(action.type){
 
     case 'CLICK_TAB':
-      var new_state = action.payload
-      return [new_state]
+      return [action.payload]
 
     default:
       return state

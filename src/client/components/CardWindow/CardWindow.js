@@ -77,11 +77,13 @@ class CardWindow extends React.Component{
       if(this.props.num_pages === 0){
         nav_type = 'right'
       }
-      if(this.props.num_pages === this.getMaxNumPages()){
-        nav_type = 'left'
-      }
       else{
-        nav_type = 'full'
+        if(this.props.num_pages === this.getMaxNumPages()){
+          nav_type = 'left'
+        }
+        else{
+          nav_type = 'full'
+        }
       }
 
       return(
