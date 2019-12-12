@@ -3,7 +3,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import {nextPage, prevPage} from '../../redux/actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import '../../../stylesheets/ArrowNavigation.css';
+import '../../../stylesheets/CardWindow/ArrowNavigation.css';
 
 
 class ArrowNavigation extends React.Component{

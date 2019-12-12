@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../stylesheets/CharacterBackButton.css';
+import '../../../stylesheets/CardWindow/CharacterBackButton.css';
 
 class CharacterBackButton extends React.Component {
 

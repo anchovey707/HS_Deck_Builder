@@ -1,19 +1,23 @@
 import React from 'react'
-import '../../../stylesheets/FilterBar.css';
+import '../../../stylesheets/FilterBar/FilterBar.css';
+import SearchFilter from './SearchFilter';
+import AttackFilter from './AttackFilter';
+import HealthFilter from './HealthFilter';
+import ManaFilter from './ManaFilter';
 
-const FilterBar = () => (
-  <div className='filter-bar'>
-    Filter Bar
-  </div>
-)
-
-const styles = {
-  FilterBar:{
-    height: '10vh',
-    border:'1px solid black',
-    fontWeight: 'bold',
-    textAlign: 'center'
-  }
+class FilterBar extends React.Component{
+ 
+render(){
+  return(
+    <div className='filter-bar'>
+      <ManaFilter/>
+      <AttackFilter/>
+      <HealthFilter/>
+      <SearchFilter/>
+    </div>
+  )
 }
+}
+
 
 export default FilterBar

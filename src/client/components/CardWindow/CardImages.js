@@ -2,7 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {addToDeck} from '../../redux/actions/index';
 import {connect} from 'react-redux';
-import '../../../stylesheets/CardImages.css';
+import '../../../stylesheets/CardWindow/CardImages.css';
 
 
 class CardImages extends React.Component{
