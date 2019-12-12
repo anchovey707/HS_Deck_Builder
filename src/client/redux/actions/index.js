@@ -72,3 +72,11 @@ export const addMaxFilter = (filter_type,val) => {
     payload: val
   })
 }
+
+export const addClassFilter = (filter_type, val) => {
+  return({
+    type: 'ADD_CLASS_FILTER',
+    filter_type: filter_type,
+    payload: val
+  })
+}
