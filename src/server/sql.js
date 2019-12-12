@@ -1,8 +1,9 @@
 var mysql = require('mysql');
-var passwordHash = require('password-hash');
+var passwordHash = require('./PasswordHash.js');
 module.exports.getDeck = getDeck;
 module.exports.getUserDecks = getUserDecks;
 module.exports.registerUser = registerUser;
+module.exports.getUsers = getUsers;
 module.exports.verifyUser = verifyUser;
 module.exports.deleteDeck = deleteDeck;
 module.exports.saveDeck = saveDeck;
@@ -52,16 +53,22 @@ function getUserDecks(params, callback){
 }
 //http://localhost:8080/registerUser?username=DarkSamus&password=smashchamp
 function registerUser(params, callback){
-  var hashedPassword = passwordHash.generate(params['password']);
+  //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'INSERT INTO users (username, password) \
                   VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');';
   runQuery(sqlQuery, callback, "POST");
 }
 
 function verifyUser(params, callback){ 
-  var hashedPassword = passwordHash.generate(params['password']);
+  //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'SELECT ID,username FROM users \
-                  WHERE username=\'' + params['username'] + '\' and password=\'' + hashedPassword + '\';';
+                  WHERE username=\'' + params['username'] + '\' and password=\'' + params['password'] + '\';';
+  runQuery(sqlQuery, callback, "GET");
+}
+
+function getUsers(params, callback) {
+  console.log('Get Users');
+  var sqlQuery = 'SELECT * FROM users \;';
   runQuery(sqlQuery, callback, "GET");
 }
 
