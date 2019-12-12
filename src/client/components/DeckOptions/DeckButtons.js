@@ -26,7 +26,7 @@ loadInDeck() {
 
 saveToDeck(deck) {
 
-  let deckString=deck.toString();
+  let deckString=JSON.stringify(deck);//.toString();
   var url = 'http://34.227.68.162:8000/saveDeck?userid=1&deckName=myDeck&carddata='+deckString;
   fetch(url)
   .then( res => res.json())
