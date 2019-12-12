@@ -15,7 +15,7 @@ var server = http.createServer((req, res) => {
         // when complete POST data is received
         req.on('end', () => {
             // use parse() method
-            data = querystring.parse(data);
+            //data = querystring.parse(data);
             
             // { name: 'John', gender: 'MALE', email: 'john@gmail.com' }
             console.log("DATA==="+data);
