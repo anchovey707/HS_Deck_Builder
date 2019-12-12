@@ -8,30 +8,12 @@ var $ = require('jquery');
 
 
 class DeckButtons extends React.Component {
-  /*
-saveToDeck (deck) {
-  
-  $.ajax ({
-    url:  '/savedeck',
-    data : {userid:'James',deckName:'myDeck',carddata:deck},
-    type : 'POST',
 
-    success: function(response) {
-        console.log(response)
-    },
-    error: function(response) {
-        console.log(response)
-    }
-});
-    console.log(deck);
-
-}*/
 
 loadInDeck() {
   $.ajax ({
     url: '/getDeck',
     data : {deckid : ''},
-    type: 'GET',
 
     success : function(response) {
       console.log(response)
@@ -46,7 +28,6 @@ deleteFromDeck () {
   $.ajax ({
     url : 'deletedeck',
     data : {deckid: ''},
-    type : "DELETE",
 
     success : function(response) {
         console.log(response)
