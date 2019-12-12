@@ -1,13 +1,16 @@
 import React from 'react';
 import '../../../stylesheets/DeckOptions/DeckButtons.css'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+
 var $ = require('jquery');
+
 
 class DeckButtons extends React.Component {
 
-
-
-
 saveToDeck () {
+  
   $.ajax ({
     url:  '/savedeck',
     data : {deckid:''},
@@ -61,6 +64,19 @@ deleteFromDeck () {
 
 
   render () {
+
+    // THIS IS THE DATA YOU WANT FOR DB
+    // |
+    // |
+    // |
+    // v
+    var card_data = this.props.card_data
+    // ^
+    // |
+    // |
+    // |
+    // YOU WENT TOO FAR 
+
     return (
 
       <div className='button-container'>
@@ -72,5 +88,13 @@ deleteFromDeck () {
   }
 }
 
+function mapStateToProps(state){
+  return({
+    card_data: state.card_data
+  })
+}
 
-export default DeckButtons;
+
+
+
+export default connect(mapStateToProps,null)(DeckButtons);
