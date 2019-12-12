@@ -3,26 +3,6 @@ import {connect} from 'react-redux';
 import CardTile from './CardTile';
 import '../../../stylesheets/DeckList.css';
 
-<<<<<<< HEAD
-const DeckList = () => (
-  <div className='deck-list' style={styles.DeckList}>
-    Decklist
-  </div>
-)
-
-const styles = {
-  DeckList:{
-    height: '79vh',
-    width: '22vw',
-    marginTop: '1vh',
-    border: '1px solid black',
-    fontWeight: 'bold',
-    textAlign : 'center',
-    fontSize: '12px'
-
-    
-    
-=======
 class DeckList extends React.Component{
 
   // BOOL TO CHECK IF DECKLIST SHOULD BE CREATED
@@ -63,7 +43,6 @@ class DeckList extends React.Component{
         </div>
       )
     }
->>>>>>> 4c0fe43e751a004868e26df5ad30f5b5322a266f
   }
 }
 
