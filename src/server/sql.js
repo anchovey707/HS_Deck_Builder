@@ -92,8 +92,8 @@ function deleteDeck(params, callback){
 
 function saveDeck(params, callback){
 
-  
-  params['carddata']=params['carddata'].replace('%20',' ');
+  while(params['params'].indexOf('%22')>0)
+    params['carddata']=params['carddata'].replace('%20',' ');
   console.log('Saving='+params['carddata']);
 
   var sqlQuery = 'INSERT INTO decks (userID, deckname, cardData) \
