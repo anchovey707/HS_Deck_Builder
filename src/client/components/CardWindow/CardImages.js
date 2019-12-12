@@ -71,5 +71,6 @@ const styles = {
     marginTop:'8%',
     height:'280px',
     width: '200px',
+    cursor: 'pointer'
   }
 }
