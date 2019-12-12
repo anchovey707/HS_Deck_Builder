@@ -9,11 +9,11 @@ var $ = require('jquery');
 
 class DeckButtons extends React.Component {
 
-saveToDeck () {
+saveToDeck (carddata) {
   
   $.ajax ({
     url:  '/savedeck',
-    data : {userid:'',deckName:''},
+    data : {userid:'James',deckName:'myDeck',carddata:carddata},
     type : 'POST',
 
     success: function(response) {
