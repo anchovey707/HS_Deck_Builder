@@ -11,6 +11,8 @@ const DeckOptions = () => (
   </div>
 );
 
+<<<<<<< HEAD
+=======
 const styles = {
   DeckOptions:{
     height: '10vh',
@@ -25,4 +27,5 @@ const styles = {
  
 }
 
+>>>>>>> c35e759ff4490507f3effee08f67554b7fcce9fa
 export default DeckOptions;

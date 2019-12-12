@@ -20,7 +20,6 @@ class SearchFilter extends React.Component{
       </div>
     )
   }
-
 }
 
 

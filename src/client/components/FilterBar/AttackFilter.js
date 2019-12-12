@@ -1,5 +1,8 @@
 import React from 'react';
 import '../../../stylesheets/FilterBar/FilterOptions.css';
+import {addMinFilter, addMaxFilter} from '../../redux/actions/index';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 class AttackFilter extends React.Component{
 
@@ -8,11 +11,11 @@ class AttackFilter extends React.Component{
   }
   
   addMinAttack(val){
-    alert(val)
+    this.props.addMinFilter('attack', val)
   }
 
   addMaxAttack(val){
-    alert(val)
+    this.props.addMaxFilter('attack', val)
   }
 
   render(){
@@ -52,8 +55,18 @@ class AttackFilter extends React.Component{
       </div>
     )
   }
+}
+
+function mapStateToProps(state){
 
 }
 
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    addMinFilter:addMinFilter,
+    addMaxFilter:addMaxFilter
+  }, dispatch)
+}
 
-export default AttackFilter;
+
+export default connect(mapStateToProps,matchDispatchToProps)(AttackFilter);
