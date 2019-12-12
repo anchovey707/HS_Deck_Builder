@@ -1,7 +1,7 @@
 var sql = require('./sql.js')
 var fs = require('fs');
 
-module.exports.handleRequest = function handleRequest(url, callback) {
+module.exports.handleRequest = function handleRequest(url, callback,data) {
     let params = splitParams(url);
     console.log("Handling request: "+url);
     if(url.includes('getdecks')) {
@@ -14,7 +14,7 @@ module.exports.handleRequest = function handleRequest(url, callback) {
         sql.getUserDecks(params, callback);
     }
     else if(url.includes('savedeck')) {
-        sql.saveDeck(params, callback);
+        sql.saveDeck(params, callback,data);
     }
     else if(url.includes('deletedeck')) {
         sql.deleteDeck(params, callback);
