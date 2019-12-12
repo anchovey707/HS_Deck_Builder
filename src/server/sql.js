@@ -50,6 +50,7 @@ function getDeck(params,callback){
 }
 
 function getDecks(params, callback) {
+  console.log('getDecks');
   var sqlQuery = 'SELECT * FROM decks \;';
   runQuery(sqlQuery, callback, "GET");
 }
