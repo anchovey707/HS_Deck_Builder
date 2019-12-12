@@ -35,9 +35,8 @@ var server = http.createServer((req, res) => {
             if(req.url.includes('png')){
                 res.writeHead(200, {"Content-Type": "image/png"});
                 res.end(result);
-            }
-            console.log('--Respose='+result.toString());
-            res.end(result.toString());
+            }else
+                res.end(result.toString());
         }
     }
     
