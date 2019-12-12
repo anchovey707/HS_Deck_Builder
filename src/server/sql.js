@@ -92,9 +92,9 @@ function deleteDeck(params, callback){
 
 function saveDeck(params, callback){
 
+  
+  params['carddata']=params['carddata'].replace('%20',' ');
   console.log('Saving='+params['carddata']);
-  params['carddata'].replace('%20',' ');
-
 
   var sqlQuery = 'INSERT INTO decks (userID, deckname, cardData) \
                   VALUES (\'' + params['userid'] + '\', \'' + params['deckname'] + '\', \'' + params['carddata'] + '\');';
