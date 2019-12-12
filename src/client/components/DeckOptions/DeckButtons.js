@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../stylesheets/DeckButtons.css'
+import '../../../stylesheets/DeckOptions/DeckButtons.css'
 
 class DeckButtons extends React.Component {
 

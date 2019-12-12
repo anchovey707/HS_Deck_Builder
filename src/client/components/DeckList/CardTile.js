@@ -2,7 +2,7 @@ import React from 'react'
 import {removeFromDeck} from '../../redux/actions/index';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import '../../../stylesheets/CardTile.css';
+import '../../../stylesheets/DeckList/CardTile.css';
 
 class CardTile extends React.Component{
 

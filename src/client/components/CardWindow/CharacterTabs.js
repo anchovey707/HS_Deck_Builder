@@ -1,7 +1,7 @@
 import React from 'react';
 import CharacterClass from './CharacterClass';
 import {connect} from 'react-redux';
-import '../../../stylesheets/CharacterTabs.css';
+import '../../../stylesheets/CardWindow/CharacterTabs.css';
 
 
 class CharacterTabs extends React.Component{
