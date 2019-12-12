@@ -5,8 +5,7 @@ import {bindActionCreators} from 'redux';
 
 
 var $ = require('jquery');
-
-
+var input_data
 class DeckButtons extends React.Component {
 
 
@@ -45,33 +44,35 @@ handleClick = (name) => {
   .then(this.props.clickTab(name))
 }
 
+storeDeckId(val){
+  input_data = val
+}
+
 
 
   render () {
-
-    // THIS IS THE DATA YOU WANT FOR DB
-    // |
-    // |
-    // |
-    // v
+    
     var deck = this.props.deck;
-    // ^
-    // |
-    // |
-    // |
-    // YOU WENT TOO FAR 
+
 
     return (
 
       <div className='button-container'>
         <div>
-        <button  onClick={this.loadInDeck} className='button'>Load</button>
-        <button onClick={ () => this.saveToDeck(deck)} className='button'>Save</button>
-        <button onClick={this.deleteFromDeck} className='button'>Delete</button>
+          <button  onClick={this.loadInDeck} className='button'>Load</button>
+          <button onClick={ () => this.saveToDeck(deck)} className='button'>Save</button>
+          <button onClick={this.deleteFromDeck} className='button'>Delete</button>
         </div>
         <div>
-      <input type = "text" id ="decktext" placeholder = "enter deck name"></input>  
-      </div>
+          <input 
+            type = "text" 
+            id ="decktext" 
+            placeholder = "enter deck name" 
+            onChange = { (e) => {
+              this.storeDeckId(e.target.value)
+            }}  
+          /> 
+        </div>
 
       </div>
       
