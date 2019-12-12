@@ -7,6 +7,7 @@ export default (state = initial_state, action) => {
 
       if(deckFull(state)){
         alert('You already have 30 cards in your deck')
+        return state
       }
 
       if(hasDoubles(state, action.payload)){
@@ -18,8 +19,14 @@ export default (state = initial_state, action) => {
       }
 
     case 'REMOVE_FROM_DECK':
-      var index = state.indexOf(action.payload)
-      let arr_after_remove = state.splice(index,1)
+      var arr_after_remove = []
+
+      for(var i = 0; i < state.length; i++){
+        if(state[i] !== action.payload){
+          arr_after_remove.push(state[i])
+        }
+      }
+
       return arr_after_remove
 
     default:
@@ -28,6 +35,7 @@ export default (state = initial_state, action) => {
   }
 }
 
+// MAXIMUM OF TWO COPIES OF A CARD PER DECK
 function hasDoubles(array, val) {
   var count = 0;
   for (var i = 0; i < array.length; i++) {
@@ -43,6 +51,7 @@ function hasDoubles(array, val) {
   }
 }
 
+// MAXIMUM OF 30 CARDS IN A DECK
 function deckFull(array){
   if(array.length === 30){
     return true

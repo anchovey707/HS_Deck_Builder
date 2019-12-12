@@ -1,0 +1,15 @@
+.card-img-container{
+  height: 77vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 50% 50%;
+}
+
+.card-img{
+  margin-left: 5%;
+  margin-top: 8%;
+  height: 280px;
+  width: 200px;
+  cursor: pointer;
+}

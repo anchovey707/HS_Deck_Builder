@@ -5,14 +5,14 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {showCardData, addCardPages} from '../../redux/actions/index';
 import ArrowNavigation from './ArrowNavigation';
-import CardButton from './CardButton';
+import CharacterBackButton from './CharacterBackButton';
 
 class CardWindow extends React.Component{
 
   getFilteredArr(){
 
     // GET CARDS, IF ANY, IN STORE
-    var card_data = this.props.cards
+    var card_data = this.props.card_data
     var filtered_data = []
 
     card_data.map ( (card) => {
@@ -68,51 +68,37 @@ class CardWindow extends React.Component{
 
   render(){
 
-    // ONLY CREATE PAGES IF CARD DATA EXISTS
-    if(this.props.cards.length > 0){
+    // IF CARDS IN STORE
+    if(this.props.card_data.length > 0){
       this.getPageData()
 
-      // FIRST PAGE 
-      if(this.props.num_pages === 0){
-        return(
-            <div style={styles.CardWindow}>
-              <CardButton />
-              <CharacterTabs/>
-              <CardImages/>
-              <ArrowNavigation type="right"/>
-            </div>
-        )
+      // GET NAV BAR TYPE
+      var nav_type = ''
+      if(this.props.page_num === 0){
+        nav_type = 'right'
       }
-
-      // LAST PAGE
-      if(this.props.num_pages === this.getMaxNumPages() ){
-        return(
-          <div style={styles.CardWindow}>
-            <CardButton />
-            <CharacterTabs/>
-            <CardImages/>
-            <ArrowNavigation type="left" />
-          </div>
-        )
-      } 
-
-      // ELSE
       else{
-        return(
-          <div style={styles.CardWindow}>
-            <CardButton />
-            <CharacterTabs/>
-            <CardImages/>
-            <ArrowNavigation type="full"/>
-          </div>
-        )
+        if(this.props.page_num === this.getMaxNumPages()){
+          nav_type = 'left'
+        }
+        else{
+          nav_type = 'full'
+        }
       }
-    }
 
-    // IF NO CARD DATA 
+      return(
+        <div>
+          <CharacterBackButton />
+          <CharacterTabs/>
+          <CardImages/>
+          <ArrowNavigation type={nav_type}/>
+        </div>
+      )
+    }
+    
     else{
       return(
-        <div style={styles.CardWindow}>
+        <div>
           <CharacterTabs/>
           <CardImages/>
         </div>
@@ -122,12 +108,11 @@ class CardWindow extends React.Component{
 }
 
 
+
 function mapStateToProps(state){
-  var cards = state.CardData
-  var num_pages = state.PageCount
   return({
-    cards:cards,
-    num_pages: num_pages
+    card_data:state.card_data,
+    page_num:state.page_num
   })
 }
 
@@ -139,12 +124,3 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps,matchDispatchToProps)(CardWindow);
-
-const styles = {
-  CardWindow:{
-    height: '85vh',
-    width: '75vw',
-    border: '1px solid black',
-    position:'relative',
-  }
-}

@@ -6,13 +6,10 @@ export default (state = initial_state, action) => {
   switch(action.type){
 
     case 'INCREASE_PAGE_COUNT':
-      let next_page = state + 1
-      return next_page
+      return (state+1)
     
     case 'DECREASE_PAGE_COUNT':
-      let prev_page = state - 1
-      console.log(prev_page)
-      return prev_page
+      return (state-1)
 
     default:
       return state

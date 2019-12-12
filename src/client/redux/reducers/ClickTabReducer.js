@@ -6,8 +6,12 @@ export default (state=initial_state, action) => {
   switch(action.type){
 
     case 'CLICK_TAB':
-      var new_state = action.payload
-      return [new_state]
+      if(action.payload === 'neutral'){
+        return state
+      }
+      else{
+        return [action.payload, 'neutral']
+      }      
 
     default:
       return state

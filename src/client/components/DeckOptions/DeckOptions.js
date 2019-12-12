@@ -1,25 +1,14 @@
 import React from 'react';
-import Buttons from './Buttons';
-
+import DeckButtons from './DeckButtons';
+import '../../../stylesheets/DeckOptions.css';
 
 const DeckOptions = () => (
-  <div className='deck-options' style={styles.DeckOptions}>
+  <div className='deck-options-container'>
     Deck Options 
    
-    <Buttons />
+    <DeckButtons />
  
   </div>
 );
-
-const styles = {
-  DeckOptions:{
-    height: '10vh',
-    width: '22vw',
-    border:'1px solid black',
-    
-    
-  },
- 
-}
 
 export default DeckOptions;

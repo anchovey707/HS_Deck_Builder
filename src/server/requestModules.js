@@ -3,12 +3,7 @@ var fs = require('fs');
 
 module.exports.handleRequest = function handleRequest(url, callback) {
     let params = splitParams(url);
-    console.log(url);
-    if(!url.includes('?')){
-        if(url==="/")
-            url+="index.html";
-        //callback(fs.readFileSync("./build"+url));
-    }
+    //console.log("Handling request: "+url);
     if(url.includes('getdeck')) {
         sql.getDeck(params, callback);
     }
@@ -27,10 +22,17 @@ module.exports.handleRequest = function handleRequest(url, callback) {
     else if(url.includes('verifyuser')) {
         sql.verifyUser(params, callback);
     } else {
-        let error = new Error();
-        error.code = 'ER_FUNCTION_NOT_FOUND';
-        error.message = 'specified function was not found';
-        return callback(error, null);
+        if(url==="/")
+            url+="index.html";
+        try{
+            callback(null,fs.readFileSync("./build"+url));
+        }catch(e){
+            callback('404',null);
+        }
+        // let error = new Error();
+        // error.code = 'ER_FUNCTION_NOT_FOUND';
+        // error.message = 'specified function was not found';
+        // return callback(error, null);
     }
 }
 
@@ -46,7 +48,7 @@ function splitParams(url){
                     pair[1]='';
                     params[pair[0].toLowerCase()]=pair[1].toLowerCase();
             }
-            console.log("   "+pair[0]+"="+pair[1]);
+            console.log("   "+pair[0]+" = "+pair[1]);
         }
     }
     return params;
