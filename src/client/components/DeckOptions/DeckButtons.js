@@ -59,6 +59,15 @@ deleteFromDeck () {
 }
 
 saveToDeck(deck) {
+
+
+  let JSONString='{';
+  var decks=[];
+  decks.forEach(function(item,index){
+    JSONString+=item[0];
+  });
+  console.log(deck);
+
   let deckJSON=JSON.stringify(deck);
   var url = 'http://34.227.68.162:8000/saveDeck?userid=1&deckName=myDeck&carddata='+deckJSON;
   fetch(url)
