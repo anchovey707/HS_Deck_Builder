@@ -28,3 +28,13 @@ db pass= 'hearthstone'
 ### FRONT END TO-DO: ###
 
 1. RESET PAGE NUMBERS ON CLASS CHANGE TO NEUTRAL AND BACK
+
+### MENTION DURING PRESENTATION ###
+
+1. High number of commits reflect CI/CD
+
+2. Loose coupling
+
+3. Docker usage
+
+4. Jenkins pipeline tests?
