@@ -19,6 +19,7 @@ loadInDeck() {
   let url = 'http://34.227.68.162:8000/getDeck?deckid=' + input_data;
   fetch(url)
   .then( res => res.json())
+  .then(this.clearDeck())
   .then(data => this.putDeckIntoStore(data))
 }
 
@@ -34,6 +35,10 @@ saveToDeck(deck) {
   fetch(url)
   .then( res => res.json())
   .then(data => console.log(data))
+}
+
+clearDeck(){
+  this.putDeckIntoStore('');
 }
 
 // ASYNC FETCH AND CALL ACTION
@@ -60,24 +65,24 @@ storeDeckId(val){
 
     return (
 
-      <div className='button-container'>
-        <div>
-          <button  onClick={ () => this.loadInDeck()} className='button'>Load</button>
+      <div className='deck-options-container'>
+        <div className='deck-button-container'>
+          <button onClick={ () => this.clearDeck()} className='button'>Clear</button>
+          <button onClick={ () => this.loadInDeck()} className='button'>Load</button>
           <button onClick={ () => this.saveToDeck(deck)} className='button'>Save</button>
           <button onClick={ () => this.deleteFromDeck()} className='button'>Delete</button>
         </div>
-        <div>
+        <div className="deck-input-text">
           <input 
             type = "text" 
             id ="decktext" 
-            placeholder = "enter deck name" 
+            placeholder = "enter deck ID" 
             onChange = { (e) => {
               this.storeDeckId(e.target.value)
             }}  
           /> 
         </div>
-
-      </div>
+    </div>
       
     );
   }

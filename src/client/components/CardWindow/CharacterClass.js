@@ -30,7 +30,7 @@ class CharacterClass extends React.Component{
       return(
         <div className='card-tab' onClick={ () => this.handleClick(this.props.name)}>
           {this.props.name.toUpperCase()}
-          <img src={require(`../../../images/${this.props.name}_icon.png`)} className='card-tab-img' alt="icon" />
+          <img title={this.props.name} src={require(`../../../images/${this.props.name}_icon.png`)} className='card-tab-img' alt="icon" />
         </div>
       )
     }
@@ -39,7 +39,7 @@ class CharacterClass extends React.Component{
     else{
       return(
         <div className='card-tab' onClick={ () => this.handleClick(this.props.name)}>
-          <img src={require(`../../../images/${this.props.name}_icon.png`)} className='card-tab-img' alt="icon" />
+          <img title={this.props.name} src={require(`../../../images/${this.props.name}_icon.png`)} className='card-tab-img' alt="icon" />
         </div>
       )
     }

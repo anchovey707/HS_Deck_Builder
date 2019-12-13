@@ -1,10 +1,25 @@
-.button-container{
+.deck-button-container{
   display:flex;
-  flex-direction:row;
+  flex-direction: row;
+  flex:1;
 }
 
 .button{
   display:block;
   border:1px solid black;
-  margin-left:2vw;
+  flex:1;
+  cursor: pointer;
+  height:100%;
+}
+
+
+.deck-input-text{
+  flex:1;
+}
+
+.deck-input-text>input{
+  width:100%;
+  height:auto;
+  padding:0;
+  margin:0;
 }

@@ -20,11 +20,12 @@ export default (state = initial_state, action) => {
 
     case 'REMOVE_FROM_DECK':
       var arr_after_remove = []
-
+      let found=false;
       for(var i = 0; i < state.length; i++){
-        if(state[i] !== action.payload){
+        if(state[i] !== action.payload||found)
           arr_after_remove.push(state[i])
-        }
+        else
+          found=true;
       }
 
       return arr_after_remove

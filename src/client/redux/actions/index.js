@@ -64,6 +64,13 @@ export const removeFromDeck = (card_name) => {
   })
 }
 
+export const clearDeck = (card_name) => {
+  return({
+    type:'CLEAR_FROM_DECK',
+    //payload: card_name
+  })
+}
+
 
 export const addMinFilter = (filter_type,val) => {
   return({
