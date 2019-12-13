@@ -64,7 +64,7 @@ export const removeFromDeck = (card_name) => {
   })
 }
 
-export const clearDeck = (card_name) => {
+export const clearDeck = () => {
   return({
     type:'CLEAR_FROM_DECK',
     //payload: card_name

@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../stylesheets/DeckOptions/DeckButtons.css'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addToDeck} from '../../redux/actions/index';
+import {addToDeck,clearDeck} from '../../redux/actions/index';
 
 var input_data
 class DeckButtons extends React.Component {
@@ -38,7 +38,7 @@ saveToDeck(deck) {
 }
 
 clearDeck(){
-  this.putDeckIntoStore('');
+  this.props.clearDeck();
 }
 
 // ASYNC FETCH AND CALL ACTION
@@ -98,6 +98,7 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     addToDeck: addToDeck,
+    clearDeck: clearDeck,
   }, dispatch)
 }
 

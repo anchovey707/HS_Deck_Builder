@@ -30,6 +30,9 @@ export default (state = initial_state, action) => {
 
       return arr_after_remove
 
+    case 'CLEAR_FROM_DECK':
+      return [];
+
     default:
       return state  
   
