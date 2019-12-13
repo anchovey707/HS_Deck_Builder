@@ -54,6 +54,7 @@ function basicQuery(sqlString, params,callback){
       con.query(sqlString, (err, result) => {
         if (err) throw err;
         console.log(result);
+        console.log("length:"+result);
         if(result.length>1)
           sqlQuery = "UPDATE decks set cardData='"+params['carddata']+"' where userID="+params['userid']+" and deckName='"+params['deckname']+"';";
         else
