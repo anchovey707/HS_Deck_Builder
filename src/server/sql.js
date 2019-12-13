@@ -42,9 +42,19 @@ function runQuery(sqlString, callback,method){
 
 //used to determine if there is anything
 function basicQuery(sqlString){
-  con.connect((err) => {
-    if (err) throw err;
-    console.log('Connected!');
+  if(con.state!=='connected')
+    con.connect((err) => {
+      if (err) throw err;
+      console.log('Connected!');
+      con.query(sqlString, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        if(result.lenght===1)
+          return result[0].found;
+        return 0;
+      });
+    });
+  else
     con.query(sqlString, (err, result) => {
       if (err) throw err;
       console.log(result);
@@ -52,7 +62,6 @@ function basicQuery(sqlString){
         return result[0].found;
       return 0;
     });
-  });
 }
 
 
