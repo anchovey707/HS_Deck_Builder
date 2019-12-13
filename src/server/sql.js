@@ -10,14 +10,15 @@ module.exports.getUsers = getUsers;
 module.exports.verifyUser = verifyUser;
 module.exports.deleteDeck = deleteDeck;
 module.exports.saveDeck = saveDeck;
+var con = mysql.createConnection({
+  host: "34.227.68.162", 
+  user: "hs_user",
+  password: "hearthstone",
+  database: "hs_decks"
+});
 
 function runQuery(sqlString, callback,method){
-    var con = mysql.createConnection({
-        host: "34.227.68.162", 
-        user: "hs_user",
-        password: "hearthstone",
-        database: "hs_decks"
-      });
+    
 
     con.connect((err) => {
       if (err) {
@@ -39,13 +40,27 @@ function runQuery(sqlString, callback,method){
     });
 }
 
+//used to determine if there is anything
+function basicQuery(sqlString){
+  con.connect((err) => {
+    if (err) throw err;
+    console.log('Connected!');
+    con.query(sqlString, (err, result) => {
+      if (err) throw err;
+      console.log(result);
+      if(result.lenght===1)
+        return result[0].found;
+      return 0;
+    });
+  });
+}
 
 
 
 
 function getDeck(params,callback){
     var sqlQuery = 'SELECT carddata FROM decks \
-                    WHERE ID=\'' + params['deckid'] + '\';'; //consider adding LIMIT 1 to return inner JSON
+                    WHERE userID=1 and deckname=\'' + params['deckname'] + '\' LIMIT 1;'; //consider adding LIMIT 1 to return inner JSON
     runQuery(sqlQuery,callback,"GET");
 }
 
@@ -86,11 +101,12 @@ function getUsers(params, callback) {
 }
 
 function deleteDeck(params, callback){
-  var sqlQuery = 'DELETE FROM decks WHERE ID=\'' + params['deckid'] + '\';';
+  var sqlQuery = 'DELETE FROM decks WHERE userID=1 and deckname=\'' + params['deckname'] + '\';';
   runQuery(sqlQuery, callback,"POST");
 }
 
 function saveDeck(params, callback){
+
 
   while(params['carddata'].indexOf('%20')>=0)
     params['carddata']=params['carddata'].replace('%20',' ');
@@ -98,9 +114,13 @@ function saveDeck(params, callback){
     params['carddata']=params['carddata'].replace('%22,%22','/');
     params['carddata']=params['carddata'].substring(4,params['carddata'].length-4);
   console.log('Saving='+params['carddata']);
-   
-  var sqlQuery = 'INSERT INTO decks (userID, deckname, cardData) \
-                  VALUES (\'' + params['userid'] + '\', \'' + params['deckname'] + '\', \'' + params['carddata'] + '\');';
-  console.log();
-  runQuery(sqlQuery, callback,"POST");
+
+  let found=basicQuery("select 1 as 'found' from decks where userID="+params['userid']+" and deckname='"+params['deckname']+"' limit 1;");
+  if(!found){
+    var sqlQuery = 'INSERT INTO decks (userID, deckname, cardData) \
+                    VALUES (\'' + params['userid'] + '\', \'' + params['deckname'] + '\', \'' + params['carddata'] + '\');';
+    runQuery(sqlQuery, callback,"POST");
+  }else{
+    callback(null,'ER_DECK_EXSIST');
+  }
 }

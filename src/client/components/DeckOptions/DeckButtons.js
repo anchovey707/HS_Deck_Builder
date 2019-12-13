@@ -12,6 +12,7 @@ deleteFromDeck(){
   let url = 'http://34.227.68.162:8000/deleteDeck?deckid=' + input_data;
   fetch(url)
   .then( res => res.json())
+  .then(this.clearDeck())
   .then(data => console.log(data))
 }
 
@@ -30,8 +31,8 @@ putDeckIntoStore(loaded_data){
 
 saveToDeck(deck) {
 
-  let deckString=JSON.stringify(deck);//.toString();
-  var url = 'http://34.227.68.162:8000/saveDeck?userid=1&deckName=myDeck&carddata='+deckString;
+  let deckString=JSON.stringify(deck);
+  var url = 'http://34.227.68.162:8000/saveDeck?userid=1&deckName='+input_data+'&carddata='+deckString;
   fetch(url)
   .then( res => res.json())
   .then(data => console.log(data))
@@ -76,7 +77,7 @@ storeDeckId(val){
           <input 
             type = "text" 
             id ="decktext" 
-            placeholder = "enter deck ID" 
+            placeholder = "enter deck name" 
             onChange = { (e) => {
               this.storeDeckId(e.target.value)
             }}  
