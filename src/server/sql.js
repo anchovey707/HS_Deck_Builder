@@ -70,7 +70,7 @@ function basicQuery(sqlString, params,callback){
 
 function getDeck(params,callback){
     var sqlQuery = 'SELECT carddata FROM decks \
-                    WHERE userID=1 and deckname=\'' + params['deckname'] + '\' LIMIT 1;'; //consider adding LIMIT 1 to return inner JSON
+                    WHERE userID=1 and deckname=\'' + params['deckname'] + '\' LIMIT 1;';
     runQuery(sqlQuery,callback,"GET");
 }
 

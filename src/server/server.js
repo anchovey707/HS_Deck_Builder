@@ -6,7 +6,7 @@ var server = http.createServer((req, res) => {
     console.log("Method: " + req.method);
     console.log("  URL: '" + req.url+"'");
     
-    let url = req.url.toLowerCase();
+    let url = req.url;
     requestHandler.handleRequest(url,callback);
 
     function callback(error, result) {
