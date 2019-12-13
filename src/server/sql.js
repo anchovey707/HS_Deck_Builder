@@ -12,7 +12,7 @@ module.exports.deleteDeck = deleteDeck;
 module.exports.saveDeck = saveDeck;
 
 
-function runQuery(sqlString, callback){
+function runQuery(sqlString, callback,method){
     var con = mysql.createConnection({
       host: "34.227.68.162", 
       user: "hs_user",
