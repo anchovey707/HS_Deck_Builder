@@ -9,7 +9,7 @@ class DeckButtons extends React.Component {
 
 
 deleteFromDeck(){
-  let url = 'http://34.227.68.162:8000/deleteDeck?deckid=' + input_data;
+  let url = 'http://34.227.68.162:8000/deleteDeck?deckname=' + input_data;
   fetch(url)
   .then( res => res.json())
   .then(this.clearDeck())
@@ -17,7 +17,7 @@ deleteFromDeck(){
 }
 
 loadInDeck() {
-  let url = 'http://34.227.68.162:8000/getDeck?deckid=' + input_data;
+  let url = 'http://34.227.68.162:8000/getDeck?deckname=' + input_data;
   fetch(url)
   .then( res => res.json())
   .then(this.clearDeck())
@@ -26,11 +26,11 @@ loadInDeck() {
 
 putDeckIntoStore(loaded_data){
   var arr = loaded_data[0].carddata.split('/')
-  arr.map( card => this.props.addToDeck(card))
+  if(arr.length>1)
+    arr.map( card => this.props.addToDeck(card))
 }
 
 saveToDeck(deck) {
-
   let deckString=JSON.stringify(deck);
   var url = 'http://34.227.68.162:8000/saveDeck?userid=1&deckName='+input_data+'&carddata='+deckString;
   fetch(url)
