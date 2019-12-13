@@ -42,7 +42,12 @@ function runQuery(sqlString, callback){
 
 //used to determine if there is anything
 function basicQuery(sqlString, callback){
-  if(con.state==='disconnected')
+    var con = mysql.createConnection({
+      host: "34.227.68.162", 
+      user: "hs_user",
+      password: "hearthstone",
+      database: "hs_decks"
+    });
     con.connect((err) => {
       if (err) throw err;
       console.log('Connected!');
