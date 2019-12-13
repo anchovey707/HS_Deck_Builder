@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../stylesheets/DeckOptions/DeckButtons.css'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addToDeck, displayLoadedDeck} from '../../redux/actions/index';
+import {addToDeck} from '../../redux/actions/index';
 
 var input_data
 class DeckButtons extends React.Component {
@@ -19,7 +19,12 @@ loadInDeck() {
   let url = 'http://34.227.68.162:8000/getDeck?deckid=' + input_data;
   fetch(url)
   .then( res => res.json())
-  .then(data => this.props.displayLoadedDeck(data))
+  .then(data => this.putDeckIntoStore(data))
+}
+
+putDeckIntoStore(loaded_data){
+  var arr = loaded_data[0].carddata.split('/')
+  arr.map( card => this.props.addToDeck(card))
 }
 
 saveToDeck(deck) {
@@ -88,7 +93,6 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     addToDeck: addToDeck,
-    displayLoadedDeck: displayLoadedDeck,
   }, dispatch)
 }
 

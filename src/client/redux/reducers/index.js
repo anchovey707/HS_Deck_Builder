@@ -5,7 +5,6 @@ import CardPageReducer from './CardPageReducer';
 import PageNumberReducer from './PageNumberReducer';
 import DeckReducer from './DeckReducer';
 import FilterReducer from './FilterReducer';
-import LoadDeckReducer from './LoadDeckReducer';
 
 export default combineReducers({
   card_tabs:ClickTabReducer,
@@ -14,5 +13,4 @@ export default combineReducers({
   page_num: PageNumberReducer,
   deck: DeckReducer,
   filters: FilterReducer,
-  loadedDeck: LoadDeckReducer
 });
