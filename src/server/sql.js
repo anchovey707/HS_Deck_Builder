@@ -41,7 +41,7 @@ function runQuery(sqlString, callback){
 }
 
 //used to determine if there is anything
-function basicQuery(sqlString, callback){
+function basicQuery(sqlString, params,callback){
     var con = mysql.createConnection({
       host: "34.227.68.162", 
       user: "hs_user",
