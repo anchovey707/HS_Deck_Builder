@@ -42,8 +42,7 @@ function runQuery(sqlString, callback,method){
 
 //used to determine if there is anything
 function basicQuery(sqlString){
-  console.log('CONNETION STATE====='+con.state);
-  if(con.state!=='connected')
+  if(con.state==='disconnected')
     con.connect((err) => {
       if (err) throw err;
       console.log('Connected!');
