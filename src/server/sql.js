@@ -26,7 +26,7 @@ function runQuery(sqlString, callback,method){
       }
 
       console.log('Connected!');
-      
+      console.log(sqlString);
       con.query(sqlString, (err, result) => {
         if (err) {
           return callback(err, null);
@@ -58,6 +58,7 @@ function basicQuery(sqlString, params,callback){
           sqlQuery = "INSERT INTO decks (userID, deckname, cardData) VALUES (" + params['userid'] + ",'" + params['deckname'] + "','" + params['carddata'] + "');";
         else
             sqlQuery = "UPDATE decks set cardData='"+params['carddata']+"' where userID="+params['userid']+" and deckName='"+params['deckName']+"';";
+        
         runQuery(sqlQuery, callback);
       });
     });
