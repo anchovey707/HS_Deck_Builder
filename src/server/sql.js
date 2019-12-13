@@ -55,7 +55,7 @@ function basicQuery(sqlString, params,callback){
         if (err) throw err;
         console.log(result);
         console.log("length:"+result);
-        if(result.length>1)
+        if(result.length>0)
           sqlQuery = "UPDATE decks set cardData='"+params['carddata']+"' where userID="+params['userid']+" and deckName='"+params['deckname']+"';";
         else
           sqlQuery = "INSERT INTO decks (userID, deckname, cardData) VALUES (" + params['userid'] + ",'" + params['deckname'] + "','" + params['carddata'] + "');"; 
