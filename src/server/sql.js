@@ -49,8 +49,8 @@ function basicQuery(sqlString){
       con.query(sqlString, (err, result) => {
         if (err) throw err;
         console.log(result);
-        if(result.lenght===1)
-          return result[0].found;
+        if(result.length>1)
+          return 1;
         return 0;
       });
     });
@@ -58,8 +58,8 @@ function basicQuery(sqlString){
     con.query(sqlString, (err, result) => {
       if (err) throw err;
       console.log(result);
-      if(result.length===1)
-        return result[0].found;
+      if(result.length>1)
+        return 1;
       return 0;
     });
 }
@@ -125,6 +125,7 @@ function saveDeck(params, callback){
   console.log('Saving='+params['carddata']);
 
   let found=basicQuery("select 1 as 'found' from decks where userID="+params['userid']+" and deckname='"+params['deckname']+"' limit 1;");
+  console.log('FOUND='+found);
   if(!found){
     var sqlQuery = 'INSERT INTO decks (userID, deckname, cardData) \
                     VALUES (\'' + params['userid'] + '\', \'' + params['deckname'] + '\', \'' + params['carddata'] + '\');';
