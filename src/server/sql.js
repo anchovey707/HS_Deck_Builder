@@ -57,7 +57,7 @@ function basicQuery(sqlString, params,callback){
         if(result.length>1)
           sqlQuery = "INSERT INTO decks (userID, deckname, cardData) VALUES (" + params['userid'] + ",'" + params['deckname'] + "','" + params['carddata'] + "');";
         else
-            sqlQuery = "UPDATE decks set cardData='"+params['carddata']+"' where userID="+params['userid']+" and deckName='"+params['deckName']+"';";
+            sqlQuery = "UPDATE decks set cardData='"+params['carddata']+"' where userID="+params['userid']+" and deckName='"+params['deckname']+"';";
         
         runQuery(sqlQuery, callback);
       });
