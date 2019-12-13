@@ -59,7 +59,7 @@ function basicQuery(sqlString, params,callback){
         else
             sqlQuery = "UPDATE decks set cardData='"+params['carddata']+"' where userID="+params['userid']+" and deckName='"+params['deckname']+"';";
         
-        runQuery(sqlQuery, callback);
+        runQuery(sqlQuery, callback,'POST');
       });
     });
 }
