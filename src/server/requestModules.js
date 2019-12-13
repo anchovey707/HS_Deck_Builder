@@ -55,7 +55,7 @@ function splitParams(url){
             if(pair[0]!==undefined){
                 if(pair[1]===undefined)
                     pair[1]='';
-                    params[pair[0].toLowerCase()]=pair[1].toLowerCase();
+                    params[pair[0].toLowerCase()]=pair[1]);
             }
             console.log("   "+pair[0]+" = "+pair[1]);
         }
