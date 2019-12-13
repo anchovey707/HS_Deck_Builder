@@ -58,7 +58,7 @@ function basicQuery(sqlString){
     con.query(sqlString, (err, result) => {
       if (err) throw err;
       console.log(result);
-      if(result.lenght===1)
+      if(result.length===1)
         return result[0].found;
       return 0;
     });
