@@ -2,9 +2,8 @@ import React from 'react';
 import '../../../stylesheets/DeckOptions/DeckButtons.css'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {addToDeck, displayLoadedDeck} from '../../redux/actions/index';
 
-
-var $ = require('jquery');
 var input_data
 class DeckButtons extends React.Component {
 
@@ -20,7 +19,7 @@ loadInDeck() {
   let url = 'http://34.227.68.162:8000/getDeck?deckid=' + input_data;
   fetch(url)
   .then( res => res.json())
-  .then(data => console.log(data))
+  .then(data => this.props.displayLoadedDeck(data))
 }
 
 saveToDeck(deck) {
@@ -54,14 +53,13 @@ storeDeckId(val){
     
     var deck = this.props.deck;
 
-
     return (
 
       <div className='button-container'>
         <div>
-          <button  onClick={this.loadInDeck} className='button'>Load</button>
+          <button  onClick={ () => this.loadInDeck()} className='button'>Load</button>
           <button onClick={ () => this.saveToDeck(deck)} className='button'>Save</button>
-          <button onClick={this.deleteFromDeck} className='button'>Delete</button>
+          <button onClick={ () => this.deleteFromDeck()} className='button'>Delete</button>
         </div>
         <div>
           <input 
@@ -82,9 +80,16 @@ storeDeckId(val){
 
 function mapStateToProps(state){
   return({
-    deck: state.deck
+    deck: state.deck,
+    loadedDeck: state.loadedDeck
   })
 }
 
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    addToDeck: addToDeck,
+    displayLoadedDeck: displayLoadedDeck,
+  }, dispatch)
+}
 
-export default connect(mapStateToProps,null)(DeckButtons);
+export default connect(mapStateToProps,matchDispatchToProps)(DeckButtons);

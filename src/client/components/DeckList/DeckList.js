@@ -16,6 +16,8 @@ class DeckList extends React.Component{
     }
   }
 
+  /* = = = = = == = = = = = = = = = = = = = = =  */
+
   // CREATE DECK TILES 
   renderList(){
     var deck = this.props.deck

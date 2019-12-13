@@ -49,6 +49,14 @@ export const addToDeck = (card_name) => {
   })
 }
 
+export const displayLoadedDeck = (deck) => {
+  console.log(deck[0].carddata)
+  return({
+    type:'DISPLAY_LOADED_DECK',
+    payload: deck[0].carddata.split('/')
+  })
+}
+
 export const removeFromDeck = (card_name) => {
   return({
     type:'REMOVE_FROM_DECK',
