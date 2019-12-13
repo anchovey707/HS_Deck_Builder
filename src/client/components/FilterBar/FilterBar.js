@@ -9,7 +9,7 @@ class FilterBar extends React.Component{
  
 render(){
   return(
-    <div className='filter-bar'>
+    <div className='filter-bar dark-background'>
       <ManaFilter/>
       <AttackFilter/>
       <HealthFilter/>

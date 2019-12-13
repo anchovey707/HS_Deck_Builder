@@ -39,7 +39,7 @@ class CharacterTabs extends React.Component{
 
   render(){
    return(
-     <div className='card-tabs'>
+     <div className='card-tabs dark-background'>
        {this.renderTabs()}
      </div>
    )

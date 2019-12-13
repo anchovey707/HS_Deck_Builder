@@ -34,13 +34,13 @@ class DeckList extends React.Component{
     if(this.cardsInDeckList()){
       var list = this.renderList()
       return(
-        <div className='decklist'> {list} </div>
+        <div className='decklist dark-background'> {list} </div>
       )
     }
     
     else{
       return(
-        <div className='decklist'>
+        <div className='decklist dark-background'>
 
         </div>
       )

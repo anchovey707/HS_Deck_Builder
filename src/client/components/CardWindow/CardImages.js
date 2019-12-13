@@ -34,7 +34,7 @@ class CardImages extends React.Component{
     else{
       return(
         <div>
-          Images
+          
         </div>
       )
     }

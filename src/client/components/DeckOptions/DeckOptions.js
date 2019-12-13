@@ -3,7 +3,7 @@ import DeckButtons from './DeckButtons';
 import '../../../stylesheets/DeckOptions/DeckOptions.css';
 
 const DeckOptions = () => (
-  <div>
+  <div class="dark-background">
     Deck Options 
    
     <DeckButtons />

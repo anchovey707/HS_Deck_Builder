@@ -77,7 +77,7 @@ storeDeckId(val){
           <input 
             type = "text" 
             id ="decktext" 
-            placeholder = "enter deck name" 
+            placeholder = "Enter deck name" 
             onChange = { (e) => {
               this.storeDeckId(e.target.value)
             }}  

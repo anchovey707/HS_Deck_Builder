@@ -11,7 +11,10 @@
   cursor: pointer;
   height:100%;
 }
-
+.button:hover{
+  background-color: rgb(35,35,35);
+  color:white;
+}
 
 .deck-input-text{
   flex:1;
