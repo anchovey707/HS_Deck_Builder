@@ -69,48 +69,48 @@ function basicQuery(sqlString, params,callback){
 function getDeck(params,callback){
     var sqlQuery = 'SELECT carddata FROM decks \
                     WHERE userID=1 and deckname=\'' + params['deckname'] + '\' LIMIT 1;'; //consider adding LIMIT 1 to return inner JSON
-    runQuery(sqlQuery,callback);
+    runQuery(sqlQuery,callback,"GET");
 }
 
 function getDecks(params, callback) {
   console.log('getDecks');
   var sqlQuery = 'SELECT * FROM decks \;';
-  runQuery(sqlQuery, callback);
+  runQuery(sqlQuery, callback, "GET");
 }
 
 function getUserDecks(params, callback){
     var sqlQuery = 'SELECT ID,name FROM decks \
                     WHERE userID=\'' + params['userid'] + '\';';
-    runQuery(sqlQuery,callback);
+    runQuery(sqlQuery,callback,"GET");
 }
 
 function registerUser(params, callback){
   //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'INSERT INTO users (username, password) \
                   VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');';
-  runQuery(sqlQuery, callback);
+  runQuery(sqlQuery, callback, "POST");
 }
 
 function deleteUser(params, callback) {
   var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['userid'] + '\';';
-  runQuery(sqlQuery, callback);
+  runQuery(sqlQuery, callback, "POST");
 }
 
 function verifyUser(params, callback){ 
   //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'SELECT ID,username FROM users \
                   WHERE username=\'' + params['username'] + '\' and password=\'' + params['password'] + '\';';
-  runQuery(sqlQuery, callback);
+  runQuery(sqlQuery, callback, "GET");
 }
 
 function getUsers(params, callback) {
   var sqlQuery = 'SELECT * FROM users \;';
-  runQuery(sqlQuery, callback);
+  runQuery(sqlQuery, callback, "GET");
 }
 
 function deleteDeck(params, callback){
   var sqlQuery = 'DELETE FROM decks WHERE userID=1 and deckname=\'' + params['deckname'] + '\';';
-  runQuery(sqlQuery, callback);
+  runQuery(sqlQuery, callback,"POST");
 }
 
 function saveDeck(params, callback){
