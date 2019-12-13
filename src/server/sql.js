@@ -19,25 +19,30 @@ function runQuery(sqlString, callback,method){
       password: "hearthstone",
       database: "hs_decks"
     });
-
-    con.connect((err) => {
-      if (err) {
-        return callback(err, null);
-      }
-
-      console.log('Connected!');
-      console.log(sqlString);
-      con.query(sqlString, (err, result) => {
+    try{
+      con.connect((err) => {
         if (err) {
           return callback(err, null);
         }
-        if(method === "GET") {
-          callback(null,JSON.stringify(result));
-        } else if (method === "POST"){
-          callback(null,result.affectedRows);
-        }
+
+        console.log('Connected!');
+        console.log(sqlString);
+        con.query(sqlString, (err, result) => {
+          
+          con.end();
+          if (err) {
+            return callback(err, null);
+          }
+          if(method === "GET") {
+            callback(null,JSON.stringify(result));
+          } else if (method === "POST"){
+            callback(null,result.affectedRows);
+          }
+        });
       });
-    });
+    }catch(e){
+      console.log(e.message);
+    }
 }
 
 //used to determine if there is anything
@@ -48,21 +53,26 @@ function basicQuery(sqlString, params,callback){
       password: "hearthstone",
       database: "hs_decks"
     });
-    con.connect((err) => {
-      if (err) throw err;
-      console.log('Connected!');
-      con.query(sqlString, (err, result) => {
+    try{
+      con.connect((err) => {
         if (err) throw err;
-        console.log(result);
-        console.log("length:"+result);
-        if(result.length>0)
-          sqlQuery = "UPDATE decks set cardData='"+params['carddata']+"' where userID="+params['userid']+" and deckName='"+params['deckname']+"';";
-        else
-          sqlQuery = "INSERT INTO decks (userID, deckname, cardData) VALUES (" + params['userid'] + ",'" + params['deckname'] + "','" + params['carddata'] + "');"; 
-        
-        runQuery(sqlQuery, callback,'POST');
+        console.log('Connected!');
+        con.query(sqlString, (err, result) => {
+          con.end();
+          if (err) throw err;
+          console.log(result);
+          console.log("length:"+result);
+          if(result.length>0)
+            sqlQuery = "UPDATE decks set cardData='"+params['carddata']+"' where userID="+params['userid']+" and deckName='"+params['deckname']+"';";
+          else
+            sqlQuery = "INSERT INTO decks (userID, deckname, cardData) VALUES (" + params['userid'] + ",'" + params['deckname'] + "','" + params['carddata'] + "');"; 
+          
+          runQuery(sqlQuery, callback,'POST');
+        });
       });
-    });
+    }catch(e){
+      console.log(e.message);
+    }
 }
 
 
