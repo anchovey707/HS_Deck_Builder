@@ -49,13 +49,11 @@ function basicQuery(sqlString, callback){
       con.query(sqlString, (err, result) => {
         if (err) throw err;
         console.log(result);
-        if(result.length>1){
-          sqlQuery = 'INSERT INTO decks (userID, deckname, cardData) \
-                    VALUES (\'' + params['userid'] + '\', \'' + params['deckname'] + '\', \'' + params['carddata'] + '\');';
-          runQuery(sqlQuery, callback,"POST");
-        }else
-          callback(null,'ER_DECK_EXSIST');
-        return 0;
+        if(result.length>1)
+          sqlQuery = "INSERT INTO decks (userID, deckname, cardData) VALUES (" + params['userid'] + ",'" + params['deckname'] + "','" + params['carddata'] + "');";
+        else
+            sqlQuery = "UPDATE decks set cardData='"+params['carddata']+"' where userID="+params['userid']+" and deckName='"+params['deckName']+"';";
+        runQuery(sqlQuery, callback);
       });
     });
 }
@@ -66,48 +64,48 @@ function basicQuery(sqlString, callback){
 function getDeck(params,callback){
     var sqlQuery = 'SELECT carddata FROM decks \
                     WHERE userID=1 and deckname=\'' + params['deckname'] + '\' LIMIT 1;'; //consider adding LIMIT 1 to return inner JSON
-    runQuery(sqlQuery,callback,"GET");
+    runQuery(sqlQuery,callback);
 }
 
 function getDecks(params, callback) {
   console.log('getDecks');
   var sqlQuery = 'SELECT * FROM decks \;';
-  runQuery(sqlQuery, callback, "GET");
+  runQuery(sqlQuery, callback);
 }
 
 function getUserDecks(params, callback){
     var sqlQuery = 'SELECT ID,name FROM decks \
                     WHERE userID=\'' + params['userid'] + '\';';
-    runQuery(sqlQuery,callback,"GET");
+    runQuery(sqlQuery,callback);
 }
 
 function registerUser(params, callback){
   //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'INSERT INTO users (username, password) \
                   VALUES (\'' + params['username'] + '\', \'' + params['password'] + '\');';
-  runQuery(sqlQuery, callback, "POST");
+  runQuery(sqlQuery, callback);
 }
 
 function deleteUser(params, callback) {
   var sqlQuery = 'DELETE FROM users WHERE ID=\'' + params['userid'] + '\';';
-  runQuery(sqlQuery, callback, "POST");
+  runQuery(sqlQuery, callback);
 }
 
 function verifyUser(params, callback){ 
   //var hashedPassword = passwordHash.generate(params['password']);
   var sqlQuery = 'SELECT ID,username FROM users \
                   WHERE username=\'' + params['username'] + '\' and password=\'' + params['password'] + '\';';
-  runQuery(sqlQuery, callback, "GET");
+  runQuery(sqlQuery, callback);
 }
 
 function getUsers(params, callback) {
   var sqlQuery = 'SELECT * FROM users \;';
-  runQuery(sqlQuery, callback, "GET");
+  runQuery(sqlQuery, callback);
 }
 
 function deleteDeck(params, callback){
   var sqlQuery = 'DELETE FROM decks WHERE userID=1 and deckname=\'' + params['deckname'] + '\';';
-  runQuery(sqlQuery, callback,"POST");
+  runQuery(sqlQuery, callback);
 }
 
 function saveDeck(params, callback){
