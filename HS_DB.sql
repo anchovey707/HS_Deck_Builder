@@ -3,7 +3,7 @@ DROP SCHEMA IF EXISTS `hs_decks`;
 CREATE SCHEMA IF NOT EXISTS `hs_decks` DEFAULT CHARACTER SET utf8;
 USE `hs_decks`;
 
-DROP user IF EXISTS hs_user@'%';
+DROP USER IF EXISTS hs_user;
 FLUSH PRIVILEGES;
 CREATE USER hs_user@'%' IDENTIFIED BY 'hearthstone';
 GRANT ALL PRIVILEGES ON hs_decks.* TO hs_user@'%';
