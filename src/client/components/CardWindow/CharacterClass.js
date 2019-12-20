@@ -15,7 +15,7 @@ class CharacterClass extends React.Component{
   handleClick = (name) => {
 
     var lowercase_name = name.toLowerCase()
-    var url = `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&class=${lowercase_name}&pageSize=184&access_token=USTdYzhi6GloLuBWELb5Z0k1dj6CFWMWyy`
+    var url = `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&class=${lowercase_name}&access_token=UShC8iPTlDtUIQhATibewxZz9rYOZkyEv4`
     fetch(url)
     .then( res => res.json())
     .then( data => this.props.addCardData(data))
