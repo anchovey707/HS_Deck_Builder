@@ -5,11 +5,12 @@ import {bindActionCreators} from 'redux';
 import {addToDeck,clearDeck} from '../../redux/actions/index';
 
 var input_data
+var address='http://18.219.252.45:8000';
 class DeckButtons extends React.Component {
 
 
 deleteFromDeck(){
-  let url = 'http://34.227.68.162:8000/deleteDeck?deckname=' + input_data;
+  let url = address+'/deleteDeck?deckname=' + input_data;
   fetch(url)
   .then( res => res.json())
   .then(this.clearDeck())
@@ -17,7 +18,7 @@ deleteFromDeck(){
 }
 
 loadInDeck() {
-  let url = 'http://34.227.68.162:8000/getDeck?deckname=' + input_data;
+  let url = address+'/getDeck?deckname=' + input_data;
   fetch(url)
   .then( res => res.json())
   .then(this.clearDeck())
@@ -32,7 +33,7 @@ putDeckIntoStore(loaded_data){
 
 saveToDeck(deck) {
   let deckString=JSON.stringify(deck);
-  var url = 'http://34.227.68.162:8000/saveDeck?userid=1&deckName='+input_data+'&carddata='+deckString;
+  var url = address+'/saveDeck?userid=1&deckName='+input_data+'&carddata='+deckString;
   fetch(url)
   .then( res => res.json())
   .then(data => console.log(data))

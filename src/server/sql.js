@@ -14,7 +14,7 @@ module.exports.saveDeck = saveDeck;
 
 function runQuery(sqlString, callback,method){
     var con = mysql.createConnection({
-      host: "34.227.68.162", 
+      host: "18.219.252.45", 
       user: "hs_user",
       password: "hearthstone",
       database: "hs_decks"
@@ -48,7 +48,7 @@ function runQuery(sqlString, callback,method){
 //used to determine if there is anything
 function basicQuery(sqlString, params,callback){
     var con = mysql.createConnection({
-      host: "34.227.68.162", 
+      host: "18.219.252.45", 
       user: "hs_user",
       password: "hearthstone",
       database: "hs_decks"
